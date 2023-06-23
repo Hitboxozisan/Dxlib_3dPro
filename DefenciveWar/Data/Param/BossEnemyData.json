@@ -1,0 +1,11 @@
+{
+    "Position":{"x":50.0,"y":0.0,"z":50.0},
+    "Direction":{"x":0.0,"y":0.0,"z":1.0},
+    "Radius":20,
+    "MaxTrunk":100,
+    "Speed":1,
+    "BulletSpeed":4,
+    "ShotInterval":0.1,
+    "AssaultCount":3,
+    "ShotCount":3
+}

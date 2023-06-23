@@ -1,0 +1,379 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="ソース ファイル">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="リソース ファイル">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="ソース ファイル\System">
+      <UniqueIdentifier>{8dfeacae-ae8a-40e2-9f15-aa92f479094f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Singleton">
+      <UniqueIdentifier>{55116376-a9b5-4345-aa94-73bf1b624742}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Sound">
+      <UniqueIdentifier>{455010a6-1e05-4053-ad18-8b23e8c6ad10}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Scene">
+      <UniqueIdentifier>{86467d00-3a58-4c77-a87d-c5d165db62ba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Player">
+      <UniqueIdentifier>{5dd615b5-df8e-4a6e-af93-4e6e8fea9916}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Base">
+      <UniqueIdentifier>{484cb74a-d522-4a20-a429-8902130231cf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\FilePath">
+      <UniqueIdentifier>{933fd72d-486c-426c-9adb-66776b4918ae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Control">
+      <UniqueIdentifier>{4d35aad1-bdbf-40dd-98ca-ac2b44e78ee0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\camera">
+      <UniqueIdentifier>{8efca125-5ac2-4dcb-9bc5-ab650129dd94}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Collision">
+      <UniqueIdentifier>{d907f40d-b3c4-489e-8fcc-4b4f3c047db1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Shield">
+      <UniqueIdentifier>{5223d47b-ec18-4ec4-a02c-a0c513aa3d9d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Effect">
+      <UniqueIdentifier>{344e596d-9e6b-4b00-b89c-898d574d24bb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Bullet">
+      <UniqueIdentifier>{44000a13-f103-4572-bac2-4c1292f79623}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Common">
+      <UniqueIdentifier>{1d5cb65e-d7a5-41a0-a6c7-0228d7a28366}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Enemy">
+      <UniqueIdentifier>{aae2249c-b944-43ef-a477-0253c3d8d404}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Ui">
+      <UniqueIdentifier>{bc49941b-1c73-4dfb-9ee6-87ced90d9522}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\EnemyAi">
+      <UniqueIdentifier>{faaeddde-5b5f-49ef-a882-562430058d67}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\EnemyAi\Behavior">
+      <UniqueIdentifier>{27f8b91e-50e5-4658-a6c5-8551a4a92204}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Json">
+      <UniqueIdentifier>{67fca249-1705-41a1-acd9-a0e53103ff73}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="DeltaTime.cpp">
+      <Filter>ソース ファイル\System</Filter>
+    </ClCompile>
+    <ClCompile Include="GameDefine.cpp">
+      <Filter>ソース ファイル\System</Filter>
+    </ClCompile>
+    <ClCompile Include="SingletonFainalizer.cpp">
+      <Filter>ソース ファイル\Singleton</Filter>
+    </ClCompile>
+    <ClCompile Include="KeyManager.cpp">
+      <Filter>ソース ファイル\Control</Filter>
+    </ClCompile>
+    <ClCompile Include="Math3d.cpp">
+      <Filter>ソース ファイル\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneBase.cpp">
+      <Filter>ソース ファイル\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneManager.cpp">
+      <Filter>ソース ファイル\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneGame.cpp">
+      <Filter>ソース ファイル\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneTitle.cpp">
+      <Filter>ソース ファイル\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="ScreenBand.cpp">
+      <Filter>ソース ファイル\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="SoundManager.cpp">
+      <Filter>ソース ファイル\Sound</Filter>
+    </ClCompile>
+    <ClCompile Include="Font.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="Timer.cpp">
+      <Filter>ソース ファイル\System</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>ソース ファイル\camera</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>ソース ファイル\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="ModelManager.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="Mover.cpp">
+      <Filter>ソース ファイル\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="Ground.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="Shield.cpp">
+      <Filter>ソース ファイル\Shield</Filter>
+    </ClCompile>
+    <ClCompile Include="EffectManager.cpp">
+      <Filter>ソース ファイル\Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="EfkEffect.cpp">
+      <Filter>ソース ファイル\Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="BulletManager.cpp">
+      <Filter>ソース ファイル\Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="Bullet.cpp">
+      <Filter>ソース ファイル\Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="Collision.cpp">
+      <Filter>ソース ファイル\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="BossEnemy.cpp">
+      <Filter>ソース ファイル\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="UiManager.cpp">
+      <Filter>ソース ファイル\Ui</Filter>
+    </ClCompile>
+    <ClCompile Include="UiHitPoint.cpp">
+      <Filter>ソース ファイル\Ui</Filter>
+    </ClCompile>
+    <ClCompile Include="UiBase.cpp">
+      <Filter>ソース ファイル\Ui</Filter>
+    </ClCompile>
+    <ClCompile Include="BossJudgment.cpp">
+      <Filter>ソース ファイル\EnemyAi</Filter>
+    </ClCompile>
+    <ClCompile Include="Random.cpp">
+      <Filter>ソース ファイル\System</Filter>
+    </ClCompile>
+    <ClCompile Include="ActionAssault.cpp">
+      <Filter>ソース ファイル\EnemyAi</Filter>
+    </ClCompile>
+    <ClCompile Include="ActionShotBulletNormal.cpp">
+      <Filter>ソース ファイル\EnemyAi</Filter>
+    </ClCompile>
+    <ClCompile Include="BehaviorData.cpp">
+      <Filter>ソース ファイル\EnemyAi\Behavior</Filter>
+    </ClCompile>
+    <ClCompile Include="BehaviorTree.cpp">
+      <Filter>ソース ファイル\EnemyAi\Behavior</Filter>
+    </ClCompile>
+    <ClCompile Include="NodeBase.cpp">
+      <Filter>ソース ファイル\EnemyAi\Behavior</Filter>
+    </ClCompile>
+    <ClCompile Include="ExecJudgmentBase.cpp">
+      <Filter>ソース ファイル\EnemyAi\Behavior</Filter>
+    </ClCompile>
+    <ClCompile Include="HitChacker.cpp">
+      <Filter>ソース ファイル\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="SupportJson.cpp">
+      <Filter>ソース ファイル\Json</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjectBase.cpp">
+      <Filter>ソース ファイル\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyBulletManager.cpp">
+      <Filter>ソース ファイル\Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="UiBossTrunkPoint.cpp">
+      <Filter>ソース ファイル\Ui</Filter>
+    </ClCompile>
+    <ClCompile Include="ImageManager.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="DeltaTime.h">
+      <Filter>ソース ファイル\System</Filter>
+    </ClInclude>
+    <ClInclude Include="GameDefine.h">
+      <Filter>ソース ファイル\System</Filter>
+    </ClInclude>
+    <ClInclude Include="Singleton.h">
+      <Filter>ソース ファイル\Singleton</Filter>
+    </ClInclude>
+    <ClInclude Include="SingletonFainalizer.h">
+      <Filter>ソース ファイル\Singleton</Filter>
+    </ClInclude>
+    <ClInclude Include="KeyManager.h">
+      <Filter>ソース ファイル\Control</Filter>
+    </ClInclude>
+    <ClInclude Include="common.h">
+      <Filter>ソース ファイル\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="Math3d.h">
+      <Filter>ソース ファイル\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneBase.h">
+      <Filter>ソース ファイル\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneManager.h">
+      <Filter>ソース ファイル\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneGame.h">
+      <Filter>ソース ファイル\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneTitle.h">
+      <Filter>ソース ファイル\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="ScreenBand.h">
+      <Filter>ソース ファイル\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="SoundManager.h">
+      <Filter>ソース ファイル\Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageData.h">
+      <Filter>ソース ファイル\FilePath</Filter>
+    </ClInclude>
+    <ClInclude Include="MovieData.h">
+      <Filter>ソース ファイル\FilePath</Filter>
+    </ClInclude>
+    <ClInclude Include="Timer.h">
+      <Filter>ソース ファイル\System</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>ソース ファイル\camera</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>ソース ファイル\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="ModelData.h">
+      <Filter>ソース ファイル\FilePath</Filter>
+    </ClInclude>
+    <ClInclude Include="Mover.h">
+      <Filter>ソース ファイル\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Font.h">
+      <Filter>ソース ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="CollisionTag.h">
+      <Filter>ソース ファイル\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="ModelTypeData.h">
+      <Filter>ソース ファイル\FilePath</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageTypeData.h">
+      <Filter>ソース ファイル\FilePath</Filter>
+    </ClInclude>
+    <ClInclude Include="MovieTypeData.h">
+      <Filter>ソース ファイル\FilePath</Filter>
+    </ClInclude>
+    <ClInclude Include="Shield.h">
+      <Filter>ソース ファイル\Shield</Filter>
+    </ClInclude>
+    <ClInclude Include="EffectManager.h">
+      <Filter>ソース ファイル\Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="EffectTypeData.h">
+      <Filter>ソース ファイル\FilePath</Filter>
+    </ClInclude>
+    <ClInclude Include="EffectData.h">
+      <Filter>ソース ファイル\FilePath</Filter>
+    </ClInclude>
+    <ClInclude Include="ModelManager.h">
+      <Filter>ソース ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="Ground.h">
+      <Filter>ソース ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="EfkEffect.h">
+      <Filter>ソース ファイル\Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="BulletManager.h">
+      <Filter>ソース ファイル\Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullet.h">
+      <Filter>ソース ファイル\Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="Collision.h">
+      <Filter>ソース ファイル\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="BossEnemy.h">
+      <Filter>ソース ファイル\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="UiManager.h">
+      <Filter>ソース ファイル\Ui</Filter>
+    </ClInclude>
+    <ClInclude Include="UiHitPoint.h">
+      <Filter>ソース ファイル\Ui</Filter>
+    </ClInclude>
+    <ClInclude Include="UiBase.h">
+      <Filter>ソース ファイル\Ui</Filter>
+    </ClInclude>
+    <ClInclude Include="ActionBase.h">
+      <Filter>ソース ファイル\EnemyAi</Filter>
+    </ClInclude>
+    <ClInclude Include="BossJudgment.h">
+      <Filter>ソース ファイル\EnemyAi</Filter>
+    </ClInclude>
+    <ClInclude Include="BossEnemyTimerData.h">
+      <Filter>ソース ファイル\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="BossEnemyTimerType.h">
+      <Filter>ソース ファイル\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="Random.h">
+      <Filter>ソース ファイル\System</Filter>
+    </ClInclude>
+    <ClInclude Include="ActionAssault.h">
+      <Filter>ソース ファイル\EnemyAi</Filter>
+    </ClInclude>
+    <ClInclude Include="BossState.h">
+      <Filter>ソース ファイル\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="ActionShotBulletNormal.h">
+      <Filter>ソース ファイル\EnemyAi</Filter>
+    </ClInclude>
+    <ClInclude Include="BehaviorData.h">
+      <Filter>ソース ファイル\EnemyAi\Behavior</Filter>
+    </ClInclude>
+    <ClInclude Include="BehaviorTree.h">
+      <Filter>ソース ファイル\EnemyAi\Behavior</Filter>
+    </ClInclude>
+    <ClInclude Include="NodeBase.h">
+      <Filter>ソース ファイル\EnemyAi\Behavior</Filter>
+    </ClInclude>
+    <ClInclude Include="ExecJudgmentBase.h">
+      <Filter>ソース ファイル\EnemyAi\Behavior</Filter>
+    </ClInclude>
+    <ClInclude Include="HitChacker.h">
+      <Filter>ソース ファイル\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="SupportJson.h">
+      <Filter>ソース ファイル\Json</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectBase.h">
+      <Filter>ソース ファイル\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyBulletManager.h">
+      <Filter>ソース ファイル\Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="JsonDataType.h">
+      <Filter>ソース ファイル\Json</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectData.h" />
+    <ClInclude Include="UiBossTrunkPoint.h">
+      <Filter>ソース ファイル\Ui</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageManager.h" />
+    <ClInclude Include="..\..\DirectX11_Pro\EnumIterator.h">
+      <Filter>ソース ファイル\System</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
