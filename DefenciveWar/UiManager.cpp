@@ -17,14 +17,14 @@ void UiManager::CreateUi(class SceneGame* objData)
 {
 	// 各種Uiインスタンス生成
 	EntryUi(new UiHitPoint(objData));
-	EntryUi(new UiBossTrunkPoint(objData));
+	//EntryUi(new UiBossTrunkPoint(objData));
 }
 
 void UiManager::Initialize()
 {
 	for (auto itr : ui)
 	{
-		
+		itr->Initialize();
 	}
 }
 

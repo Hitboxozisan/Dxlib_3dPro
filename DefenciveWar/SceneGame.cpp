@@ -41,6 +41,7 @@ void SceneGame::Initialize()
 	player->Initialize();
 	ground->Initialize();
 	boss->Initialize();
+	uiMgr.Initialize();
 }
 
 void SceneGame::Finalize()

@@ -48,7 +48,7 @@ void UiHitPoint::Initialize()
 	damageGauge.prevPosR = gauge.prevPosR;
 
 	// 粒子エフェクト初期化
-	for (int i = 0; i < sizeof(hpPixel); i++)
+	for (int i = 0; i < 100; i++)
 	{
 		hpPixel[i].pos = ZERO_VECTOR;
 		hpPixel[i].createPos = ZERO_VECTOR;
@@ -77,7 +77,7 @@ void UiHitPoint::Draw()
 	// プレイヤーのHitPointを表示
 	DrawBox(gauge.posL.x, gauge.posL.y, gauge.posR.x, gauge.posR.y, GREEN, TRUE);
 	// ゲージピクセル描画
-	for (int i = 0; i < sizeof(hpPixel); ++i)
+	for (int i = 0; i < 100; ++i)
 	{
 		// 存在しないなら描画しない
 		if (hpPixel[i].exist)
@@ -108,7 +108,7 @@ void UiHitPoint::CreateHpGaugePixel()
 	int randomY;
 	int randomSpeed;
 
-	for (int i = 0; i < sizeof(hpPixel); i++)
+	for (int i = 0; i < 100; i++)
 	{
 		// 発生位置設定
 		randomY = random.GetRandomInt(980, 1015);
@@ -125,7 +125,7 @@ void UiHitPoint::CreateHpGaugePixel()
 
 void UiHitPoint::MoveGaugePixel()
 {
-	for (int i = 0; i < sizeof(hpPixel); i++)
+	for (int i = 0; i < 100; i++)
 	{
 		hpPixel[i].pos.x += hpPixel[i].speed;
 	
