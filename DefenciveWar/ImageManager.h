@@ -12,7 +12,15 @@ public:
 	ImageManager();
 	~ImageManager();
 
-	int GetImage(ImageType it) { return images[it]; }
+	int GetImage(ImageType it) 
+	{
+		if (images[it] < 0)
+		{
+			printfDx("Image“Ç‚İ‚İƒGƒ‰[_%d", static_cast<int>(it));
+		}
+
+		return images[it]; 
+	}
 	
 private:
 	std::map<ImageType, int> images;

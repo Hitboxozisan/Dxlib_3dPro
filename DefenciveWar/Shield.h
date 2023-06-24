@@ -1,26 +1,26 @@
 #pragma once
 
-#include "CollisionTag.h"
+#include "ObjectBase.h"
 
 /// <summary>
 /// シールドクラス
 /// プレイヤーが保持する
 /// </summary>
-class Shield final
+class Shield final : public ObjectBase
 {
 public:
-	Shield();
+	Shield(CollisionTag tag);
 	~Shield();
 
 	void Initialize();
+	void Activate(VECTOR createPos);
+	void Deactivate();
+	void Update(VECTOR shieldPos);
+	void Draw();
 
 private:
-	struct Param
-	{
-		VECTOR pos;
-		CollisionTag tag;
-	};
+	const float COLLIDE_RADIUS = 25;
 
-	Param param;
+	class EffectManager& effectMgr;
 };
 

@@ -3,8 +3,8 @@
 enum class CollisionTag
 {
 	Player,
-	Enemy,
 	PlayerBullet,
+	PlayerShield,
+	Enemy,
 	EnemyBullet,
-	Shield,
 };

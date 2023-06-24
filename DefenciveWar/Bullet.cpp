@@ -71,9 +71,10 @@ void Bullet::HitObject(CollisionTag tag)
 
 	if (tag == CollisionTag::Enemy)
 	{
+		// エフェクトの再生
+
 		param.collision->exist = false;
 		exist = false;
-		printfDx("a");
 	}
 }
 

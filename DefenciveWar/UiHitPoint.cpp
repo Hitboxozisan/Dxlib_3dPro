@@ -17,7 +17,7 @@ UiHitPoint::UiHitPoint(class SceneGame* objData)
 	deferredHpTimer = new Timer(DEFERRED_TIME);
 
 	// UI画像読み込み
-	param.handle = imageMgr.GetImage(ImageType::PlayerHitpoint);
+	param.handle = imageMgr.GetImage(ImageType::PlayerHpGauge);
 }
 
 UiHitPoint::~UiHitPoint()
@@ -51,7 +51,7 @@ void UiHitPoint::Initialize()
 	for (int i = 0; i < 100; i++)
 	{
 		hpPixel[i].pos = ZERO_VECTOR;
-		hpPixel[i].createPos = ZERO_VECTOR;
+		//hpPixel[i].createPos = ZERO_VECTOR;
 		hpPixel[i].exist = false;
 	}
 }
@@ -110,24 +110,30 @@ void UiHitPoint::CreateHpGaugePixel()
 
 	for (int i = 0; i < 100; i++)
 	{
-		// 発生位置設定
-		randomY = random.GetRandomInt(980, 1015);
-		// 移動速度設定
-		randomSpeed = random.GetRandomInt(PIXEL_MOVE_SPEED_MIN, PIXEL_MOVE_SPEED_MAX);
+		// 存在しない場合生成する
+		if (!hpPixel[i].exist)
+		{
+			// 発生位置設定
+			randomY = random.GetRandomInt(gauge.posL.y, gauge.posR.y);
+			// 移動速度設定
+			randomSpeed = random.GetRandomInt(PIXEL_MOVE_SPEED_MIN, PIXEL_MOVE_SPEED_MAX);
 
-		hpPixel[i].pos.x = gauge.posL.x + PIXEL_RADIUS;
-		hpPixel[i].pos.y = randomY;
-		hpPixel[i].createPos.y = randomY;
-		hpPixel[i].speed = randomSpeed;
-		hpPixel[i].exist = true;
+			hpPixel[i].pos.x = gauge.posL.x;
+			hpPixel[i].pos.y = randomY;
+			//hpPixel[i].createPos.y = randomY;
+			hpPixel[i].speed = randomSpeed;
+			hpPixel[i].exist = true;
+		}
 	}
 }
 
 void UiHitPoint::MoveGaugePixel()
 {
+	float delta = deltaTime.GetDeltaTime();
+
 	for (int i = 0; i < 100; i++)
 	{
-		hpPixel[i].pos.x += hpPixel[i].speed;
+		hpPixel[i].pos.x += hpPixel[i].speed * delta;
 	
 		if (hpPixel[i].pos.x >= gauge.posR.x)
 		{

@@ -22,6 +22,7 @@ private:
 	const float SPEED = 1;
 	const float BULLET_SPEED = 4;
 	const float SHOT_INTERVAL = 0.1f;
+	const float INVINCIBLE_TIME = 1.0f;
 
 	class ModelManager& modelMgr;
 	class EffectManager& effectMgr;
@@ -31,8 +32,11 @@ private:
 	class SupportJson& json;
 
 	class Timer* shotInterval;
+	class Timer* invincibleTime;
+	class Shield* shield;
 
 	int hp;							// ヒットポイント
+	bool isHit;
 
 	void Move();					// 移動処理
 	void Shot();					// 弾の発射

@@ -17,6 +17,8 @@ extern const float FIELD_POSITION_SOUTH;    // ステージ南端
 extern const float FIELD_POSITION_EAST;     // ステージ西端
 extern const float FIELD_POSITION_WEST;     // ステージ東端
 
+extern const VECTOR COLLIDE_SAFE_POS;
+
 extern const VECTOR ZERO_VECTOR;		// ゼロベクトル
 
 extern const VECTOR PROGRESS;           // 前進

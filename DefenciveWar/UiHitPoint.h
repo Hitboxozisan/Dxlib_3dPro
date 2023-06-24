@@ -31,7 +31,6 @@ private:
 	struct HitpointEffect
 	{
 		VECTOR pos;				// 粒子位置
-		VECTOR createPos;		// 生成位置
 		int speed;				// 移動速度
 		bool exist;				// 存在しているか
 	};

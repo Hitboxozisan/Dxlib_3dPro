@@ -10,6 +10,7 @@
 #include "Timer.h"
 #include "DeltaTime.h"
 #include "BulletManager.h"
+#include "Shield.h"
 
 #include "BossEnemy.h"
 
@@ -24,6 +25,8 @@ Player::Player(CollisionTag tag)
 	,bulletMgr(Singleton<BulletManager>::GetInstance())
 	,json(Singleton<SupportJson>::GetInstance())
 	,shotInterval(new Timer(SHOT_INTERVAL))
+	,invincibleTime(new Timer(INVINCIBLE_TIME))
+	,shield(new Shield(CollisionTag::PlayerShield))
 	,Mover(tag)
 {
 	param.collision->data.radius = json.GetFloat(JsonDataType::Player, "Radius");
@@ -36,7 +39,8 @@ Player::Player(CollisionTag tag)
 
 Player::~Player()
 { 
-	// 処理なし
+	delete shotInterval;
+	delete shield;
 }
 
 void Player::Initialize()
@@ -58,15 +62,20 @@ void Player::Update()
 		exist = false;
 	}
 
+	if (isHit)
+	{
+		invincibleTime->Update(deltaTime.GetDeltaTime());
+	}
+
 	// 弾発射処理
 	Shot();
 
 	// シールド処理
 	CreateShield();
+	shield->Update(param.pos);
 
 	// 移動処理
 	Move();
-
 	// 位置修正
 	ModifyingPosition();
 	// 実際にモデルを移動
@@ -90,6 +99,7 @@ void Player::HitObject(CollisionTag tag)
 {
 	if (tag == CollisionTag::Enemy)
 	{
+		isHit = true;
 		// エフェクトの再生
 		// サウンドの再生
 
@@ -172,10 +182,10 @@ void Player::CreateShield()
 {
 	if (key.GetButton(Pad::Player1, XINPUT_BUTTON_LEFT_SHOULDER))
 	{
-		effectMgr.SetPlayEffect(EffectType::Shield, param.pos, true);
+		shield->Activate(param.pos);
 	}
 	else
 	{
-		effectMgr.StopPlayEffect(EffectType::Shield);
+		shield->Deactivate();
 	}
 }

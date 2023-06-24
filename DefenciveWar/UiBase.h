@@ -27,6 +27,7 @@ protected:
 
 	Param param;
 	class ImageManager& imageMgr;
+	class DeltaTime& deltaTime;
 	class SceneGame* data;
 private:
 	
