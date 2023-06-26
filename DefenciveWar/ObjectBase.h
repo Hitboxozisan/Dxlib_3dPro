@@ -19,8 +19,8 @@ public:
 
 	// ゲッター
 	const VECTOR GetPos() const { return param.pos; };
-	//const CollisionTag GetTag() const { return param.tag; };
 	const bool IsExist() const { return exist; };
+	const bool IsHit() const { return isHit; };
 
 protected:
 	// オブジェクトのパラメータ
@@ -39,6 +39,7 @@ protected:
 	Param param;
 	int modelHandle;	// モデル本体
 	bool exist;			// 存在するか
+	bool isHit;			// 接触したか
 
 private:
 };

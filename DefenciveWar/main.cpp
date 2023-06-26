@@ -10,7 +10,7 @@
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
 {
 	// TRUE‚É‚·‚é‚ÆFPS‚ª‹}Œƒ‚É—‚¿‚é‰Â”\«‚ ‚è
-	ChangeWindowMode(FALSE);
+	ChangeWindowMode(TRUE);
 
 	SetGraphMode(SCREEN_WIDTH, SCREEN_HEIGHT, 32);
 	SetWaitVSyncFlag(TRUE);

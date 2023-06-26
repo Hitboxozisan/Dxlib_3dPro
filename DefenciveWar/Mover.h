@@ -15,6 +15,8 @@ public:
 	virtual void Initialize();
 
 protected:
+	VECTOR force;
+
 	class DeltaTime& deltaTime;
 
 	void ModifyingPosition();		// ˆÊ’u‚ğC³‚·‚é

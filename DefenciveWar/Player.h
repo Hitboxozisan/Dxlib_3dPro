@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Mover.h"
+#include "Shield.h"
 
 class Player final : public Mover
 {
@@ -14,15 +15,18 @@ public:
 
 	void HitObject(CollisionTag tag) override;
 
-	const int GetHitpoint() const { return hp; }
+	const Shield* GetShield() const { return shield; }
+	const float GetHitpoint() const { return hp; }
 	const int GetMaxHitpoint() const;
 	const bool GetAlive() { return hp <= 0.0f; }
 	
 private:
+	const int DECREMENT_HP = 20;
 	const float SPEED = 1;
 	const float BULLET_SPEED = 4;
 	const float SHOT_INTERVAL = 0.1f;
 	const float INVINCIBLE_TIME = 1.0f;
+	const float HIT_ENEMY_FORCE = 10.0f;
 
 	class ModelManager& modelMgr;
 	class EffectManager& effectMgr;
@@ -35,9 +39,8 @@ private:
 	class Timer* invincibleTime;
 	class Shield* shield;
 
-	int hp;							// ヒットポイント
-	bool isHit;
-
+	float hp;							// ヒットポイント
+	
 	void Move();					// 移動処理
 	void Shot();					// 弾の発射
 	void CreateShield();

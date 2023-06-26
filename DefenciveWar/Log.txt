@@ -1,222 +1,243 @@
 ﻿0:ChangeWindowMode実行 
-1:ＤＸライブラリの初期化処理開始
-2:	設定されている画面設定 1920x1080 32bit color
-3:	ディスプレイ情報のセットアップ開始
-3:		モニターの数：2  ディスプレイデバイスの数：7
-4:		No.0  モニター名：\\.\DISPLAY1　1920x1080　32bit　144Hz  96x96dpi
-4:		No.1  モニター名：\\.\DISPLAY4　1920x1080　32bit　60Hz  96x96dpi
-20:	ディスプレイ情報のセットアップ完了
-20:	システムの情報を出力します
-21:		ＤＸライブラリ Ver3.23d
-21:		論理プロセッサの数 : 16
-21:		ＯＳ  Windows10 ( Build 19044  )
-122:		現時点のＣＰＵ動作速度：大体2.29GHz
-122:		ＭＭＸ命令を使用します
-123:		ＳＳＥ命令が使用可能です
-123:		ＳＳＥ２命令が使用可能です
-123:		ＣＰＵベンダ：GenuineIntel
-125:		ＣＰＵ名：Intel(R) Core(TM) i7-10875H CPU @ 2.30GHz
-125:	ＣＯＭの初期化... 成功
-154:	非同期読み込み処理の初期化...成功
-155:	ファイルアクセス処理の初期化...成功
-155:	メモリ総量:16219.31MB  空きメモリ領域:2330.21MB 
-156:	タイマーの精度を検査します
-156:	精度結果 更新回数 マルチメディアタイマー：0  パフォーマンスカウンター：60
-156:	 パフォーマンスカウンターを使用します タイマー精度 : 10000.000000 KHz 
-157:	 ソフトの二重起動検査... 二重起動はされていませんでした
-158:	ウインドウクラスを登録します... 登録に成功しました
-159:	フルスクリーンモード用のウインドウを作成します
-163:	ウインドウの作成に成功しました
-163:	ウインドウを表示します
-217:	カーソルを不可視にしました
-218:	ＩＭＥを無効にしました
-286:	DirectInput関係初期化処理
-286:		XInput DLL の読み込み中... 成功
-291:		DirectInput8 の取得を試みます...成功
-311:			引き続き初期化処理... 初期化成功
-312:		ジョイパッドの初期化... 
-312:			XInput 対応コントローラーのチェックを開始します
-312:				XInput 対応コントローラー No.0 をチェック
-316:				XInput 対応コントローラー No.0 の接続を確認しました
-316:				XInput 対応コントローラー No.0 を入力ナンバー 0 で登録します
-317:				XInput 対応コントローラー No.1 をチェック
-317:				XInput 対応コントローラー No.1 の接続は確認できませんでした
-317:				XInput 対応コントローラー No.2 をチェック
-317:				XInput 対応コントローラー No.2 の接続は確認できませんでした
-318:				XInput 対応コントローラー No.3 をチェック
-318:				XInput 対応コントローラー No.3 の接続は確認できませんでした
-318:			XInput 対応コントローラーのチェック完了
-318:			DirectInput 対応ジョイパッドの列挙を開始します
-325:				DirectInput 対応入力装置を検出しました
-325:						Device Product GUID  : 02ff045e,0000,0000,00,00,50,49,44,56,49,44
-326:						Device Instance GUID : d8039c70,11a7,11ee,80,01,44,45,53,54,00,00
-326:					DirectInputDevice8 の作成... 成功
-327:					DirectInputDevice の情報を取得します... 成功
-327:						Device Product Name  : Controller (Xbox One For Windows)
-328:						Device Instance Name : Controller (Xbox One For Windows)
-328:					検出した DirectInput 対応入力装置が Xbox360コントローラーか確認... 不一致
-329:					検出した DirectInput 対応入力装置が XboxOneコントローラーか確認... 一致
-329:				検出した DirectInput 対応入力装置の初期化を中断します
-330:			DirectInput 対応ジョイパッドの列挙終了
-330:		ジョイパッドの初期化は正常に終了しました
-330:		マウスデバイスの初期化... 初期化成功
-331:		キーボードデバイスの初期化... 初期化成功
-338:	DirectInput 関連の初期化は正常に終了しました
-344:	WASAPI の初期化を行います
-358:		デバイス名 : スピーカー (Realtek(R) Audio)
-365:		デフォルト遅延時間 : 10.000 ms
-365:		最小遅延時間       : 3.000 ms
-365:		遅延時間           : 10.000 ms
-368:		チャンネル数  　   : 2 ch
-368:		量子化ビット深度   : 32 bit
-368:		有効ビット深度　   : 32 bit
-368:		サンプリングレート : 48000 Hz
-369:		データ形式         : 浮動小数点型
-387:		動作モード         : 共有モード
-388:	WASAPI の初期化は正常に終了しました
-393:	d3d11.dll の読み込み.... 成功
-397:	dxgi.dll の読み込み.... 成功
-397:	API CreateDXGIFactory2 のアドレスを取得します.... 成功
-398:	IDXGIFactory2 を作成します.... 成功
-414:	API CreateDXGIFactory6 のアドレスを取得します.... 成功
-414:	IDXGIAdapter を列挙
-415:		Adapter No.0 Desc:NVIDIA GeForce RTX 2060  VRAM:5968MB
-415:			Output Device No.0 Name:\\.\DISPLAY1 ( 0, 0 )-( 1920, 1080 )
-415:			Output Device No.1 Name:\\.\DISPLAY4 ( 0, -1080 )-( 1920, 0 )
-416:		Adapter No.1 Desc:Intel(R) UHD Graphics  VRAM:128MB
-416:		Adapter No.2 Desc:Microsoft Basic Render Driver  VRAM:0MB
-416:	API D3D11CreateDevice のアドレスを取得します.... 成功
-417:	IDXGIAdapter を取得します.... 成功
-418:	IDXGIAdapter1 を取得します.... 成功
-418:	IDXGIAdapter2 を取得します.... 成功
-419:	IDXGIAdapter3 を取得します.... 成功
-419:	IDXGIAdapter4 を取得します.... 成功
-420:	Direct3D 11 FeatureLevel 11_0 以上を対象とします
-420:	ID3D11Device オブジェクトを取得します.... 成功
-692:	IDXGIDevice1 を取得します.... 成功
-692:	IDXGIDevice1->SetMaximunFrameLatency( 1 ); を実行しました
-693:	[フルスクリーンモード 1920x1080]
-693:	IDXGISwapChain2 を作成します.... 成功
-905:	IDXGIFactory2->CreateSwapChainForHwnd の戻り値：0x00000000
-905:	IDXGIOutput を取得します.... 成功
-906:	Graphics Device:NVIDIA GeForce RTX 2060
-907:	画面のフォーマットは DXGI_FORMAT_R8G8B8A8_UNORM です
-908:	16bit Zバッファフォーマットは DXGI_FORMAT_D16_UNORM です
-908:	24bit Zバッファフォーマットは DXGI_FORMAT_D24_UNORM_S8_UINT です
-908:	32bit Zバッファフォーマットは DXGI_FORMAT_D32_FLOAT です
-909:	16bit カラーフォーマットは DXGI_FORMAT_B5G6R5_UNORM です
-910:	32bit カラーフォーマットは DXGI_FORMAT_B8G8R8X8_UNORM です
-911:	アルファ付き 16bit カラーフォーマットは DXGI_FORMAT_B4G4R4A4_UNORM です
-912:	アルファ付き 32bit カラーフォーマットは DXGI_FORMAT_R8G8B8A8_UNORM です
-913:	アルファテスト用 16bit カラーフォーマットは DXGI_FORMAT_B5G5R5A1_UNORM です
-913:	アルファテスト用 32bit カラーフォーマットは DXGI_FORMAT_R8G8B8A8_UNORM です
-914:	ＤＸＴ１テクスチャフォーマットは DXGI_FORMAT_BC1_UNORM です
-914:	ＤＸＴ２テクスチャフォーマットは使えません
-914:	ＤＸＴ３テクスチャフォーマットは DXGI_FORMAT_BC2_UNORM です
-915:	ＤＸＴ４テクスチャフォーマットは使えません
-915:	ＤＸＴ５テクスチャフォーマットは DXGI_FORMAT_BC3_UNORM です
-915:	BC7_UNORM テクスチャフォーマットは DXGI_FORMAT_BC7_UNORM です
-916:	BC7_UNORM_SRGB テクスチャフォーマットは DXGI_FORMAT_BC7_UNORM_SRGB です
-916:	ABGR 整数 16 ビット型カラーフォーマットは DXGI_FORMAT_R16G16B16A16_UNORM です
-918:	ABGR 浮動小数点 16 ビット型カラーフォーマットは DXGI_FORMAT_R16G16B16A16_FLOAT です
-918:	ABGR 浮動小数点 32 ビット型カラーフォーマットは DXGI_FORMAT_R32G32B32A32_FLOAT です
-919:	１チャンネル整数 8 ビット型カラーフォーマットは DXGI_FORMAT_R8_UNORM です
-920:	１チャンネル整数 16 ビット型カラーフォーマットは DXGI_FORMAT_R16_UNORM です
-921:	１チャンネル浮動小数点 16 ビット型カラーフォーマットは DXGI_FORMAT_R16_FLOAT です
-922:	１チャンネル浮動小数点 32 ビット型カラーフォーマットは DXGI_FORMAT_R32_FLOAT です
-922:	２チャンネル整数 8 ビット型カラーフォーマットは DXGI_FORMAT_R8G8_UNORM です
-924:	２チャンネル整数 16 ビット型カラーフォーマットは DXGI_FORMAT_R16G16_UNORM です
-925:	２チャンネル浮動小数点 16 ビット型カラーフォーマットは DXGI_FORMAT_R16G16_FLOAT です
-925:	２チャンネル浮動小数点 32 ビット型カラーフォーマットは DXGI_FORMAT_R32G32_FLOAT です
-926:	描画用 16bit カラーフォーマットは DXGI_FORMAT_B5G6R5_UNORM です
-926:	描画用 32bit カラーフォーマットは DXGI_FORMAT_B8G8R8X8_UNORM です
-926:	描画用アルファ付き 32bit カラーフォーマットは DXGI_FORMAT_R8G8B8A8_UNORM です
-927:	描画用 ABGR 整数 16 ビット型カラーフォーマットは DXGI_FORMAT_R16G16B16A16_UNORM です
-927:	描画用 ABGR 浮動小数点 16 ビット型カラーフォーマットは DXGI_FORMAT_R16G16B16A16_FLOAT です
-927:	描画用 ABGR 浮動小数点 32 ビット型カラーフォーマットは DXGI_FORMAT_R32G32B32A32_FLOAT です
-928:	描画用１チャンネル整数 8 ビット型カラーフォーマットは DXGI_FORMAT_R8_UNORM です
-928:	描画用１チャンネル整数 16 ビット型カラーフォーマットは DXGI_FORMAT_R16_UNORM です
-928:	描画用１チャンネル浮動小数点 16 ビット型カラーフォーマットは DXGI_FORMAT_R16_FLOAT です
-928:	描画用１チャンネル浮動小数点 32 ビット型カラーフォーマットは DXGI_FORMAT_R32_FLOAT です
-929:	描画用２チャンネル整数 8 ビット型カラーフォーマットは DXGI_FORMAT_R8G8_UNORM です
-929:	描画用２チャンネル整数 16 ビット型カラーフォーマットは DXGI_FORMAT_R16G16_UNORM です
-930:	描画用２チャンネル浮動小数点 16 ビット型カラーフォーマットは DXGI_FORMAT_R16G16_FLOAT です
-930:	描画用２チャンネル浮動小数点 32 ビット型カラーフォーマットは DXGI_FORMAT_R32G32_FLOAT です
-930:	使用する機能レベル:D3D_FEATURE_LEVEL_11_1
-930:	同時にレンダリングできるバッファの数:8
-931:	最大テクスチャサイズ　幅:16384 高さ:16384
-931:	標準描画用の頂点バッファの作成.... 成功
-933:	シェーダーコード関係の初期化.... 成功
-950:	各種シェーダー用定数バッファの作成.... 成功
-952:	各種 ID3D11InputLayout の作成.... 成功
-999:	画像の単純転送処理の初期化... 成功
-1000:	深度バッファを作成します.... 成功
-1009:	フォントの初期化を行います
-1019:	フォントの初期化は正常に終了しました
-1090:	文字コードバッファの初期化を行います... 完了しました
-1099:ＤＸライブラリの初期化処理終了
-1153:File Open Error : C:\Users\gaiya\Desktop\DefenciveWar\Data\Sound\Bgm0.mp3
-1153:Sound File Load Error : C:\Users\gaiya\Desktop\DefenciveWar\Data\Sound\Bgm0.mp3
-1162:File Open Error : C:\Users\gaiya\Desktop\DefenciveWar\Data\Sound\Bgm1.mp3
-1162:Sound File Load Error : C:\Users\gaiya\Desktop\DefenciveWar\Data\Sound\Bgm1.mp3
-1163:File Open Error : C:\Users\gaiya\Desktop\DefenciveWar\Data\Sound\Se0.mp3
-1164:Sound File Load Error : C:\Users\gaiya\Desktop\DefenciveWar\Data\Sound\Se0.mp3
-1164:File Open Error : C:\Users\gaiya\Desktop\DefenciveWar\Data\Sound\Se1.mp3
-1165:Sound File Load Error : C:\Users\gaiya\Desktop\DefenciveWar\Data\Sound\Se1.mp3
-1165:File Open Error : C:\Users\gaiya\Desktop\DefenciveWar\Data\Sound\Se2.mp3
-1166:Sound File Load Error : C:\Users\gaiya\Desktop\DefenciveWar\Data\Sound\Se2.mp3
-1167:File Open Error : C:\Users\gaiya\Desktop\DefenciveWar\Data\Sound\Se3.mp3
-1167:Sound File Load Error : C:\Users\gaiya\Desktop\DefenciveWar\Data\Sound\Se3.mp3
-1168:File Open Error : C:\Users\gaiya\Desktop\DefenciveWar\Data\Sound\Se4.mp3
-1168:Sound File Load Error : C:\Users\gaiya\Desktop\DefenciveWar\Data\Sound\Se4.mp3
-1169:File Open Error : C:\Users\gaiya\Desktop\DefenciveWar\Data\Sound\Se5.mp3
-1169:Sound File Load Error : C:\Users\gaiya\Desktop\DefenciveWar\Data\Sound\Se5.mp3
-1171:File Open Error : C:\Users\gaiya\Desktop\DefenciveWar\Data\Sound\Se6.mp3
-1171:Sound File Load Error : C:\Users\gaiya\Desktop\DefenciveWar\Data\Sound\Se6.mp3
-1172:File Open Error : C:\Users\gaiya\Desktop\DefenciveWar\Data\Sound\Se7.mp3
-1172:Sound File Load Error : C:\Users\gaiya\Desktop\DefenciveWar\Data\Sound\Se7.mp3
-1173:File Open Error : C:\Users\gaiya\Desktop\DefenciveWar\Data\Sound\Se8.mp3
-1173:Sound File Load Error : C:\Users\gaiya\Desktop\DefenciveWar\Data\Sound\Se8.mp3
-1174:File Open Error : C:\Users\gaiya\Desktop\DefenciveWar\Data\Sound\Se9.mp3
-1175:Sound File Load Error : C:\Users\gaiya\Desktop\DefenciveWar\Data\Sound\Se9.mp3
-1176:File Open Error : C:\Users\gaiya\Desktop\DefenciveWar\Data\Sound\Se10.mp3
-1176:Sound File Load Error : C:\Users\gaiya\Desktop\DefenciveWar\Data\Sound\Se10.mp3
-1177:File Open Error : C:\Users\gaiya\Desktop\DefenciveWar\Data\Sound\Se11.mp3
-1177:Sound File Load Error : C:\Users\gaiya\Desktop\DefenciveWar\Data\Sound\Se11.mp3
-1178:File Open Error : C:\Users\gaiya\Desktop\DefenciveWar\Data\Sound\Se12.mp3
-1178:Sound File Load Error : C:\Users\gaiya\Desktop\DefenciveWar\Data\Sound\Se12.mp3
-1179:File Open Error : C:\Users\gaiya\Desktop\DefenciveWar\Data\Sound\Se13.mp3
-1179:Sound File Load Error : C:\Users\gaiya\Desktop\DefenciveWar\Data\Sound\Se13.mp3
-1180:File Open Error : C:\Users\gaiya\Desktop\DefenciveWar\Data\Sound\Se14.mp3
-1180:Sound File Load Error : C:\Users\gaiya\Desktop\DefenciveWar\Data\Sound\Se14.mp3
-1182:File Open Error : C:\Users\gaiya\Desktop\DefenciveWar\Data\Sound\Se15.mp3
-1182:Sound File Load Error : C:\Users\gaiya\Desktop\DefenciveWar\Data\Sound\Se15.mp3
-1183:File Open Error : C:\Users\gaiya\Desktop\DefenciveWar\Data\Sound\Se16.mp3
-1183:Sound File Load Error : C:\Users\gaiya\Desktop\DefenciveWar\Data\Sound\Se16.mp3
-1184:File Open Error : C:\Users\gaiya\Desktop\DefenciveWar\Data\Sound\Se17.mp3
-1184:Sound File Load Error : C:\Users\gaiya\Desktop\DefenciveWar\Data\Sound\Se17.mp3
-1185:File Open Error : C:\Users\gaiya\Desktop\DefenciveWar\Data\Sound\Se18.mp3
-1186:Sound File Load Error : C:\Users\gaiya\Desktop\DefenciveWar\Data\Sound\Se18.mp3
-1187:File Open Error : C:\Users\gaiya\Desktop\DefenciveWar\Data\Sound\Se19.mp3
-1187:Sound File Load Error : C:\Users\gaiya\Desktop\DefenciveWar\Data\Sound\Se19.mp3
-1217:画像ファイル C:\Users\gaiya\Desktop\DefenciveWar がありません
-1252:画像ファイル C:\Users\gaiya\Desktop\DefenciveWar\Data\Movie\Demo.mp4 がありません
-1253:画像ファイル C:\Users\gaiya\Desktop\DefenciveWar\Data\Image\Band.png がありません
-1255:画像ファイル C:\Users\gaiya\Desktop\DefenciveWar\Data\Image\Band.png がありません
-34119:フォントの初期化を行います
-34120:フォントの初期化は正常に終了しました
-34259:d3d11.dll の解放 1
-34260:dxgi.dll の解放 1
-34260:Direct3D11 のオブジェクト数を出力
-34260:Direct3D11 のオブジェクト合計数 : 0
-34262:DirectInput 関連の終了処理... 完了
-34262:サウンド関連の終了処理... 完了
-34278:ウィンドウ関連の終了処理... ウインドウを閉じようとしています
-34281:ウインドウが破棄されようとしています
-34282:ソフトを終了する準備が整いました
-34380:完了
-34384:ＣＯＭを終了... 完了
-34385:
-34385:Alloc memory dump
-34386:	Total size:0(0.000kb)  Alloc num:0
-34386:
+0:ウインドウモードフラグが立てられました
+2:ＤＸライブラリの初期化処理開始
+2:	システムの情報を出力します
+3:		ＤＸライブラリ Ver3.23d
+3:		論理プロセッサの数 : 20
+3:		ＯＳ  Windows11 ( Build 22621  )
+104:		現時点のＣＰＵ動作速度：大体2.10GHz
+104:		ＭＭＸ命令を使用します
+105:		ＳＳＥ命令が使用可能です
+105:		ＳＳＥ２命令が使用可能です
+105:		ＣＰＵベンダ：GenuineIntel
+106:		ＣＰＵ名：12th Gen Intel(R) Core(TM) i7-12700
+107:	ＣＯＭの初期化... 成功
+110:	非同期読み込み処理の初期化...成功
+111:	ファイルアクセス処理の初期化...成功
+112:	メモリ総量:32509.42MB  空きメモリ領域:19831.48MB 
+112:	タイマーの精度を検査します
+113:	精度結果 更新回数 マルチメディアタイマー：0  パフォーマンスカウンター：60
+113:	 パフォーマンスカウンターを使用します タイマー精度 : 10000.000000 KHz 
+113:	 ソフトの二重起動検査... 二重起動はされていませんでした
+114:	ウインドウクラスを登録します... 登録に成功しました
+115:	ウインドウモード起動用のウインドウを作成します
+115:	ディスプレイ情報のセットアップ開始
+116:		モニターの数：2  ディスプレイデバイスの数：4
+116:		No.0  モニター名：\\.\DISPLAY1　1920x1080　32bit　60Hz  96x96dpi
+117:		No.1  モニター名：\\.\DISPLAY2　1920x1080　32bit　144Hz  96x96dpi
+151:	ディスプレイ情報のセットアップ完了
+151:	ウインドウ矩形 ( -16, -50 )-( 1920, 1069 )
+156:	ウインドウの作成に成功しました
+156:	ウインドウを表示します
+183:	ＩＭＥを無効にしました
+184:	ウインドウスタイルをウインドウモード用に変更します... 完了
+217:	DirectInput関係初期化処理
+217:		XInput DLL の読み込み中... 成功
+222:		DirectInput8 の取得を試みます...成功
+237:			引き続き初期化処理... 初期化成功
+240:		ジョイパッドの初期化... 
+240:			XInput 対応コントローラーのチェックを開始します
+241:				XInput 対応コントローラー No.0 をチェック
+241:				XInput 対応コントローラー No.0 の接続は確認できませんでした
+241:				XInput 対応コントローラー No.1 をチェック
+241:				XInput 対応コントローラー No.1 の接続は確認できませんでした
+242:				XInput 対応コントローラー No.2 をチェック
+242:				XInput 対応コントローラー No.2 の接続は確認できませんでした
+242:				XInput 対応コントローラー No.3 をチェック
+242:				XInput 対応コントローラー No.3 の接続は確認できませんでした
+243:			XInput 対応コントローラーのチェック完了
+243:			DirectInput 対応ジョイパッドの列挙を開始します
+266:				DirectInput 対応入力装置を検出しました
+266:						Device Product GUID  : 09cc054c,0000,0000,00,00,50,49,44,56,49,44
+267:						Device Instance GUID : b30e9f80,d48d,11ec,80,01,44,45,53,54,00,00
+267:					DirectInputDevice8 の作成... 成功
+269:					DirectInputDevice の情報を取得します... 成功
+269:						Device Product Name  : Wireless Controller
+270:						Device Instance Name : Wireless Controller
+270:					検出した DirectInput 対応入力装置が Xbox360コントローラーか確認... 不一致
+270:					検出した DirectInput 対応入力装置が XboxOneコントローラーか確認... 不一致
+271:					検出した DirectInput 対応入力装置が XInput 対応コントローラーか確認... 不一致
+567:					DirectInputDevice のデータ形式に JOYSTICK 形式を設定... 成功
+568:					DirectInputDevice の協調レベルに DISCL_FOREGROUND | DISCL_EXCLUSIVE を設定... 成功
+568:					DirectInputDevice から取得する X軸 の値の範囲を設定... 成功
+569:					DirectInputDevice から取得する Y軸 の値の範囲を設定... 成功
+570:					DirectInputDevice から取得する Z軸 の値の範囲を設定... 成功
+570:					DirectInputDevice から取得する Rx軸 の値の範囲を設定... 成功
+571:					DirectInputDevice から取得する Ry軸 の値の範囲を設定... 成功
+572:					DirectInputDevice から取得する Rz軸 の値の範囲を設定... 成功
+572:					DirectInputDevice のボタンの数を取得... 成功　ボタンの数は 14 個です
+573:					DirectInputDevice の X軸 のデッドゾーンを設定... 成功
+574:					DirectInputDevice の Y軸 のデッドゾーンを設定... 成功
+575:					DirectInputDevice の Z軸 のデッドゾーンを設定... 成功
+575:					DirectInputDevice の Rx軸 のデッドゾーンを設定... 成功
+576:					DirectInputDevice の Ry軸 のデッドゾーンを設定... 成功
+576:					DirectInputDevice の Rz軸 のデッドゾーンを設定... 成功
+577:					DirectInputDevice の DirectInputEffect No.0 を作成... 失敗 Error Code :0x80004001
+577:					DirectInputDevice の DirectInputEffect No.1 を作成... 失敗 Error Code :0x80004001
+578:					DirectInputDevice の通知処理用の Event を作成... 成功
+579:					DirectInputDevice の通知処理用の Event を DirectInputDevice に設定... 成功
+579:					DirectInputDevice のアクセス権を取得... 成功
+587:					検出した DirectInput 対応入力装置を入力ナンバー 0 で登録します
+587:				検出した DirectInput 対応入力装置の初期化は正常に終了しました
+587:			DirectInput 対応ジョイパッドの列挙終了
+588:		ジョイパッドの初期化は正常に終了しました
+588:		マウスデバイスの初期化... 初期化成功
+589:		キーボードデバイスの初期化... 初期化成功
+590:	DirectInput 関連の初期化は正常に終了しました
+593:	WASAPI の初期化を行います
+600:		デバイス名 : スピーカー (Realtek(R) Audio)
+605:		デフォルト遅延時間 : 10.000 ms
+606:		最小遅延時間       : 3.000 ms
+606:		遅延時間           : 10.000 ms
+606:		チャンネル数  　   : 2 ch
+607:		量子化ビット深度   : 32 bit
+607:		有効ビット深度　   : 32 bit
+607:		サンプリングレート : 48000 Hz
+608:		データ形式         : 浮動小数点型
+622:		動作モード         : 共有モード
+622:	WASAPI の初期化は正常に終了しました
+624:	d3d11.dll の読み込み.... 成功
+630:	dxgi.dll の読み込み.... 成功
+630:	API CreateDXGIFactory2 のアドレスを取得します.... 成功
+631:	IDXGIFactory2 を作成します.... 成功
+638:	API CreateDXGIFactory6 のアドレスを取得します.... 成功
+638:	IDXGIAdapter を列挙
+639:		Adapter No.0 Desc:NVIDIA GeForce RTX 3060 Ti  VRAM:8038MB
+639:			Output Device No.0 Name:\\.\DISPLAY2 ( 0, 0 )-( 1920, 1080 )
+639:			Output Device No.1 Name:\\.\DISPLAY1 ( 1920, 0 )-( 3840, 1080 )
+640:		Adapter No.1 Desc:Microsoft Basic Render Driver  VRAM:0MB
+640:	API D3D11CreateDevice のアドレスを取得します.... 成功
+641:	IDXGIAdapter を取得します.... 成功
+642:	IDXGIAdapter1 を取得します.... 成功
+643:	IDXGIAdapter2 を取得します.... 成功
+643:	IDXGIAdapter3 を取得します.... 成功
+644:	IDXGIAdapter4 を取得します.... 成功
+645:	Direct3D 11 FeatureLevel 11_0 以上を対象とします
+645:	ID3D11Device オブジェクトを取得します.... 成功
+751:	IDXGIDevice1 を取得します.... 成功
+752:	IDXGIDevice1->SetMaximunFrameLatency( 1 ); を実行しました
+752:	[ウインドウモード 1920x1080 ( 0, 0 )-( 1920, 1080 )]
+753:	IDXGISwapChain2 を作成します.... 成功
+762:	IDXGIFactory2->CreateSwapChainForHwnd の戻り値：0x00000000
+763:	IDXGIOutput を取得します.... 成功
+763:	Graphics Device:NVIDIA GeForce RTX 3060 Ti
+764:	画面のフォーマットは DXGI_FORMAT_R8G8B8A8_UNORM です
+764:	16bit Zバッファフォーマットは DXGI_FORMAT_D16_UNORM です
+764:	24bit Zバッファフォーマットは DXGI_FORMAT_D24_UNORM_S8_UINT です
+765:	32bit Zバッファフォーマットは DXGI_FORMAT_D32_FLOAT です
+765:	16bit カラーフォーマットは DXGI_FORMAT_B5G6R5_UNORM です
+765:	32bit カラーフォーマットは DXGI_FORMAT_B8G8R8X8_UNORM です
+765:	アルファ付き 16bit カラーフォーマットは DXGI_FORMAT_B4G4R4A4_UNORM です
+765:	アルファ付き 32bit カラーフォーマットは DXGI_FORMAT_R8G8B8A8_UNORM です
+766:	アルファテスト用 16bit カラーフォーマットは DXGI_FORMAT_B5G5R5A1_UNORM です
+766:	アルファテスト用 32bit カラーフォーマットは DXGI_FORMAT_R8G8B8A8_UNORM です
+767:	ＤＸＴ１テクスチャフォーマットは DXGI_FORMAT_BC1_UNORM です
+767:	ＤＸＴ２テクスチャフォーマットは使えません
+767:	ＤＸＴ３テクスチャフォーマットは DXGI_FORMAT_BC2_UNORM です
+768:	ＤＸＴ４テクスチャフォーマットは使えません
+768:	ＤＸＴ５テクスチャフォーマットは DXGI_FORMAT_BC3_UNORM です
+768:	BC7_UNORM テクスチャフォーマットは DXGI_FORMAT_BC7_UNORM です
+768:	BC7_UNORM_SRGB テクスチャフォーマットは DXGI_FORMAT_BC7_UNORM_SRGB です
+769:	ABGR 整数 16 ビット型カラーフォーマットは DXGI_FORMAT_R16G16B16A16_UNORM です
+769:	ABGR 浮動小数点 16 ビット型カラーフォーマットは DXGI_FORMAT_R16G16B16A16_FLOAT です
+769:	ABGR 浮動小数点 32 ビット型カラーフォーマットは DXGI_FORMAT_R32G32B32A32_FLOAT です
+770:	１チャンネル整数 8 ビット型カラーフォーマットは DXGI_FORMAT_R8_UNORM です
+770:	１チャンネル整数 16 ビット型カラーフォーマットは DXGI_FORMAT_R16_UNORM です
+770:	１チャンネル浮動小数点 16 ビット型カラーフォーマットは DXGI_FORMAT_R16_FLOAT です
+771:	１チャンネル浮動小数点 32 ビット型カラーフォーマットは DXGI_FORMAT_R32_FLOAT です
+771:	２チャンネル整数 8 ビット型カラーフォーマットは DXGI_FORMAT_R8G8_UNORM です
+771:	２チャンネル整数 16 ビット型カラーフォーマットは DXGI_FORMAT_R16G16_UNORM です
+771:	２チャンネル浮動小数点 16 ビット型カラーフォーマットは DXGI_FORMAT_R16G16_FLOAT です
+772:	２チャンネル浮動小数点 32 ビット型カラーフォーマットは DXGI_FORMAT_R32G32_FLOAT です
+772:	描画用 16bit カラーフォーマットは DXGI_FORMAT_B5G6R5_UNORM です
+772:	描画用 32bit カラーフォーマットは DXGI_FORMAT_B8G8R8X8_UNORM です
+773:	描画用アルファ付き 32bit カラーフォーマットは DXGI_FORMAT_R8G8B8A8_UNORM です
+773:	描画用 ABGR 整数 16 ビット型カラーフォーマットは DXGI_FORMAT_R16G16B16A16_UNORM です
+773:	描画用 ABGR 浮動小数点 16 ビット型カラーフォーマットは DXGI_FORMAT_R16G16B16A16_FLOAT です
+774:	描画用 ABGR 浮動小数点 32 ビット型カラーフォーマットは DXGI_FORMAT_R32G32B32A32_FLOAT です
+774:	描画用１チャンネル整数 8 ビット型カラーフォーマットは DXGI_FORMAT_R8_UNORM です
+774:	描画用１チャンネル整数 16 ビット型カラーフォーマットは DXGI_FORMAT_R16_UNORM です
+775:	描画用１チャンネル浮動小数点 16 ビット型カラーフォーマットは DXGI_FORMAT_R16_FLOAT です
+775:	描画用１チャンネル浮動小数点 32 ビット型カラーフォーマットは DXGI_FORMAT_R32_FLOAT です
+775:	描画用２チャンネル整数 8 ビット型カラーフォーマットは DXGI_FORMAT_R8G8_UNORM です
+775:	描画用２チャンネル整数 16 ビット型カラーフォーマットは DXGI_FORMAT_R16G16_UNORM です
+776:	描画用２チャンネル浮動小数点 16 ビット型カラーフォーマットは DXGI_FORMAT_R16G16_FLOAT です
+776:	描画用２チャンネル浮動小数点 32 ビット型カラーフォーマットは DXGI_FORMAT_R32G32_FLOAT です
+776:	使用する機能レベル:D3D_FEATURE_LEVEL_11_1
+776:	同時にレンダリングできるバッファの数:8
+776:	最大テクスチャサイズ　幅:16384 高さ:16384
+776:	標準描画用の頂点バッファの作成.... 成功
+777:	シェーダーコード関係の初期化.... 成功
+789:	各種シェーダー用定数バッファの作成.... 成功
+790:	各種 ID3D11InputLayout の作成.... 成功
+802:	画像の単純転送処理の初期化... 成功
+804:	深度バッファを作成します.... 成功
+805:	フォントの初期化を行います
+807:	フォントの初期化は正常に終了しました
+851:	文字コードバッファの初期化を行います... 完了しました
+859:ＤＸライブラリの初期化処理終了
+895:File Open Error : C:\Users\gaiya\OneDrive\デスクトップ\DefenciveWar\Data\Sound\Bgm0.mp3
+895:Sound File Load Error : C:\Users\gaiya\OneDrive\デスクトップ\DefenciveWar\Data\Sound\Bgm0.mp3
+902:File Open Error : C:\Users\gaiya\OneDrive\デスクトップ\DefenciveWar\Data\Sound\Bgm1.mp3
+902:Sound File Load Error : C:\Users\gaiya\OneDrive\デスクトップ\DefenciveWar\Data\Sound\Bgm1.mp3
+903:File Open Error : C:\Users\gaiya\OneDrive\デスクトップ\DefenciveWar\Data\Sound\Se0.mp3
+903:Sound File Load Error : C:\Users\gaiya\OneDrive\デスクトップ\DefenciveWar\Data\Sound\Se0.mp3
+904:File Open Error : C:\Users\gaiya\OneDrive\デスクトップ\DefenciveWar\Data\Sound\Se1.mp3
+904:Sound File Load Error : C:\Users\gaiya\OneDrive\デスクトップ\DefenciveWar\Data\Sound\Se1.mp3
+905:File Open Error : C:\Users\gaiya\OneDrive\デスクトップ\DefenciveWar\Data\Sound\Se2.mp3
+905:Sound File Load Error : C:\Users\gaiya\OneDrive\デスクトップ\DefenciveWar\Data\Sound\Se2.mp3
+906:File Open Error : C:\Users\gaiya\OneDrive\デスクトップ\DefenciveWar\Data\Sound\Se3.mp3
+906:Sound File Load Error : C:\Users\gaiya\OneDrive\デスクトップ\DefenciveWar\Data\Sound\Se3.mp3
+907:File Open Error : C:\Users\gaiya\OneDrive\デスクトップ\DefenciveWar\Data\Sound\Se4.mp3
+907:Sound File Load Error : C:\Users\gaiya\OneDrive\デスクトップ\DefenciveWar\Data\Sound\Se4.mp3
+907:File Open Error : C:\Users\gaiya\OneDrive\デスクトップ\DefenciveWar\Data\Sound\Se5.mp3
+907:Sound File Load Error : C:\Users\gaiya\OneDrive\デスクトップ\DefenciveWar\Data\Sound\Se5.mp3
+909:File Open Error : C:\Users\gaiya\OneDrive\デスクトップ\DefenciveWar\Data\Sound\Se6.mp3
+909:Sound File Load Error : C:\Users\gaiya\OneDrive\デスクトップ\DefenciveWar\Data\Sound\Se6.mp3
+910:File Open Error : C:\Users\gaiya\OneDrive\デスクトップ\DefenciveWar\Data\Sound\Se7.mp3
+910:Sound File Load Error : C:\Users\gaiya\OneDrive\デスクトップ\DefenciveWar\Data\Sound\Se7.mp3
+911:File Open Error : C:\Users\gaiya\OneDrive\デスクトップ\DefenciveWar\Data\Sound\Se8.mp3
+911:Sound File Load Error : C:\Users\gaiya\OneDrive\デスクトップ\DefenciveWar\Data\Sound\Se8.mp3
+912:File Open Error : C:\Users\gaiya\OneDrive\デスクトップ\DefenciveWar\Data\Sound\Se9.mp3
+913:Sound File Load Error : C:\Users\gaiya\OneDrive\デスクトップ\DefenciveWar\Data\Sound\Se9.mp3
+914:File Open Error : C:\Users\gaiya\OneDrive\デスクトップ\DefenciveWar\Data\Sound\Se10.mp3
+914:Sound File Load Error : C:\Users\gaiya\OneDrive\デスクトップ\DefenciveWar\Data\Sound\Se10.mp3
+914:File Open Error : C:\Users\gaiya\OneDrive\デスクトップ\DefenciveWar\Data\Sound\Se11.mp3
+915:Sound File Load Error : C:\Users\gaiya\OneDrive\デスクトップ\DefenciveWar\Data\Sound\Se11.mp3
+915:File Open Error : C:\Users\gaiya\OneDrive\デスクトップ\DefenciveWar\Data\Sound\Se12.mp3
+915:Sound File Load Error : C:\Users\gaiya\OneDrive\デスクトップ\DefenciveWar\Data\Sound\Se12.mp3
+916:File Open Error : C:\Users\gaiya\OneDrive\デスクトップ\DefenciveWar\Data\Sound\Se13.mp3
+916:Sound File Load Error : C:\Users\gaiya\OneDrive\デスクトップ\DefenciveWar\Data\Sound\Se13.mp3
+916:File Open Error : C:\Users\gaiya\OneDrive\デスクトップ\DefenciveWar\Data\Sound\Se14.mp3
+916:Sound File Load Error : C:\Users\gaiya\OneDrive\デスクトップ\DefenciveWar\Data\Sound\Se14.mp3
+917:File Open Error : C:\Users\gaiya\OneDrive\デスクトップ\DefenciveWar\Data\Sound\Se15.mp3
+917:Sound File Load Error : C:\Users\gaiya\OneDrive\デスクトップ\DefenciveWar\Data\Sound\Se15.mp3
+918:File Open Error : C:\Users\gaiya\OneDrive\デスクトップ\DefenciveWar\Data\Sound\Se16.mp3
+918:Sound File Load Error : C:\Users\gaiya\OneDrive\デスクトップ\DefenciveWar\Data\Sound\Se16.mp3
+919:File Open Error : C:\Users\gaiya\OneDrive\デスクトップ\DefenciveWar\Data\Sound\Se17.mp3
+919:Sound File Load Error : C:\Users\gaiya\OneDrive\デスクトップ\DefenciveWar\Data\Sound\Se17.mp3
+920:File Open Error : C:\Users\gaiya\OneDrive\デスクトップ\DefenciveWar\Data\Sound\Se18.mp3
+920:Sound File Load Error : C:\Users\gaiya\OneDrive\デスクトップ\DefenciveWar\Data\Sound\Se18.mp3
+921:File Open Error : C:\Users\gaiya\OneDrive\デスクトップ\DefenciveWar\Data\Sound\Se19.mp3
+922:Sound File Load Error : C:\Users\gaiya\OneDrive\デスクトップ\DefenciveWar\Data\Sound\Se19.mp3
+951:画像ファイル C:\Users\gaiya\OneDrive\デスクトップ\DefenciveWar がありません
+952:画像ファイル C:\Users\gaiya\OneDrive\デスクトップ\DefenciveWar\Data\Movie\Demo.mp4 がありません
+952:画像ファイル C:\Users\gaiya\OneDrive\デスクトップ\DefenciveWar\Data\Image\Band.png がありません
+953:画像ファイル C:\Users\gaiya\OneDrive\デスクトップ\DefenciveWar\Data\Image\Band.png がありません
+3694:フォントの初期化を行います
+3695:フォントの初期化は正常に終了しました
+3729:d3d11.dll の解放 1
+3730:dxgi.dll の解放 1
+3731:Direct3D11 のオブジェクト数を出力
+3731:Direct3D11 のオブジェクト合計数 : 0
+3732:DirectInput 関連の終了処理... 完了
+3734:サウンド関連の終了処理... 完了
+3741:ウィンドウ関連の終了処理... ウインドウを閉じようとしています
+3749:ウインドウが破棄されようとしています
+3749:ソフトを終了する準備が整いました
+3819:完了
+3822:ＣＯＭを終了... 完了
+3823:
+3823:Alloc memory dump
+3824:	Total size:0(0.000kb)  Alloc num:0
+3824:

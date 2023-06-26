@@ -11,7 +11,6 @@
 #include "BehaviorTree.h"
 #include "BossEnemy.h"
 #include "HitChacker.h"
-#include "ObjectData.h"
 #include "UiManager.h"
 
 SceneGame::SceneGame(SceneManager* const sceneManager)

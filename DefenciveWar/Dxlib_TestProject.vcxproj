@@ -122,14 +122,14 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\gaiya\Desktop\DxLib_VC\Dxlib_Effekseer</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\gaiya\OneDrive\デスクトップ\Dxlib_Effekseer</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <LanguageStandard>stdcpp14</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\Users\gaiya\Desktop\DxLib_VC\Dxlib_Effekseer</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\Users\gaiya\OneDrive\デスクトップ\Dxlib_Effekseer</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -195,6 +195,7 @@
     <ClCompile Include="UiBossTrunkPoint.cpp" />
     <ClCompile Include="UiHitPoint.cpp" />
     <ClCompile Include="UiManager.cpp" />
+    <ClCompile Include="UiShieldStanpoint.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\DirectX11_Pro\EnumIterator.h" />
@@ -239,7 +240,6 @@
     <ClInclude Include="MovieTypeData.h" />
     <ClInclude Include="NodeBase.h" />
     <ClInclude Include="ObjectBase.h" />
-    <ClInclude Include="ObjectData.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Random.h" />
     <ClInclude Include="SceneBase.h" />
@@ -257,6 +257,7 @@
     <ClInclude Include="UiBossTrunkPoint.h" />
     <ClInclude Include="UiHitPoint.h" />
     <ClInclude Include="UiManager.h" />
+    <ClInclude Include="UiShieldStanpoint.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets" />

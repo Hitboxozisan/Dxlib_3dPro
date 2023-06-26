@@ -12,7 +12,7 @@ public:
 	ImageManager();
 	~ImageManager();
 
-	int GetImage(ImageType it) 
+	int GetImage(const ImageType it) 
 	{
 		if (images[it] < 0)
 		{
@@ -21,8 +21,11 @@ public:
 
 		return images[it]; 
 	}
+
+	float GetImageSize(const ImageType it) { return size[it]; }
 	
 private:
 	std::map<ImageType, int> images;
+	std::map<ImageType, float> size;
 };
 

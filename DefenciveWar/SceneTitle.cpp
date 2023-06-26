@@ -22,7 +22,14 @@ SceneTitle::SceneTitle(SceneManager* const sceneManager)
 	,state(State::DEMO)
 	,selectState(SelectState::START)
 {
-	// 処理なし
+	// デモ映像の読み込み
+	movieHandle = LoadGraph(MovieData::FILE_PATH[MovieType::Demo].c_str());
+	// タイトルロゴ画像読み込み
+	titleImageHandle = imageMgr.GetImage(ImageType::TitleLogo);
+
+	// 画面帯管理インスタンス生成
+	screenBand = new ScreenBand;
+	screenBand->Initialize();
 }
 
 /// <summary>
@@ -41,14 +48,7 @@ void SceneTitle::Initialize()
 	soundMgr.SetBgmVolume(5);
 	soundMgr.SetSeVolume(8);
 
-	// デモ映像の読み込み
-	movieHandle = LoadGraph(MovieData::FILE_PATH[MovieType::Demo].c_str());
-	// タイトルロゴ画像読み込み
-	titleImageHandle = imageMgr.GetImage(ImageType::TitleLogo);
-
-	// 画面帯管理インスタンス生成
-	screenBand = new ScreenBand;
-	screenBand->Initialize();
+	
 }
 
 /// <summary>

@@ -197,6 +197,9 @@
     <ClCompile Include="ImageManager.cpp">
       <Filter>ソース ファイル\Ui</Filter>
     </ClCompile>
+    <ClCompile Include="UiShieldStanpoint.cpp">
+      <Filter>ソース ファイル\Ui</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DeltaTime.h">
@@ -367,7 +370,6 @@
     <ClInclude Include="JsonDataType.h">
       <Filter>ソース ファイル\Json</Filter>
     </ClInclude>
-    <ClInclude Include="ObjectData.h" />
     <ClInclude Include="UiBossTrunkPoint.h">
       <Filter>ソース ファイル\Ui</Filter>
     </ClInclude>
@@ -375,6 +377,9 @@
       <Filter>ソース ファイル\System</Filter>
     </ClInclude>
     <ClInclude Include="ImageManager.h">
+      <Filter>ソース ファイル\Ui</Filter>
+    </ClInclude>
+    <ClInclude Include="UiShieldStanpoint.h">
       <Filter>ソース ファイル\Ui</Filter>
     </ClInclude>
   </ItemGroup>

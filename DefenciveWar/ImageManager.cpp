@@ -15,6 +15,11 @@ ImageManager::ImageManager()
 		images[itr] = LoadGraph(FILE_PATH[itr].c_str());
 	}
 
+	for (auto itr : itItr())
+	{
+		size[itr] = IMAGE_SIZE[itr];
+	}
+
 }
 
 ImageManager::~ImageManager()

@@ -8,24 +8,25 @@ public:
 	UiHitPoint(class SceneGame* objData);
 	~UiHitPoint();
 
-	void Initialize();
-	void Update();
-	void Draw();
+	void Initialize() override;
+	void Update() override;
+	void Draw() override;
 
 private:
 	const VECTOR INITIAL_POS = VGet(300, 1000, 0);
+	const VECTOR VIBRATE_UI = VGet(20, 20, 0);
 	const int	PIXEL_MOVE_SPEED_MAX = 100;		// HitPointゲージ最大移動速度
 	const int	PIXEL_MOVE_SPEED_MIN = 50;		// HitPointゲージ最小移動速度
 	const int	PIXEL_RADIUS = 1;
 	const float DECREASE_HITPOINT = 50.0f;		// HitPoint減少量
 	const float VIBRATE_TIME = 0.3f;			// 振動時間
-	const float DEFERRED_TIME = 0.5f;			// 減少するまでの時間
+	const float DEFERRED_TIME = 0.8f;			// 減少するまでの時間
 
-	void UpdateValue();						// 各種値を更新する
-	void VibrateUi();						// Uiを振動させる
-	void DecreaseHitPoint();				// HitPointを減少させる
-	void CreateHpGaugePixel();				// HitPointゲージエフェクトを生成
-	void MoveGaugePixel();					// 粒子の移動処理
+	void UpdateValue();
+	void VibrateUi();							// Uiを振動させる
+	void DecreaseHitPoint();					// HitPointを減少させる
+	void CreateHpGaugePixel();	// HitPointゲージエフェクトを生成
+	void MoveGaugePixel();						// 粒子の移動処理
 
 	// ゲージ上の粒子エフェクト
 	struct HitpointEffect
@@ -48,7 +49,7 @@ private:
 	struct SecondHitPointGauge
 	{
 		// 遅れて減少する用のHitpoint
-		int hp;
+		float hp;
 		// ゲージ右下頂点
 		VECTOR posR;
 		VECTOR prevPosR;

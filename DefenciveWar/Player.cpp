@@ -43,6 +43,9 @@ Player::~Player()
 	delete shield;
 }
 
+/// <summary>
+/// 初期化処理
+/// </summary>
 void Player::Initialize()
 {
 	param.pos = json.GetVector(JsonDataType::Player, "Position");
@@ -53,6 +56,9 @@ void Player::Initialize()
 	exist = true;
 }
 
+/// <summary>
+/// 更新処理
+/// </summary>
 void Player::Update()
 {
 	// 体力が尽きたら死亡する
@@ -62,9 +68,27 @@ void Player::Update()
 		exist = false;
 	}
 
+	// 接触した場合
 	if (isHit)
 	{
+		// 無敵状態
 		invincibleTime->Update(deltaTime.GetDeltaTime());
+		if (invincibleTime->IsTimeout())
+		{
+			isHit = false;
+			invincibleTime->Reset();
+		}
+	}
+
+	if (key.CheckPressed(KEY_INPUT_0) &&
+		shield->GetTrunkpoint() <= 100)
+	{
+		shield->SetTrunk(1);
+	}
+	if (key.CheckPressed(KEY_INPUT_1) &&
+		shield->GetTrunkpoint() >= 0)
+	{
+		shield->SetTrunk(-1);
 	}
 
 	// 弾発射処理
@@ -74,17 +98,23 @@ void Player::Update()
 	CreateShield();
 	shield->Update(param.pos);
 
-	// 移動処理
-	Move();
+	if (VSize(force) != 0)
+	{
+		// 移動処理
+		Move();
+	}
+
 	// 位置修正
 	ModifyingPosition();
 	// 実際にモデルを移動
 	MoveFinish();
 	// モデルの向きを決定
 	MV1SetRotationYUseDir(modelHandle, param.dir, 0.0f);
-
 }
 
+/// <summary>
+/// 描画処理
+/// </summary>
 void Player::Draw()
 {
 	// モデルの描画
@@ -97,20 +127,20 @@ void Player::Draw()
 /// <param name="tag"></param>
 void Player::HitObject(CollisionTag tag)
 {
-	if (tag == CollisionTag::Enemy)
+	if (tag == CollisionTag::Enemy && !isHit)
 	{
-		isHit = true;
 		// エフェクトの再生
+		
 		// サウンドの再生
 
+		// 体力の減少
+		hp -= DECREMENT_HP;
+
+		force = VScale(param.dir, HIT_ENEMY_FORCE);
+
+		isHit = true;
 	}
 }
-
-const int Player::GetMaxHitpoint() const
-{
-	return json.GetInt(JsonDataType::Player, "Hitpoint");
-}
-
 
 /// <summary>
 /// 移動処理
@@ -118,7 +148,6 @@ const int Player::GetMaxHitpoint() const
 /// </summary>
 void Player::Move()
 {
-
 	// 入力ベクトル
 	VECTOR inputL = ZERO_VECTOR;
 	VECTOR inputR = ZERO_VECTOR;
@@ -180,7 +209,8 @@ void Player::Shot()
 /// </summary>
 void Player::CreateShield()
 {
-	if (key.GetButton(Pad::Player1, XINPUT_BUTTON_LEFT_SHOULDER))
+	if (key.GetButton(Pad::Player1, XINPUT_BUTTON_LEFT_SHOULDER) &&
+		!shield->IsBreak())
 	{
 		shield->Activate(param.pos);
 	}
@@ -189,3 +219,9 @@ void Player::CreateShield()
 		shield->Deactivate();
 	}
 }
+
+const int Player::GetMaxHitpoint() const
+{
+	return json.GetInt(JsonDataType::Player, "Hitpoint");
+}
+

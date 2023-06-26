@@ -3,6 +3,7 @@
 #include "UiBase.h"
 #include "UiHitPoint.h"
 #include "UiBossTrunkPoint.h"
+#include "UiShieldStanpoint.h"
 
 UiManager::UiManager()
 {
@@ -17,6 +18,7 @@ void UiManager::CreateUi(class SceneGame* objData)
 {
 	// 各種Uiインスタンス生成
 	EntryUi(new UiHitPoint(objData));
+	EntryUi(new UiShieldStanpoint(objData));
 	//EntryUi(new UiBossTrunkPoint(objData));
 }
 

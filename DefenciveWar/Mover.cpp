@@ -3,7 +3,8 @@
 #include "DeltaTime.h"
 
 Mover::Mover(CollisionTag tag)
-	:deltaTime(Singleton<DeltaTime>::GetInstance())
+	:force(ZERO_VECTOR)
+	,deltaTime(Singleton<DeltaTime>::GetInstance())
 	,ObjectBase(tag)
 {
 }

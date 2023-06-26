@@ -85,7 +85,16 @@ void BossEnemy::Draw()
 /// <param name="tag"></param>
 void BossEnemy::HitObject(CollisionTag tag)
 {
+	// ƒvƒŒƒCƒ„[
+	if (tag == CollisionTag::Player)
+	{
 
+	}
+
+	if (tag == CollisionTag::Shield)
+	{
+
+	}
 }
 
 /// <summary>
