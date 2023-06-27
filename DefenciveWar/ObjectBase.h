@@ -15,7 +15,7 @@ public:
 	virtual ~ObjectBase();
 
 	virtual void Initialize();
-	virtual void HitObject(CollisionTag tag);
+	virtual void HitObject(Collision* other);
 
 	// ÉQÉbÉ^Å[
 	const VECTOR GetPos() const { return param.pos; };

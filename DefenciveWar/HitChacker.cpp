@@ -44,7 +44,7 @@ void HitChacker::Chack()
 			}
 			else if ((*itr).Chack(itr2))
 			{
-				(*itr).HitObject(itr2->GetTag());
+				(*itr).HitObject(itr2->GetCollision());
 			}
 		}
 	}

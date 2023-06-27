@@ -50,8 +50,8 @@ const bool Collision::Chack(Collision* other)
 /// 接触処理
 /// </summary>
 /// <param name="tag"></param>
-void Collision::HitObject(CollisionTag tag)
+void Collision::HitObject(Collision* other)
 {
 	// 各オブジェクトの接触処理
-	parent->HitObject(tag);
+	parent->HitObject(other);
 }

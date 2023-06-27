@@ -22,12 +22,13 @@ public:
 	void Update();
 	void DrawCollision();
 	const bool Chack(class Collision* other);
-	void HitObject(CollisionTag tag);
+	void HitObject(Collision* other);
 
 	const VECTOR GetPos() const { return data.pos; }
 	const float GetRadius() const { return data.radius; }
 	const bool IsExist() const { return exist; }
 	const CollisionTag GetTag() const { return collideTag; }
+	Collision* GetCollision() { return this; }
 
 	bool exist;
 	Data data;

@@ -80,17 +80,6 @@ void Player::Update()
 		}
 	}
 
-	if (key.CheckPressed(KEY_INPUT_0) &&
-		shield->GetTrunkpoint() <= 100)
-	{
-		shield->SetTrunk(1);
-	}
-	if (key.CheckPressed(KEY_INPUT_1) &&
-		shield->GetTrunkpoint() >= 0)
-	{
-		shield->SetTrunk(-1);
-	}
-
 	// 弾発射処理
 	Shot();
 
@@ -98,12 +87,16 @@ void Player::Update()
 	CreateShield();
 	shield->Update(param.pos);
 
-	if (VSize(force) != 0)
+	if (VSize(force) == 0)
 	{
 		// 移動処理
 		Move();
 	}
-
+	else
+	{
+		Sliding();
+	}
+	
 	// 位置修正
 	ModifyingPosition();
 	// 実際にモデルを移動
@@ -117,6 +110,8 @@ void Player::Update()
 /// </summary>
 void Player::Draw()
 {
+	DrawFormatString(1700.0f, 50.0f, GetColor(255, 255, 255), "PlayerX: %f", shield->GetTrunkpoint());
+
 	// モデルの描画
 	MV1DrawModel(modelHandle);
 }
@@ -125,9 +120,11 @@ void Player::Draw()
 /// 各オブジェクトに触れた際の処理
 /// </summary>
 /// <param name="tag"></param>
-void Player::HitObject(CollisionTag tag)
+void Player::HitObject(Collision* other)
 {
-	if (tag == CollisionTag::Enemy && !isHit)
+	VECTOR sub;
+
+	if (other->GetTag() == CollisionTag::Enemy && !isHit)
 	{
 		// エフェクトの再生
 		
@@ -136,7 +133,13 @@ void Player::HitObject(CollisionTag tag)
 		// 体力の減少
 		hp -= DECREMENT_HP;
 
-		force = VScale(param.dir, HIT_ENEMY_FORCE);
+		// 跳ね返る力を設定
+		 // 跳ね返る向きを設定
+		sub = VSub(param.pos, other->GetPos());
+		 // 正規化
+		force = VNorm(sub);
+		 // 力の大きさを設定
+		force = VScale(force, BOUND_POWER);
 
 		isHit = true;
 	}
@@ -148,6 +151,9 @@ void Player::HitObject(CollisionTag tag)
 /// </summary>
 void Player::Move()
 {
+	float delta = deltaTime.GetDeltaTime();
+	float speed = json.GetFloat(JsonDataType::Player, "Speed");
+
 	// 入力ベクトル
 	VECTOR inputL = ZERO_VECTOR;
 	VECTOR inputR = ZERO_VECTOR;
@@ -170,7 +176,7 @@ void Player::Move()
 	inputL = VAdd(inputL, VScale(forward, inputScaleL.z));
 	inputL = VAdd(inputL, VScale(right, inputScaleL.x));
 
-	param.nextPos = VAdd(param.nextPos, VScale(inputL, SPEED));
+	param.nextPos = VAdd(param.nextPos, VScale(inputL, speed * delta));
 
 
 	// 向きが変化しないうちはその方向を向く
@@ -191,6 +197,8 @@ void Player::Move()
 /// </summary>
 void Player::Shot()
 {
+	float speed = json.GetFloat(JsonDataType::Player, "BulletSpeed");
+
 	// インターバルタイマー更新
 	shotInterval->Update(deltaTime.GetDeltaTime());
 
@@ -198,7 +206,7 @@ void Player::Shot()
 		shotInterval->IsTimeout())
 	{
 		// 弾を発射する
-		bulletMgr.CreateBullet(param.pos, param.dir, BULLET_SPEED, ModelType::Bullet);
+		bulletMgr.CreateBullet(param.pos, param.dir, speed, ModelType::Bullet);
 		// タイマーをリセット
 		shotInterval->Reset();
 	}
@@ -218,6 +226,26 @@ void Player::CreateShield()
 	{
 		shield->Deactivate();
 	}
+}
+
+bool Player::Sliding()
+{
+	float delta = deltaTime.GetDeltaTime();
+	VECTOR friction = force;
+	friction = VNorm(friction);
+	friction = VScale(friction, REBOUND_RESISTANCE);
+
+	force = VAdd(force, friction * delta);
+	param.nextPos = VAdd(param.nextPos, force);
+	
+	// 反発力が 0 を下回ったら終了する
+	if (VSize(force) <= 0)
+	{
+		force = ZERO_VECTOR;
+		return true;
+	}
+
+	return false;
 }
 
 const int Player::GetMaxHitpoint() const

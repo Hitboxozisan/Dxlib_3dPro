@@ -2,6 +2,7 @@
 #include "ModelManager.h"
 #include "Singleton.h"
 #include "EffectManager.h"
+#include "DeltaTime.h"
 
 Bullet::Bullet(CollisionTag tag)
 	:modelMgr(Singleton<ModelManager>::GetInstance())
@@ -62,14 +63,14 @@ void Bullet::Create(VECTOR pos, VECTOR dir, float shotSpeed)
 	exist = true;
 }
 
-void Bullet::HitObject(CollisionTag tag)
+void Bullet::HitObject(Collision* other)
 {
 	//if (!exist)
 	//{
 	//	return;
 	//}
 
-	if (tag == CollisionTag::Enemy)
+	if (other->GetTag() == CollisionTag::Enemy)
 	{
 		// エフェクトの再生
 
@@ -83,7 +84,8 @@ void Bullet::HitObject(CollisionTag tag)
 /// </summary>
 void Bullet::Move()
 {
-	param.nextPos = VAdd(param.nextPos, VScale(param.dir, speed));
+	float delta = deltaTime.GetDeltaTime();
+	param.nextPos = VAdd(param.nextPos, VScale(param.dir, speed * delta));
 }
 
 /// <summary>

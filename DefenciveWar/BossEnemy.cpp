@@ -13,6 +13,7 @@
 #include "Player.h"
 #include "EnemyBulletManager.h"
 #include "ActionShotBulletNormal.h"
+#include "KeyManager.h"
 
 using namespace BossTimer;
 
@@ -21,6 +22,7 @@ BossEnemy::BossEnemy(CollisionTag tag, Player* p)
 	,modelMgr(Singleton<ModelManager>::GetInstance())
 	,bulletMgr(Singleton<EnemyBulletManager>::GetInstance())
 	,json(Singleton<SupportJson>::GetInstance())
+	,key(Singleton<KeyManager>::GetInstance())
 	,aiTree(new BehaviorTree())
 	,behaviorData(new BehaviorData())
 	,activeNode(NULL)
@@ -60,6 +62,25 @@ void BossEnemy::Initialize()
 void BossEnemy::Update()
 {
 
+	//if (key.CheckPressed(KEY_INPUT_0) &&
+	//	trunkpoint <= 100)
+	//{
+	//	if (trunkpoint >= 100)
+	//	{
+	//		trunkpoint = 100;
+	//	}
+	//	trunkpoint++;
+	//}
+	//if (key.CheckPressed(KEY_INPUT_1) &&
+	//	trunkpoint >= 0)
+	//{
+	//	if (trunkpoint <= 0)
+	//	{
+	//		trunkpoint = 0;
+	//	}
+	//	trunkpoint--;
+	//}
+
 	// ˆÊ’uC³
 	ModifyingPosition();
 
@@ -83,15 +104,15 @@ void BossEnemy::Draw()
 /// ÚGˆ—
 /// </summary>
 /// <param name="tag"></param>
-void BossEnemy::HitObject(CollisionTag tag)
+void BossEnemy::HitObject(Collision* other)
 {
 	// ƒvƒŒƒCƒ„[
-	if (tag == CollisionTag::Player)
+	if (other->GetTag() == CollisionTag::Player)
 	{
 
 	}
 
-	if (tag == CollisionTag::Shield)
+	if (other->GetTag() == CollisionTag::Shield)
 	{
 
 	}
@@ -166,7 +187,7 @@ const bool BossEnemy::IsTrunkHarfOver()
 {
 	int maxTrunk = json.GetInt(JsonDataType::BossEnemy, "MaxTrunk");
 
-	if (tp >= maxTrunk / 2)
+	if (trunkpoint >= maxTrunk / 2)
 	{
 		return true;
 	}

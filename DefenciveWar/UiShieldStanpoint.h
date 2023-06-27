@@ -29,7 +29,8 @@ public:
 	void Draw();
 
 private:
-	const VECTOR INITIAL_POS = VGet(937, 100, 0);
+	const VECTOR INITIAL_POS_UI = VGet(937, 1000, 0);
+	const VECTOR INITIAL_POS_GAUGE = VGet(943, 1015, 0);
 	const VECTOR VIBRATE_UI = VGet(20, 20, 0);
 	const float VIBRATE_TIME = 0.3f;
 

@@ -91,11 +91,11 @@ void Shield::Draw()
 	// •`‰æ‚ÍEffectMgr‚ªs‚¤
 }
 
-void Shield::HitObject(CollisionTag tag)
+void Shield::HitObject(Collision* other)
 {
 	coolTimer->Reset();
 
-	if (tag == CollisionTag::Enemy)
+	if (other->GetTag() == CollisionTag::Enemy)
 	{
 		if (existTimer->IsTimeout())
 		{

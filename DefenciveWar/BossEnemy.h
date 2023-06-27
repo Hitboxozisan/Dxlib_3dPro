@@ -16,11 +16,12 @@ public:
 	void Update();
 	void Draw();
 
-	void HitObject(CollisionTag tag) override;
+	void HitObject(Collision* other) override;
 
 	bool AttackAssault();
 	bool AttackShotBullet();
 
+	const float GetTrunkPoint() { return trunkpoint; }
 	const bool IsTrunkHarfOver();
 	const State GetState() const { return state; }
 
@@ -35,11 +36,12 @@ private:
 	class ModelManager& modelMgr;
 	class EnemyBulletManager& bulletMgr;
 	class SupportJson& json;
+	class KeyManager& key;
 	class Player* player;
 
 	int assaultCount;
 	int shotCount;
-	int tp;						// 体幹量（ボスのhp）
+	int trunkpoint;						// 体幹量（ボスのhp）
 	VECTOR startAssaultPos;
 	
 	void AssaultToPlayer();

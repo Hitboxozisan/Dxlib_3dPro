@@ -17,7 +17,7 @@ public:
 	void Draw();
 
 	void Create(VECTOR pos, VECTOR dir, float shotSpeed);
-	void HitObject(CollisionTag tag) override;
+	void HitObject(Collision* other) override;
 
 private:
 	const float COLLIDE_RADIUS = 1.0f;			// “–‚½‚è”»’è‹…”¼Œa

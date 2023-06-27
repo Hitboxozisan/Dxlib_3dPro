@@ -17,7 +17,7 @@ UiShieldStanpoint::UiShieldStanpoint(SceneGame* objData)
 	edge[Edge_Right].handle = imageMgr.GetImage(ImageType::TrunkGaugeEdge);
 	edge[Edge_Left].handle = imageMgr.GetImage(ImageType::TrunkGaugeEdge);
 
-	gaugeLength = 460;
+	gaugeLength = 300;
 }
 
 UiShieldStanpoint::~UiShieldStanpoint()
@@ -32,17 +32,17 @@ void UiShieldStanpoint::Initialize()
 
 	// 各座標設定
 	// Ui
-	param.pos = INITIAL_POS;
+	param.pos = INITIAL_POS_UI;
 	param.prevPos = param.pos;
 	// Ui端
-	edge[Edge_Right].pos = VGet(param.pos.x + 475, param.pos.y, 0);
-	edge[Edge_Left].pos = VGet(param.pos.x - 475, param.pos.y, 0);
+	edge[Edge_Right].pos = VGet(param.pos.x + gaugeLength, param.pos.y, 0);
+	edge[Edge_Left].pos = VGet(param.pos.x - gaugeLength, param.pos.y, 0);
 	// ゲージ
-	gauge[Gauge_Right].posL = VGet(943, 90, 0);
+	gauge[Gauge_Right].posL = INITIAL_POS_GAUGE;
 	gauge[Gauge_Right].prevPosL = gauge[Gauge_Right].posL;
-	gauge[Gauge_Right].posR = VGet(gaugeRX, 110, 0);
+	gauge[Gauge_Right].posR = VGet(gaugeRX, 985, 0);
 	gauge[Gauge_Right].prevPosR = gauge[Gauge_Right].posR;
-	gauge[Gauge_Left].posR = VGet(gaugeLX, 110, 0);
+	gauge[Gauge_Left].posR = VGet(gaugeLX, 985, 0);
 }
 
 void UiShieldStanpoint::Update()
@@ -50,8 +50,8 @@ void UiShieldStanpoint::Update()
 	float trunkpoint = data->GetPlayer()->GetShield()->GetTrunkpoint();
 	float maxTrunk = 100;
 
-	gauge[Gauge_Right].posR.x = gauge[Gauge_Right].posL.x + gaugeLength * (trunkpoint / maxTrunk);
-	gauge[Gauge_Left].posR.x = (gauge[Gauge_Right].posL.x - 10) + gaugeLength * (-trunkpoint / maxTrunk);
+	gauge[Gauge_Right].posR.x = gauge[Gauge_Right].posL.x + (gaugeLength - 25) * (trunkpoint / maxTrunk);
+	gauge[Gauge_Left].posR.x = (gauge[Gauge_Right].posL.x - 10) + (gaugeLength - 25) * (-trunkpoint / maxTrunk);
 }
 
 void UiShieldStanpoint::Draw()
@@ -78,13 +78,13 @@ void UiShieldStanpoint::Draw()
 	DrawBox(gauge[Gauge_Right].posL.x, gauge[Gauge_Right].posL.y, gauge[Gauge_Right].posR.x, gauge[Gauge_Right].posR.y, color, TRUE);
 	DrawTriangle(gauge[Gauge_Right].posR.x, gauge[Gauge_Right].posL.y,
 				 gauge[Gauge_Right].posR.x, gauge[Gauge_Right].posR.y,
-				 gauge[Gauge_Right].posR.x + 20, subY,
+				 gauge[Gauge_Right].posR.x + 25, subY,
 				 color, TRUE);
 	// 左側
 	DrawBox(gauge[Gauge_Right].posL.x - 5, gauge[Gauge_Right].posL.y, gauge[Gauge_Left].posR.x, gauge[Gauge_Right].posR.y, color, TRUE);
 	DrawTriangle(gauge[Gauge_Left].posR.x, gauge[Gauge_Right].posL.y,
 				 gauge[Gauge_Left].posR.x, gauge[Gauge_Right].posR.y,
-				 gauge[Gauge_Left].posR.x - 20, subY,
+				 gauge[Gauge_Left].posR.x - 25, subY,
 				 color, TRUE);
 
 	// ゲージ中心描画

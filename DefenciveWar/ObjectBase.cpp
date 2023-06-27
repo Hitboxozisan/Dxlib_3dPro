@@ -25,7 +25,7 @@ void ObjectBase::Initialize()
 {
 }
 
-void ObjectBase::HitObject(CollisionTag tag)
+void ObjectBase::HitObject(Collision* other)
 {
 	
 }

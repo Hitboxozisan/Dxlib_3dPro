@@ -18,7 +18,7 @@ public:
 	void Update(VECTOR shieldPos);
 	void Draw();
 
-	void HitObject(CollisionTag tag) override;
+	void HitObject(Collision* other) override;
 
 	void SetTrunk(float a) {
 		if (a == 1)trunkpoint++;
