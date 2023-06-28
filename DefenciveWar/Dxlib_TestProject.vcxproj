@@ -178,6 +178,7 @@
     <ClCompile Include="ModelManager.cpp" />
     <ClCompile Include="Mover.cpp" />
     <ClCompile Include="NodeBase.cpp" />
+    <ClCompile Include="NodeManager.cpp" />
     <ClCompile Include="ObjectBase.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Random.cpp" />
@@ -239,6 +240,7 @@
     <ClInclude Include="MovieData.h" />
     <ClInclude Include="MovieTypeData.h" />
     <ClInclude Include="NodeBase.h" />
+    <ClInclude Include="NodeManager.h" />
     <ClInclude Include="ObjectBase.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Random.h" />

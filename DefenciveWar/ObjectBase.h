@@ -40,7 +40,7 @@ protected:
 	int modelHandle;	// ƒ‚ƒfƒ‹–{‘Ì
 	bool exist;			// ‘¶İ‚·‚é‚©
 	bool isHit;			// ÚG‚µ‚½‚©
-
+	bool noDrawFlame;	// •`‰æ‚µ‚È‚¢ó‘Ô‚©
 private:
 };
 

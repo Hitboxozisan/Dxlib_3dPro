@@ -40,6 +40,7 @@ Player::Player(CollisionTag tag)
 Player::~Player()
 { 
 	delete shotInterval;
+	delete invincibleTime;
 	delete shield;
 }
 
@@ -72,6 +73,7 @@ void Player::Update()
 	if (isHit)
 	{
 		// 無敵状態
+		noDrawFlame = !noDrawFlame;
 		invincibleTime->Update(deltaTime.GetDeltaTime());
 		if (invincibleTime->IsTimeout())
 		{
@@ -110,7 +112,10 @@ void Player::Update()
 /// </summary>
 void Player::Draw()
 {
-	DrawFormatString(1700.0f, 50.0f, GetColor(255, 255, 255), "PlayerX: %f", shield->GetTrunkpoint());
+	if (noDrawFlame)
+	{
+		return;
+	}
 
 	// モデルの描画
 	MV1DrawModel(modelHandle);
@@ -141,13 +146,17 @@ void Player::HitObject(Collision* other)
 		 // 力の大きさを設定
 		force = VScale(force, BOUND_POWER);
 
-		isHit = true;
+		//isHit = true;
+	}
+
+	if (other->GetTag() == CollisionTag::Enemy && !isHit)
+	{
+
 	}
 }
 
 /// <summary>
 /// 移動処理
-/// ついでにプレイヤーの方向処理もやっとく
 /// </summary>
 void Player::Move()
 {
@@ -242,6 +251,7 @@ bool Player::Sliding()
 	if (VSize(force) <= 0)
 	{
 		force = ZERO_VECTOR;
+		isHit = true;
 		return true;
 	}
 

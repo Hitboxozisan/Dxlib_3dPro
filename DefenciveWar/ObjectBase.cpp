@@ -6,7 +6,8 @@ ObjectBase::ObjectBase(CollisionTag tag)
 	: collideMgr(Singleton<HitChacker>::GetInstance())
 	, modelHandle(0)
 	, exist(false)
-	,isHit(false)
+	, isHit(false)
+	, noDrawFlame(false)
 {
 	param.pos = ZERO_VECTOR;
 	param.nextPos = param.pos;

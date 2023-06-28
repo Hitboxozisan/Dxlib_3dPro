@@ -5,6 +5,7 @@
 #include "Ground.h"
 #include "EffectManager.h"
 #include "BulletManager.h"
+#include "EnemyBulletManager.h"
 #include "KeyManager.h"
 #include "Font.h"
 #include "UiManager.h"
@@ -18,6 +19,7 @@ SceneGame::SceneGame(SceneManager* const sceneManager)
 	,camera(Singleton<Camera>::GetInstance())
 	,effectMgr(Singleton<EffectManager>::GetInstance())
 	,bulletMgr(Singleton<BulletManager>::GetInstance())
+	,enemyBulletMgr(Singleton<EnemyBulletManager>::GetInstance())
 	,key(Singleton<KeyManager>::GetInstance())
 	,font(Singleton<Font>::GetInstance())
 	,uiMgr(Singleton<UiManager>::GetInstance())
@@ -74,6 +76,7 @@ void SceneGame::Update()
 	uiMgr.Update();
 	effectMgr.Update(player->GetPos());
 	bulletMgr.Update();
+	enemyBulletMgr.Update();
 }
 
 void SceneGame::Draw()
@@ -83,6 +86,7 @@ void SceneGame::Draw()
 
 	ground->Draw();
 	bulletMgr.Draw();
+	enemyBulletMgr.Draw();
 	player->Draw();
 	boss->Draw();
 	effectMgr.Draw();

@@ -35,6 +35,7 @@ private:
 	class Camera& camera;
 	class EffectManager& effectMgr;
 	class BulletManager& bulletMgr;
+	class EnemyBulletManager& enemyBulletMgr;
 	class KeyManager& key;
 	class Font& font;
 	class UiManager& uiMgr;

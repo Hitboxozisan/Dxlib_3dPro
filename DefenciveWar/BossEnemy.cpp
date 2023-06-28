@@ -13,6 +13,7 @@
 #include "Player.h"
 #include "EnemyBulletManager.h"
 #include "ActionShotBulletNormal.h"
+
 #include "KeyManager.h"
 
 using namespace BossTimer;
@@ -85,7 +86,7 @@ void BossEnemy::Update()
 	ModifyingPosition();
 
 	// ビヘイビア更新処理
-	//BehaviorUpdate();
+	BehaviorUpdate();
 
 	// 実際の移動処理
 	MoveFinish();
@@ -150,6 +151,7 @@ bool BossEnemy::AttackAssault()
 bool BossEnemy::AttackShotBullet()
 {
 	int maxShot = json.GetInt(JsonDataType::BossEnemy, "ShotCount");
+	float speed = json.GetFloat(JsonDataType::BossEnemy, "BulletSpeed");
 
 	// タイマーの更新
 	timer[TimerType::ShotInterval]->Update(deltaTime.GetDeltaTime());
@@ -168,7 +170,7 @@ bool BossEnemy::AttackShotBullet()
 		timer[TimerType::ShotInterval]->Reset();
 
 		// 弾を生成・発射
-		bulletMgr.CreateBullet(createPos, param.dir, SHOT_SPEED, ModelType::EnemyBullet);
+		bulletMgr.CreateBullet(createPos, param.dir, speed, ModelType::EnemyBullet);
 	
 		// 回数を増加させる
 		++shotCount;
@@ -202,8 +204,9 @@ void BossEnemy::AssaultToPlayer()
 {
 	VECTOR sub = VSub(param.pos, startAssaultPos);
 	float inDistance = VSize(sub);
+	float speed = json.GetFloat(JsonDataType::BossEnemy, "AssaultSpeed");
 
-	param.nextPos = VAdd(param.nextPos, VScale(param.dir, ASSAULT_SPEED));
+	param.nextPos = VAdd(param.nextPos, VScale(param.dir, speed));
 	
 	// 指定距離突進、キャラクターと接触したら
 	if (inDistance >= ASSAULT_DISTANCE)

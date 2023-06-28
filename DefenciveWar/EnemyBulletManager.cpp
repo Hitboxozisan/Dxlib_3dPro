@@ -33,7 +33,10 @@ void EnemyBulletManager::Draw()
 {
 	for (auto bullet : bullets)
 	{
-		bullet->Draw();
+		if (bullet->IsExist())
+		{
+			bullet->Draw();
+		}
 	}
 }
 

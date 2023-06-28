@@ -28,8 +28,6 @@ public:
 private:
 	const float  VIBRATE_MAX = 5.0f;						// U“®U‚ê•Å‘å’l
 	const float  VIBRATE_MIN = -5.0f;						// U“®U‚ê•Å‘å’l
-	const float ASSAULT_SPEED = 3.0f;
-	const float SHOT_SPEED = 3.0f;
 	const float ASSAULT_DISTANCE = 300.0f;
 
 	class Random& random;

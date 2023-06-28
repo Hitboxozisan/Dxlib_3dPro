@@ -23,7 +23,7 @@ public:
 private:
 	const int DECREMENT_HP = 20;
 	const float SHOT_INTERVAL = 0.1f;
-	const float INVINCIBLE_TIME = 1.0f;
+	const float INVINCIBLE_TIME = 3.0f;
 	const float HIT_ENEMY_FORCE = 10.0f;
 	const float BOUND_POWER = 1.0f;
 	const float REBOUND_RESISTANCE = -1.0f;

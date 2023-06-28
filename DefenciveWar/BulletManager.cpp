@@ -38,8 +38,8 @@ void BulletManager::Draw()
 	{
 		if (bullet->IsExist())
 		{
-		}
 			bullet->Draw();
+		}
 	}
 }
 
