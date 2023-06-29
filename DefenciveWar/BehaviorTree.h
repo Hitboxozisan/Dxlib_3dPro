@@ -1,33 +1,33 @@
 #pragma once
 
-#include <string>
+#include <map>
+#include <vector>
+#include "NodeBase.h"
 
-class BehaviorTree
+/// <summary>
+/// ビヘイビアツリー本体
+/// </summary>
+class BehaviorTree final
 {
 public:
+	BehaviorTree();
+	~BehaviorTree();
+
 	// 選択ルール
-	enum class SelectRule
+	enum class SelectionRule
 	{
-		None,
-		Priority,			// 優先順位
-		Sequence,			// シーケンス
-		SequentialLooping,	// シーケンシャルルーピング
-		Random,				// ランダム
-		OnOff,				// オン・オフ
+		NONE,			// なし（末端ノード）
+		Priority,		// 優先順
+		Sequence,		// シークエンス
+		Random,			// ランダム
 	};
 
 	void Initialize();
-	class NodeBase* Inference(class BossEnemy* boss, class BehaviorData* data);
+	void EntryNode(class NodeBase* inNode);
+	bool SearchNode(std::string inName);
+	void Reset();
 
-	// シーケンスノードから推論
-	NodeBase* SequenceBack(NodeBase* sequenceNode, BossEnemy* boss, BehaviorData* data);
-
-	// ノード追加
-	void AddNode(std::string searchName, std::string entryName, int priority, SelectRule rule, class ExecJudgmentBase* judgment, class ActionBase* action);
-
-	// 実行処理
-	NodeBase* Run(BossEnemy* boss, NodeBase* action, BehaviorData* data);
 private:
-	NodeBase* root;			// ルートノード
+	std::vector<NodeBase*>* aiTree;
 };
 

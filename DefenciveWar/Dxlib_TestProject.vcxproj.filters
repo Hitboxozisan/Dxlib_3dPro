@@ -155,26 +155,8 @@
     <ClCompile Include="UiBase.cpp">
       <Filter>ソース ファイル\Ui</Filter>
     </ClCompile>
-    <ClCompile Include="BossJudgment.cpp">
-      <Filter>ソース ファイル\EnemyAi</Filter>
-    </ClCompile>
     <ClCompile Include="Random.cpp">
       <Filter>ソース ファイル\System</Filter>
-    </ClCompile>
-    <ClCompile Include="ActionAssault.cpp">
-      <Filter>ソース ファイル\EnemyAi</Filter>
-    </ClCompile>
-    <ClCompile Include="ActionShotBulletNormal.cpp">
-      <Filter>ソース ファイル\EnemyAi</Filter>
-    </ClCompile>
-    <ClCompile Include="BehaviorData.cpp">
-      <Filter>ソース ファイル\EnemyAi\Behavior</Filter>
-    </ClCompile>
-    <ClCompile Include="BehaviorTree.cpp">
-      <Filter>ソース ファイル\EnemyAi\Behavior</Filter>
-    </ClCompile>
-    <ClCompile Include="ExecJudgmentBase.cpp">
-      <Filter>ソース ファイル\EnemyAi\Behavior</Filter>
     </ClCompile>
     <ClCompile Include="HitChacker.cpp">
       <Filter>ソース ファイル\Collision</Filter>
@@ -201,6 +183,15 @@
       <Filter>ソース ファイル</Filter>
     </ClCompile>
     <ClCompile Include="NodeBase.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="NodeAssault.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="BehaviorTree.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="BehaviorManager.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
   </ItemGroup>
@@ -322,12 +313,6 @@
     <ClInclude Include="UiBase.h">
       <Filter>ソース ファイル\Ui</Filter>
     </ClInclude>
-    <ClInclude Include="ActionBase.h">
-      <Filter>ソース ファイル\EnemyAi</Filter>
-    </ClInclude>
-    <ClInclude Include="BossJudgment.h">
-      <Filter>ソース ファイル\EnemyAi</Filter>
-    </ClInclude>
     <ClInclude Include="BossEnemyTimerData.h">
       <Filter>ソース ファイル\Enemy</Filter>
     </ClInclude>
@@ -337,23 +322,8 @@
     <ClInclude Include="Random.h">
       <Filter>ソース ファイル\System</Filter>
     </ClInclude>
-    <ClInclude Include="ActionAssault.h">
-      <Filter>ソース ファイル\EnemyAi</Filter>
-    </ClInclude>
     <ClInclude Include="BossState.h">
       <Filter>ソース ファイル\Enemy</Filter>
-    </ClInclude>
-    <ClInclude Include="ActionShotBulletNormal.h">
-      <Filter>ソース ファイル\EnemyAi</Filter>
-    </ClInclude>
-    <ClInclude Include="BehaviorData.h">
-      <Filter>ソース ファイル\EnemyAi\Behavior</Filter>
-    </ClInclude>
-    <ClInclude Include="BehaviorTree.h">
-      <Filter>ソース ファイル\EnemyAi\Behavior</Filter>
-    </ClInclude>
-    <ClInclude Include="ExecJudgmentBase.h">
-      <Filter>ソース ファイル\EnemyAi\Behavior</Filter>
     </ClInclude>
     <ClInclude Include="HitChacker.h">
       <Filter>ソース ファイル\Collision</Filter>
@@ -384,5 +354,8 @@
     </ClInclude>
     <ClInclude Include="NodeManager.h" />
     <ClInclude Include="NodeBase.h" />
+    <ClInclude Include="NodeAssault.h" />
+    <ClInclude Include="BehaviorTree.h" />
+    <ClInclude Include="BehaviorManager.h" />
   </ItemGroup>
 </Project>

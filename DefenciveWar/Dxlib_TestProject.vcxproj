@@ -122,14 +122,14 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\gaiya\Desktop\DxLib_VC\Dxlib_Effekseer</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\gaiya\OneDrive\デスクトップ\Dxlib_Effekseer</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <LanguageStandard>stdcpp14</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\Users\gaiya\Desktop\DxLib_VC\Dxlib_Effekseer</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\Users\gaiya\OneDrive\デスクトップ\Dxlib_Effekseer</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -152,12 +152,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="ActionAssault.cpp" />
-    <ClCompile Include="ActionShotBulletNormal.cpp" />
-    <ClCompile Include="BehaviorData.cpp" />
+    <ClCompile Include="BehaviorManager.cpp" />
     <ClCompile Include="BehaviorTree.cpp" />
     <ClCompile Include="BossEnemy.cpp" />
-    <ClCompile Include="BossJudgment.cpp" />
     <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="BulletManager.cpp" />
     <ClCompile Include="Camera.cpp" />
@@ -166,7 +163,6 @@
     <ClCompile Include="EffectManager.cpp" />
     <ClCompile Include="EfkEffect.cpp" />
     <ClCompile Include="EnemyBulletManager.cpp" />
-    <ClCompile Include="ExecJudgmentBase.cpp" />
     <ClCompile Include="Font.cpp" />
     <ClCompile Include="GameDefine.cpp" />
     <ClCompile Include="Ground.cpp" />
@@ -177,6 +173,7 @@
     <ClCompile Include="Math3d.cpp" />
     <ClCompile Include="ModelManager.cpp" />
     <ClCompile Include="Mover.cpp" />
+    <ClCompile Include="NodeAssault.cpp" />
     <ClCompile Include="NodeBase.cpp" />
     <ClCompile Include="NodeManager.cpp" />
     <ClCompile Include="ObjectBase.cpp" />
@@ -200,15 +197,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\DirectX11_Pro\EnumIterator.h" />
-    <ClInclude Include="ActionAssault.h" />
-    <ClInclude Include="ActionBase.h" />
-    <ClInclude Include="ActionShotBulletNormal.h" />
-    <ClInclude Include="BehaviorData.h" />
+    <ClInclude Include="BehaviorManager.h" />
     <ClInclude Include="BehaviorTree.h" />
     <ClInclude Include="BossEnemy.h" />
     <ClInclude Include="BossEnemyTimerData.h" />
     <ClInclude Include="BossEnemyTimerType.h" />
-    <ClInclude Include="BossJudgment.h" />
     <ClInclude Include="BossState.h" />
     <ClInclude Include="Bullet.h" />
     <ClInclude Include="BulletManager.h" />
@@ -222,7 +215,6 @@
     <ClInclude Include="EffectTypeData.h" />
     <ClInclude Include="EfkEffect.h" />
     <ClInclude Include="EnemyBulletManager.h" />
-    <ClInclude Include="ExecJudgmentBase.h" />
     <ClInclude Include="Font.h" />
     <ClInclude Include="GameDefine.h" />
     <ClInclude Include="Ground.h" />
@@ -239,6 +231,7 @@
     <ClInclude Include="Mover.h" />
     <ClInclude Include="MovieData.h" />
     <ClInclude Include="MovieTypeData.h" />
+    <ClInclude Include="NodeAssault.h" />
     <ClInclude Include="NodeBase.h" />
     <ClInclude Include="NodeManager.h" />
     <ClInclude Include="ObjectBase.h" />

@@ -1,18 +1,21 @@
 #include "SupportJson.h"
 #include "BossEnemy.h"
-#include "BehaviorData.h"
-#include "NodeBase.h"
+//#include "BehaviorData.h"
+//#include "NodeBase.h"
+#include "NodeManager.h"
 #include "BossEnemyTimerData.h"
 #include "Timer.h"
 #include "Random.h"
 #include "Singleton.h"
 #include "DeltaTime.h"
-#include "BossJudgment.h"
-#include "ActionAssault.h"
+//#include "BossJudgment.h"
+//#include "ActionAssault.h"
 #include "ModelManager.h"
 #include "Player.h"
 #include "EnemyBulletManager.h"
-#include "ActionShotBulletNormal.h"
+//#include "ActionShotBulletNormal.h"
+
+#include "NodeAssault.h"
 
 #include "KeyManager.h"
 
@@ -24,9 +27,7 @@ BossEnemy::BossEnemy(CollisionTag tag, Player* p)
 	,bulletMgr(Singleton<EnemyBulletManager>::GetInstance())
 	,json(Singleton<SupportJson>::GetInstance())
 	,key(Singleton<KeyManager>::GetInstance())
-	,aiTree(new BehaviorTree())
-	,behaviorData(new BehaviorData())
-	,activeNode(NULL)
+	,aiTree(new NodeManager())
 	,Mover(tag)
 {
 	player = p;
@@ -265,15 +266,15 @@ bool BossEnemy::Vibrate()
 /// </summary>
 void BossEnemy::BehaviorUpdate()
 {
-	if (activeNode == NULL)
-	{
-		activeNode = aiTree->Inference(this, behaviorData);
-	}
-
-	if (activeNode != NULL)
-	{
-		activeNode = aiTree->Run(this, activeNode, behaviorData);
-	}
+	//if (activeNode == NULL)
+	//{
+	//	activeNode = aiTree->Inference(this, behaviorData);
+	//}
+	//
+	//if (activeNode != NULL)
+	//{
+	//	activeNode = aiTree->Run(this, activeNode, behaviorData);
+	//}
 }
 
 /// <summary>
@@ -281,8 +282,10 @@ void BossEnemy::BehaviorUpdate()
 /// </summary>
 void BossEnemy::SetupBehavior()
 {
-	aiTree->AddNode("", "Root", 0, BehaviorTree::SelectRule::Priority, NULL, NULL);
-	aiTree->AddNode("Root", "Attack", 1, BehaviorTree::SelectRule::SequentialLooping, BossJudgment::GetInstance(), NULL);
-	aiTree->AddNode("Attack", "BulletNormal", 0, BehaviorTree::SelectRule::None, NULL, ActionShotBulletNormal::GetInstance());
+	//aiTree->AddNode("", "Root", 0, BehaviorTree::SelectRule::Priority, NULL, NULL);
+	//aiTree->AddNode("Root", "Attack", 1, BehaviorTree::SelectRule::SequentialLooping, BossJudgment::GetInstance(), NULL);
+	//aiTree->AddNode("Attack", "BulletNormal", 0, BehaviorTree::SelectRule::None, NULL, ActionShotBulletNormal::GetInstance());
+
+	//aiTree->EntryNode();
 
 }

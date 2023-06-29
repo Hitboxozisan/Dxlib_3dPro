@@ -50,9 +50,10 @@ private:
 	std::map<TimerType, class Timer*> timer;
 
 	// ビヘイビア関係
-	class BehaviorTree* aiTree;			// ビヘイビアツリー
-	class BehaviorData* behaviorData;	// ビヘイビアデータ
-	class NodeBase* activeNode;			// 実行中ノード
+	//class BehaviorTree* aiTree;			// ビヘイビアツリー
+	//class BehaviorData* behaviorData;		// ビヘイビアデータ
+	//class NodeBase* activeNode;			// 実行中ノード
+	class NodeManager* aiTree;
 
 	void BehaviorUpdate();			// ビヘイビア更新処理
 	void SetupBehavior();			// ビヘイビア情報設定
