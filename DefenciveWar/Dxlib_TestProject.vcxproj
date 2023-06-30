@@ -122,14 +122,14 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\gaiya\OneDrive\デスクトップ\Dxlib_Effekseer</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\gaiya\Desktop\DxLib_VC\Dxlib_Effekseer</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <LanguageStandard>stdcpp14</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\Users\gaiya\OneDrive\デスクトップ\Dxlib_Effekseer</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\Users\gaiya\Desktop\DxLib_VC\Dxlib_Effekseer</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -152,6 +152,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ActAssault.cpp" />
+    <ClCompile Include="ActBase.cpp" />
     <ClCompile Include="BehaviorManager.cpp" />
     <ClCompile Include="BehaviorTree.cpp" />
     <ClCompile Include="BossEnemy.cpp" />
@@ -173,9 +175,7 @@
     <ClCompile Include="Math3d.cpp" />
     <ClCompile Include="ModelManager.cpp" />
     <ClCompile Include="Mover.cpp" />
-    <ClCompile Include="NodeAssault.cpp" />
     <ClCompile Include="NodeBase.cpp" />
-    <ClCompile Include="NodeManager.cpp" />
     <ClCompile Include="ObjectBase.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Random.cpp" />
@@ -197,6 +197,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\DirectX11_Pro\EnumIterator.h" />
+    <ClInclude Include="ActAssault.h" />
+    <ClInclude Include="ActBase.h" />
     <ClInclude Include="BehaviorManager.h" />
     <ClInclude Include="BehaviorTree.h" />
     <ClInclude Include="BossEnemy.h" />
@@ -231,9 +233,7 @@
     <ClInclude Include="Mover.h" />
     <ClInclude Include="MovieData.h" />
     <ClInclude Include="MovieTypeData.h" />
-    <ClInclude Include="NodeAssault.h" />
     <ClInclude Include="NodeBase.h" />
-    <ClInclude Include="NodeManager.h" />
     <ClInclude Include="ObjectBase.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Random.h" />

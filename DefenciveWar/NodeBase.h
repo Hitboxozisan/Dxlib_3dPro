@@ -1,7 +1,7 @@
 #pragma once
 
 #include <string>
-#include "NodeManager.h"
+#include "BehaviorTree.h"
 
 /// <summary>
 /// ビヘイビアノード基底クラス
@@ -9,34 +9,35 @@
 class NodeBase
 {
 public:
-	NodeBase(std::string inName, std::string inParent, int inPriority);
-	virtual ~NodeBase();
-
-	enum class State
-	{
-		COMPLETE,	// 実行完了
-		RUN,		// 実行中
-		FAILED,		// 実行失敗
-	};
+	NodeBase(std::string inName, 
+			 std::string inParent, 
+			 int inHierarchy,
+			 int inPriority,
+			 BehaviorTree::SelectRule inRule,
+			 class ActBase* inAction);
+	~NodeBase();
 
 	//virtual void Initialize() = 0;
-	virtual void Update() = 0;
-	virtual bool IsExecutabel() = 0;
+	void Update();
+	bool IsExecutabel();
 
-	const State GetState() { return state; }
 	const std::string GetName() { return name; }
 	const std::string GetParent() { return parent; }
-	const SelectionRule GetRule() { return rule; }
+	const BehaviorTree::SelectRule GetRule() { return rule; }
 	const int GetHierarchy() { return hierarchy; }
 	const int GetPriority() { return priority; }
+	const ActBase* GetAction() { return action; }
 
 protected:
-	State state;
-	std::string name;			// 名前
-	std::string parent;			// 親のノードの名前
-	SelectionRule rule;			// 子の選択方法
-	int hierarchy;				// どの階層に所属しているか
-	int priority;				// 優先度
+	std::string name;						// 名前
+	//NodeBase* parent;						// 親のノード
+	std::string parent;						// 親のノード名
+	BehaviorTree::SelectRule rule;			// 子の選択方法
+	int hierarchy;							// どの階層に所属しているか
+	int priority;							// 優先度
+	class ActBase* action;					// 行動実行
+
+	std::vector<NodeBase*>* child;			// ノードの子を収納
 
 private:
 

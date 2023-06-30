@@ -179,19 +179,19 @@
     <ClCompile Include="UiShieldStanpoint.cpp">
       <Filter>ソース ファイル\Ui</Filter>
     </ClCompile>
-    <ClCompile Include="NodeManager.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
     <ClCompile Include="NodeBase.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="NodeAssault.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
     <ClCompile Include="BehaviorTree.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
     <ClCompile Include="BehaviorManager.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="ActBase.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="ActAssault.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
   </ItemGroup>
@@ -352,10 +352,10 @@
     <ClInclude Include="UiShieldStanpoint.h">
       <Filter>ソース ファイル\Ui</Filter>
     </ClInclude>
-    <ClInclude Include="NodeManager.h" />
     <ClInclude Include="NodeBase.h" />
-    <ClInclude Include="NodeAssault.h" />
     <ClInclude Include="BehaviorTree.h" />
     <ClInclude Include="BehaviorManager.h" />
+    <ClInclude Include="ActBase.h" />
+    <ClInclude Include="ActAssault.h" />
   </ItemGroup>
 </Project>

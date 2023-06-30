@@ -1,5 +1,6 @@
 #include "DxLib.h"
 #include "BehaviorManager.h"
+#include "NodeBase.h"
 #include "BehaviorTree.h"
 
 BehaviorManager::BehaviorManager()
@@ -17,6 +18,7 @@ void BehaviorManager::Initialize()
 
 void BehaviorManager::Update()
 {
+
 }
 
 void BehaviorManager::EntryNode(NodeBase* inNode)
@@ -30,4 +32,12 @@ void BehaviorManager::EntryNode(NodeBase* inNode)
 
 	// ƒm[ƒh‚ð“o˜^
 	aiTree->EntryNode(inNode);
+}
+
+NodeBase* BehaviorManager::InferenceNode()
+{
+	
+
+
+	return nullptr;
 }

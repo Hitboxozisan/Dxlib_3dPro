@@ -1,21 +1,16 @@
 #include "SupportJson.h"
 #include "BossEnemy.h"
-//#include "BehaviorData.h"
-//#include "NodeBase.h"
-#include "NodeManager.h"
 #include "BossEnemyTimerData.h"
 #include "Timer.h"
 #include "Random.h"
 #include "Singleton.h"
 #include "DeltaTime.h"
-//#include "BossJudgment.h"
-//#include "ActionAssault.h"
 #include "ModelManager.h"
 #include "Player.h"
 #include "EnemyBulletManager.h"
-//#include "ActionShotBulletNormal.h"
 
-#include "NodeAssault.h"
+#include "BehaviorManager.h"
+#include "NodeBase.h"
 
 #include "KeyManager.h"
 
@@ -27,7 +22,7 @@ BossEnemy::BossEnemy(CollisionTag tag, Player* p)
 	,bulletMgr(Singleton<EnemyBulletManager>::GetInstance())
 	,json(Singleton<SupportJson>::GetInstance())
 	,key(Singleton<KeyManager>::GetInstance())
-	,aiTree(new NodeManager())
+	,aiMgr(new BehaviorManager())
 	,Mover(tag)
 {
 	player = p;
@@ -275,6 +270,16 @@ void BossEnemy::BehaviorUpdate()
 	//{
 	//	activeNode = aiTree->Run(this, activeNode, behaviorData);
 	//}
+
+	// s“®‚ªŒˆ’è‚µ‚Ä‚¢‚È‚¢ê‡‚Ís“®‚ğŒˆ’è‚·‚é
+	if (actNode == nullptr)
+	{
+
+	}
+	else
+	{
+
+	}
 }
 
 /// <summary>
@@ -286,6 +291,7 @@ void BossEnemy::SetupBehavior()
 	//aiTree->AddNode("Root", "Attack", 1, BehaviorTree::SelectRule::SequentialLooping, BossJudgment::GetInstance(), NULL);
 	//aiTree->AddNode("Attack", "BulletNormal", 0, BehaviorTree::SelectRule::None, NULL, ActionShotBulletNormal::GetInstance());
 
-	//aiTree->EntryNode();
-
+	aiMgr->EntryNode(new NodeBase("Root", "", 1, 1, BehaviorTree::SelectRule::Priority, NULL));
+	aiMgr->EntryNode(new NodeBase("Attack", "Root", 2, 1, BehaviorTree::SelectRule::Priority, NULL));
+	aiMgr->EntryNode(new NodeBase("Assault", "Attack", 3, 1, BehaviorTree::SelectRule::Random, NULL));
 }

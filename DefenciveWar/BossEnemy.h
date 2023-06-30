@@ -53,7 +53,8 @@ private:
 	//class BehaviorTree* aiTree;			// ビヘイビアツリー
 	//class BehaviorData* behaviorData;		// ビヘイビアデータ
 	//class NodeBase* activeNode;			// 実行中ノード
-	class NodeManager* aiTree;
+	class BehaviorManager* aiMgr;
+	class NodeBase* actNode;				// 実行中のノード
 
 	void BehaviorUpdate();			// ビヘイビア更新処理
 	void SetupBehavior();			// ビヘイビア情報設定
