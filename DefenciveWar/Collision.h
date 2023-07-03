@@ -33,10 +33,11 @@ public:
 	bool exist;
 	Data data;
 private:
+	const VECTOR COLLIDE_SAFE_POS = VGet(500, 0, 500);
+
 	ObjectBase* parent;
 	CollisionTag collideTag;
 	
-
 	const ObjectBase* GetParent() const { return parent; }
 };
 

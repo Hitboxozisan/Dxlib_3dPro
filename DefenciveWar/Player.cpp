@@ -73,11 +73,16 @@ void Player::Update()
 	if (isHit)
 	{
 		// 無敵状態
-		noDrawFlame = !noDrawFlame;
-		invincibleTime->Update(deltaTime.GetDeltaTime());
+		if (isInvincible)
+		{
+			noDrawFlame = !noDrawFlame;
+			invincibleTime->Update(deltaTime.GetDeltaTime());
+		}
+
 		if (invincibleTime->IsTimeout())
 		{
 			isHit = false;
+			isInvincible = false;
 			invincibleTime->Reset();
 		}
 	}
@@ -89,6 +94,7 @@ void Player::Update()
 	CreateShield();
 	shield->Update(param.pos);
 
+	// ダメージを受けた場合は移動を制限する
 	if (VSize(force) == 0)
 	{
 		// 移動処理
@@ -146,10 +152,11 @@ void Player::HitObject(Collision* other)
 		 // 力の大きさを設定
 		force = VScale(force, BOUND_POWER);
 
-		//isHit = true;
+		isHit = true;
+		isInvincible = false;
 	}
 
-	if (other->GetTag() == CollisionTag::Enemy && !isHit)
+	if (other->GetTag() == CollisionTag::EnemyBullet && !isHit)
 	{
 
 	}
@@ -244,7 +251,7 @@ bool Player::Sliding()
 	friction = VNorm(friction);
 	friction = VScale(friction, REBOUND_RESISTANCE);
 
-	force = VAdd(force, friction * delta);
+	force = VAdd(force, VScale(friction, delta));
 	param.nextPos = VAdd(param.nextPos, force);
 	
 	// 反発力が 0 を下回ったら終了する
@@ -252,6 +259,7 @@ bool Player::Sliding()
 	{
 		force = ZERO_VECTOR;
 		isHit = true;
+		shield->SetHit(false);
 		return true;
 	}
 

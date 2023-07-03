@@ -3,18 +3,15 @@
 
 
 NodeBase::NodeBase(std::string inName, 
-				   std::string inParent,
 				   int inHierarchy, 
 				   int inPriority, 
 				   BehaviorTree::SelectRule inRule,
 				   ActBase* inAction)
 	:name(inName)
-	,parent(inParent)
 	,priority(inPriority)
 	,rule(inRule)
 	,action(inAction)
 {
-
 }
 
 NodeBase::~NodeBase()
@@ -22,8 +19,10 @@ NodeBase::~NodeBase()
 
 }
 
-void NodeBase::Update()
+ActBase::State NodeBase::Update()
 {
+
+	return ActBase::State::Run;
 }
 
 bool NodeBase::IsExecutabel()

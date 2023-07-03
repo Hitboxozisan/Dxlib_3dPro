@@ -31,6 +31,7 @@ void Shield::Initialize()
 void Shield::Activate(VECTOR createPos)
 {
 	exist = true;
+	param.collision->exist = true;
 	existTimer->Reset();
 	effectMgr.SetPlayEffect(EffectType::Shield, createPos, true);
 }
@@ -38,6 +39,7 @@ void Shield::Activate(VECTOR createPos)
 void Shield::Deactivate()
 {
 	exist = false;
+	param.collision->exist = false;
 	effectMgr.StopPlayEffect(EffectType::Shield);
 }
 
@@ -95,7 +97,7 @@ void Shield::HitObject(Collision* other)
 {
 	coolTimer->Reset();
 
-	if (other->GetTag() == CollisionTag::Enemy)
+	if (other->GetTag() == CollisionTag::Enemy && !isHit)
 	{
 		if (existTimer->IsTimeout())
 		{
@@ -105,5 +107,12 @@ void Shield::HitObject(Collision* other)
 		{
 			trunkpoint += INCREMENT_TRUNKPOINT / 2;
 		}
+
+		isHit = true;
 	}
+}
+
+bool Shield::IsJustDefense()
+{
+	return existTimer->IsTimeout();
 }

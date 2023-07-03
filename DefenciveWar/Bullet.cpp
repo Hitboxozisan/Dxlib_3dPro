@@ -20,7 +20,8 @@ void Bullet::Initialize(ModelType mt)
 {
 	param.pos = ZERO_VECTOR;
 	param.dir = ZERO_VECTOR;
-	//param.tag = CollisionTag::Bullet;
+	param.collision->exist = false;
+	exist = false;
 
 	// ƒ‚ƒfƒ‹‚Ì“Ç‚İ‚İ
 	modelHandle = MV1DuplicateModel(modelMgr.GetModelHandle(mt));

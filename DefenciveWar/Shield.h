@@ -24,8 +24,10 @@ public:
 		if (a == 1)trunkpoint++;
 		if (a == -1)trunkpoint--;
 	}
+	void SetHit(const bool hit) { isHit = hit; }
 	const float GetTrunkpoint() const { return trunkpoint; }
 	const bool IsBreak() const { return isBreak; }
+	bool IsJustDefense();
 private:
 	const float COLLIDE_RADIUS = 25;
 	const float INCREMENT_TRUNKPOINT = 20.0f;

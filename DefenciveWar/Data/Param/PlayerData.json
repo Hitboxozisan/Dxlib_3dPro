@@ -3,7 +3,7 @@
     "Direction":{"x":0.0,"y":0.0,"z":1.0},
     "Radius":20,
     "Hitpoint":100,
-    "Speed":100,
+    "Speed":150,
     "BulletSpeed":300,
     "ShotInterval":0.1
 }

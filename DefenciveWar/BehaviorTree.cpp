@@ -1,8 +1,13 @@
 #include "BehaviorTree.h"
 #include "NodeBase.h"
+#include "ActBase.h"
+#include "Singleton.h"
+#include "Random.h"
 
 BehaviorTree::BehaviorTree()
+	:random(Singleton<Random>::GetInstance())
 {
+	Initialize();
 }
 
 BehaviorTree::~BehaviorTree()
@@ -11,17 +16,81 @@ BehaviorTree::~BehaviorTree()
 
 void BehaviorTree::Initialize()
 {
+	aiTree.empty();
 }
 
-void BehaviorTree::EntryNode(NodeBase* inNode)
+void BehaviorTree::EntryNode(std::string inName, std::string inParent, int inHierarchy, int inPriority, BehaviorTree::SelectRule inRule, ActBase* inAction)
 {
-	aiTree->push_back(inNode);
+	NodeBase* node = new NodeBase(inName, inHierarchy, inPriority, inRule, inAction);
+	
+	if (aiTree.empty())
+	{
+		aiTree.push_back(node);
+	}
+	
+	// 誰が親か確認
+	// 親の子ノードに追加する
+	for (auto itr = aiTree.begin(); itr != aiTree.end(); itr++)
+	{
+		if ((*itr)->GetName() == inParent)
+		{
+			(*itr)->EntryChild(node);
+		}
+	}
+	
+	// ツリーに追加
+	aiTree.push_back(node);
+}
+
+NodeBase* BehaviorTree::SelectNode(NodeBase* inNode, std::vector<NodeBase*> inChild)
+{
+	int priority = 0;
+	NodeBase* node = nullptr;
+	
+	// 子のノードから選択する
+	for (auto itr = inChild.begin(); itr != inChild.end(); itr++)
+	{
+	
+		switch (inNode->GetRule())
+		{
+		case SelectRule::None:
+			node = *inChild.begin();
+	
+		case SelectRule::Priority:
+			if (priority <= (*itr)->GetPriority())
+			{
+				priority = (*itr)->GetPriority();
+				node = (*itr);
+			}
+		case SelectRule::Sequence:
+			if (IsUsedNode(*itr))
+			{
+				node = (*itr);
+			}
+	
+		case SelectRule::Random:
+			if ((*itr)->IsExecutabel())
+			{
+				node = (*itr);
+			}
+	
+		}
+	
+		if (node != nullptr) break;
+	}
+	
+	return node;
 }
 
 
 bool BehaviorTree::SearchNode(std::string inName)
 {
-	for (auto itr = aiTree->begin(); itr != aiTree->end(); itr++)
+	if (aiTree.empty())
+	{
+		return false;
+	}
+
+	for (auto itr = aiTree.begin(); itr != aiTree.end(); itr++)
 	{
 		if ((*itr)->GetName() == inName)
 		{
@@ -34,7 +103,7 @@ bool BehaviorTree::SearchNode(std::string inName)
 
 bool BehaviorTree::IsUsedNode(NodeBase* inNode)
 {
-	for (auto itr = usedNode->begin(); itr != usedNode->end(); itr++)
+	for (auto itr = usedNode.begin(); itr != usedNode.end(); itr++)
 	{
 		if ((*itr)->GetName() == inNode->GetName())
 		{
@@ -48,42 +117,41 @@ bool BehaviorTree::IsUsedNode(NodeBase* inNode)
 NodeBase* BehaviorTree::InferenceNode()
 {
 	// 使用済みノードのリセット
-	usedNode->clear();
+	usedNode.clear();
 	NodeBase* node = nullptr;
-	NodeBase* current = nullptr;
 
 	int hierarchy = 1;
 
 	// 何かしらの行動を決定するまで思考する
-	while (node)
+	
+	for (auto itr = aiTree.begin(); itr != aiTree.end(); itr++)
 	{
-		for (auto itr = aiTree->begin(); itr != aiTree->end(); itr++)
+		// 使用済みノードはスキップ
+		if (IsUsedNode(*itr))
 		{
-			// 始端
-			if ((*itr)->GetParent() == "")
-			{
-				current = (*itr);
-				usedNode->push_back(*itr);
-			}
-
-			// 既に使用している場合はスキップ
-			// 未使用の場合は現在のノードの子か確認
-			if (current->GetName() == (*itr)->GetParent() &&
-				!IsUsedNode(*itr))
-			{
-			}
-			else
-			{
-				continue;
-			}
-
+			continue;
 		}
+	
+		// 子がいる場合は次のノードの選択
+		if (!(*itr)->GetChildEmpty() &&
+			(*itr)->GetHierarchy() == hierarchy)
+		{
+			hierarchy++;
+			node = SelectNode(*itr, (*itr)->GetChild());
+		}
+		// いない場合はそのノードを選択
+		else
+		{
+			node = (*itr);
+		}
+		
 	}
+	
 
 	return node;
 }
 
 void BehaviorTree::ResetUsedNode()
 {
-	usedNode->clear();
+	usedNode.clear();
 }

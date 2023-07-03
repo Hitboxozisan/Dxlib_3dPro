@@ -8,6 +8,7 @@ SupportJson::SupportJson()
 	{
 		{JsonDataType::Player, "Data/Param/PlayerData.json"},
 		{JsonDataType::BossEnemy, "Data/Param/BossEnemyData.json"},
+		{JsonDataType::BossMagnification, "Data/Param/BossMagnificationData.json"},
 	};
 
 	// ファイルのロード

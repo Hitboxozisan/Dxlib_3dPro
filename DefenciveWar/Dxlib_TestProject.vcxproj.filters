@@ -179,20 +179,23 @@
     <ClCompile Include="UiShieldStanpoint.cpp">
       <Filter>ソース ファイル\Ui</Filter>
     </ClCompile>
-    <ClCompile Include="NodeBase.cpp">
-      <Filter>ソース ファイル</Filter>
+    <ClCompile Include="BehaviorManager.cpp">
+      <Filter>ソース ファイル\EnemyAi\Behavior</Filter>
     </ClCompile>
     <ClCompile Include="BehaviorTree.cpp">
-      <Filter>ソース ファイル</Filter>
+      <Filter>ソース ファイル\EnemyAi\Behavior</Filter>
     </ClCompile>
-    <ClCompile Include="BehaviorManager.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="ActBase.cpp">
-      <Filter>ソース ファイル</Filter>
+    <ClCompile Include="NodeBase.cpp">
+      <Filter>ソース ファイル\EnemyAi\Behavior</Filter>
     </ClCompile>
     <ClCompile Include="ActAssault.cpp">
-      <Filter>ソース ファイル</Filter>
+      <Filter>ソース ファイル\EnemyAi</Filter>
+    </ClCompile>
+    <ClCompile Include="ActBase.cpp">
+      <Filter>ソース ファイル\EnemyAi</Filter>
+    </ClCompile>
+    <ClCompile Include="BossMagnification.cpp">
+      <Filter>ソース ファイル\Enemy</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -352,10 +355,29 @@
     <ClInclude Include="UiShieldStanpoint.h">
       <Filter>ソース ファイル\Ui</Filter>
     </ClInclude>
-    <ClInclude Include="NodeBase.h" />
-    <ClInclude Include="BehaviorTree.h" />
-    <ClInclude Include="BehaviorManager.h" />
-    <ClInclude Include="ActBase.h" />
-    <ClInclude Include="ActAssault.h" />
+    <ClInclude Include="BehaviorManager.h">
+      <Filter>ソース ファイル\EnemyAi\Behavior</Filter>
+    </ClInclude>
+    <ClInclude Include="BehaviorTree.h">
+      <Filter>ソース ファイル\EnemyAi\Behavior</Filter>
+    </ClInclude>
+    <ClInclude Include="NodeBase.h">
+      <Filter>ソース ファイル\EnemyAi\Behavior</Filter>
+    </ClInclude>
+    <ClInclude Include="ActAssault.h">
+      <Filter>ソース ファイル\EnemyAi</Filter>
+    </ClInclude>
+    <ClInclude Include="ActBase.h">
+      <Filter>ソース ファイル\EnemyAi</Filter>
+    </ClInclude>
+    <ClInclude Include="BossMagnification.h">
+      <Filter>ソース ファイル\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="BossAttackData.h">
+      <Filter>ソース ファイル\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="BossAttackTypeData.h">
+      <Filter>ソース ファイル\Enemy</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

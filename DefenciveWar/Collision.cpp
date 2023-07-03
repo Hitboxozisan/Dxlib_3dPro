@@ -17,10 +17,11 @@ void Collision::Update()
 {
 	// コリジョンを保持するオブジェクトがない場合は
 	// 座標を別のところに移動させる
-	//if (!parent->IsExist())
-	//{
-	//	data.pos = COLLIDE_SAFE_POS;
-	//}
+	if (!IsExist())
+	{
+		data.pos = COLLIDE_SAFE_POS;
+		return;
+	}
 
 	// 当たり判定座標更新
 	data.pos = parent->GetPos();

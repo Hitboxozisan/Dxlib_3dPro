@@ -8,9 +8,11 @@
 #include "ModelManager.h"
 #include "Player.h"
 #include "EnemyBulletManager.h"
+#include "BossMagnification.h"
 
 #include "BehaviorManager.h"
 #include "NodeBase.h"
+#include "ActAssault.h"
 
 #include "KeyManager.h"
 
@@ -23,6 +25,7 @@ BossEnemy::BossEnemy(CollisionTag tag, Player* p)
 	,json(Singleton<SupportJson>::GetInstance())
 	,key(Singleton<KeyManager>::GetInstance())
 	,aiMgr(new BehaviorManager())
+	,magnification(new BossMagnification)
 	,Mover(tag)
 {
 	player = p;
@@ -54,6 +57,8 @@ void BossEnemy::Initialize()
 	param.pos = json.GetVector(JsonDataType::BossEnemy, "Position");
 	param.prevPos = param.pos;
 	param.nextPos = param.pos;
+
+	//actNode = nullptr;
 }
 
 void BossEnemy::Update()
@@ -103,15 +108,36 @@ void BossEnemy::Draw()
 /// <param name="tag"></param>
 void BossEnemy::HitObject(Collision* other)
 {
+	VECTOR sub;
+
 	// プレイヤー
 	if (other->GetTag() == CollisionTag::Player)
 	{
 
 	}
 
+	// シールド
 	if (other->GetTag() == CollisionTag::Shield)
 	{
+		float decrease;
 
+		// ゲージの上昇
+		if (player->GetShield()->IsJustDefense())
+		{
+			// ジャストガードの場合は増加量を2倍にする
+			trunkpoint += GetDecreaseMagnification() * 2;
+		}
+		else
+		{
+			trunkpoint += GetDecreaseMagnification();
+		}
+
+		// 跳ね返る力を設定
+		sub = VSub(param.pos, other->GetPos());
+		force = VNorm(sub);
+		force = VScale(force, BOUND_POWER);
+
+		isHit = true;
 	}
 }
 
@@ -201,8 +227,9 @@ void BossEnemy::AssaultToPlayer()
 	VECTOR sub = VSub(param.pos, startAssaultPos);
 	float inDistance = VSize(sub);
 	float speed = json.GetFloat(JsonDataType::BossEnemy, "AssaultSpeed");
+	float delta = deltaTime.GetDeltaTime();
 
-	param.nextPos = VAdd(param.nextPos, VScale(param.dir, speed));
+	param.nextPos = VAdd(param.nextPos, VScale(param.dir, speed * delta));
 	
 	// 指定距離突進、キャラクターと接触したら
 	if (inDistance >= ASSAULT_DISTANCE)
@@ -226,11 +253,22 @@ void BossEnemy::FaceToPlayer()
 }
 
 /// <summary>
+/// 減少量を返す
+/// </summary>
+/// <returns></returns>
+float BossEnemy::GetDecreaseMagnification()
+{
+	std::string state = node->GetName();
+	return magnification->GetMagnification(state);
+}
+
+/// <summary>
 /// 振動させる
 /// </summary>
 /// <returns></returns>
 bool BossEnemy::Vibrate()
 {
+	float delta = deltaTime.GetDeltaTime();
 	float randomX = random.GetRandomFloat(VIBRATE_MIN, VIBRATE_MAX);
 	float randomZ = random.GetRandomFloat(VIBRATE_MIN, VIBRATE_MAX);
 
@@ -245,7 +283,7 @@ bool BossEnemy::Vibrate()
 		param.nextPos = param.prevPos;
 		param.pos = param.prevPos;
 
-		param.nextPos = VAdd(param.nextPos, randomForce);
+		param.nextPos = VAdd(param.nextPos, VScale(randomForce, delta));
 
 		// 突進開始位置を記憶
 		startAssaultPos = param.pos;
@@ -254,6 +292,31 @@ bool BossEnemy::Vibrate()
 	}
 	
 	return true;
+}
+
+/// <summary>
+/// 接触後の反動でスライド
+/// </summary>
+/// <returns></returns>
+bool BossEnemy::Sliding()
+{
+	float delta = deltaTime.GetDeltaTime();
+	VECTOR friction = force;
+	friction = VNorm(friction);
+	friction = VScale(friction, REBOUND_RESISTANCE);
+
+	force = VAdd(force, VScale(friction, delta));
+	param.nextPos = VAdd(param.nextPos, force);
+
+	// 反発力が 0 を下回ったら終了する
+	if (VSize(force) <= 0)
+	{
+		force = ZERO_VECTOR;
+		isHit = true;
+		return true;
+	}
+
+	return false;
 }
 
 /// <summary>
@@ -272,13 +335,13 @@ void BossEnemy::BehaviorUpdate()
 	//}
 
 	// 行動が決定していない場合は行動を決定する
-	if (actNode == nullptr)
+	if (node == nullptr)
 	{
-
+		node = aiMgr->InferenceNode();
 	}
 	else
 	{
-
+		node = aiMgr->Update(node);
 	}
 }
 
@@ -291,7 +354,7 @@ void BossEnemy::SetupBehavior()
 	//aiTree->AddNode("Root", "Attack", 1, BehaviorTree::SelectRule::SequentialLooping, BossJudgment::GetInstance(), NULL);
 	//aiTree->AddNode("Attack", "BulletNormal", 0, BehaviorTree::SelectRule::None, NULL, ActionShotBulletNormal::GetInstance());
 
-	aiMgr->EntryNode(new NodeBase("Root", "", 1, 1, BehaviorTree::SelectRule::Priority, NULL));
-	aiMgr->EntryNode(new NodeBase("Attack", "Root", 2, 1, BehaviorTree::SelectRule::Priority, NULL));
-	aiMgr->EntryNode(new NodeBase("Assault", "Attack", 3, 1, BehaviorTree::SelectRule::Random, NULL));
+	aiMgr->EntryNode("Root", "", 1, 1, BehaviorTree::SelectRule::Priority, NULL);
+	aiMgr->EntryNode("Attack", "Root", 2, 1, BehaviorTree::SelectRule::Priority, NULL);
+	aiMgr->EntryNode("Assault", "Attack", 3, 1, BehaviorTree::SelectRule::Random, new ActAssault(this));
 }

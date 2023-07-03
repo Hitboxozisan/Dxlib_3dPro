@@ -122,14 +122,14 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\gaiya\Desktop\DxLib_VC\Dxlib_Effekseer</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\gaiya\OneDrive\デスクトップ\Dxlib_Effekseer</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
-      <LanguageStandard>stdcpp14</LanguageStandard>
+      <LanguageStandard>Default</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\Users\gaiya\Desktop\DxLib_VC\Dxlib_Effekseer</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\Users\gaiya\OneDrive\デスクトップ\Dxlib_Effekseer</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -157,6 +157,7 @@
     <ClCompile Include="BehaviorManager.cpp" />
     <ClCompile Include="BehaviorTree.cpp" />
     <ClCompile Include="BossEnemy.cpp" />
+    <ClCompile Include="BossMagnification.cpp" />
     <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="BulletManager.cpp" />
     <ClCompile Include="Camera.cpp" />
@@ -201,9 +202,12 @@
     <ClInclude Include="ActBase.h" />
     <ClInclude Include="BehaviorManager.h" />
     <ClInclude Include="BehaviorTree.h" />
+    <ClInclude Include="BossAttackData.h" />
+    <ClInclude Include="BossAttackTypeData.h" />
     <ClInclude Include="BossEnemy.h" />
     <ClInclude Include="BossEnemyTimerData.h" />
     <ClInclude Include="BossEnemyTimerType.h" />
+    <ClInclude Include="BossMagnification.h" />
     <ClInclude Include="BossState.h" />
     <ClInclude Include="Bullet.h" />
     <ClInclude Include="BulletManager.h" />

@@ -18,8 +18,6 @@ const float FIELD_POSITION_SOUTH = -290.0f;			// ステージ南端
 const float FIELD_POSITION_EAST  =  290.0f;		    // ステージ西端
 const float FIELD_POSITION_WEST  = -290.0f;		    // ステージ東端
 
-const VECTOR COLLIDE_SAFE_POS = { 300, 0, 300 };
-
 // 画面中心座標
 const int SCREEN_CENTER = ((SCREEN_RIGHTMOST - SCREEN_LEFTMOST) / 2) + SCREEN_LEFTMOST;
 // ステージ中心座標

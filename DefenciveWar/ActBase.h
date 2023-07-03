@@ -10,10 +10,12 @@ public:
 	{
 		Complete,	// ÀsŠ®—¹
 		Run,		// Às’†
-		Failed,		// Às¸”s
+		Failed,		// ’†’f‚³‚ê‚½
 	};
 
 	virtual State Run() = 0;
+	virtual bool IsExecutabel() = 0;
+	virtual bool IsContinue() = 0;
 protected:
 	BossEnemy* enemy;
 

@@ -20,3 +20,13 @@ ActAssault::State ActAssault::Run()
 
 	return ActBase::State::Run;
 }
+
+bool ActAssault::IsExecutabel()
+{
+	return true;
+}
+
+bool ActAssault::IsContinue()
+{
+	return true;
+}

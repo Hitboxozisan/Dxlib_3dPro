@@ -9,6 +9,8 @@ public:
 	~ActAssault();
 
 	State Run();
+	bool IsExecutabel();
+	bool IsContinue();
 private:
 };
 

@@ -15,7 +15,7 @@ public:
 
 	void HitObject(Collision* other) override;
 
-	const Shield* GetShield() const { return shield; }
+	Shield* GetShield() const { return shield; }
 	const float GetHitpoint() const { return hp; }
 	const int GetMaxHitpoint() const;
 	const bool GetAlive() { return hp <= 0.0f; }
@@ -41,6 +41,7 @@ private:
 	class Shield* shield;
 
 	float hp;							// ƒqƒbƒgƒ|ƒCƒ“ƒg
+	bool isInvincible;					// –³“Gó‘Ô‚©
 	
 	void Move();					// ˆÚ“®ˆ—
 	void Shot();					// ’e‚Ì”­ŽË

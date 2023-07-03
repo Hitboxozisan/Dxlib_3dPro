@@ -14,23 +14,32 @@ public:
 	~BehaviorTree();
 
 	// 選択ルール
-	enum SelectRule
+	enum class SelectRule
 	{
 		None,			// なし（末端ノード）
 		Priority,		// 優先順
 		Sequence,		// シークエンス
-		Selector,		// セレクター
 		Random,			// ランダム
 	};
 
 	void Initialize();
-	void EntryNode(class NodeBase* inNode);
+	void EntryNode(std::string inName, 
+				   std::string inParent, 
+				   int inHierarchy, 
+				   int inPriority,
+				   BehaviorTree::SelectRule inRule, 
+				   class ActBase* inAction);
+	class NodeBase* SelectNode(class NodeBase* inNode, std::vector<NodeBase*> inChild);
 	bool SearchNode(std::string inName);
 	bool IsUsedNode(NodeBase* inNode);
 	NodeBase* InferenceNode();
 	void ResetUsedNode();
 private:
-	std::vector<NodeBase*>* aiTree;			// ビヘイビアツリー
-	std::vector<NodeBase*>* usedNode;		// 使用済みノード
+
+	class Random& random;
+
+	NodeBase* curretNode;
+	std::vector<NodeBase*> aiTree;			// ビヘイビアツリー
+	std::vector<NodeBase*> usedNode;		// 使用済みノード
 };
 

@@ -10,7 +10,8 @@
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
 {
 	// TRUEにするとFPSが急激に落ちる可能性あり
-	ChangeWindowMode(FALSE);
+	// 現環境（デスク：TRUE、ノート：FALSE）
+	ChangeWindowMode(TRUE);
 
 	SetGraphMode(SCREEN_WIDTH, SCREEN_HEIGHT, 32);
 	SetWaitVSyncFlag(TRUE);
