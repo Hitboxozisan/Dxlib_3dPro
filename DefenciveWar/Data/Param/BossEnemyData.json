@@ -6,7 +6,6 @@
     "Speed":100,
     "AssaultSpeed":400,
     "BulletSpeed":400,
-    "ShotInterval":0.1,
-    "AssaultCount":3,
+    "AssaultCount":1,
     "ShotCount":3
 }

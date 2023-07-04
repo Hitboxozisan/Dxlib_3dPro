@@ -13,9 +13,9 @@ public:
 		Failed,		// 中断された
 	};
 
-	virtual State Run() = 0;
-	virtual bool IsExecutabel() = 0;
-	virtual bool IsContinue() = 0;
+	virtual State Run() = 0;			// 実行
+	virtual bool IsExecutabel() = 0;	// 実行可能か
+	virtual bool IsContinue() = 0;		// 実行を続けるか
 protected:
 	BossEnemy* enemy;
 

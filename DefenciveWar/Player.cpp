@@ -83,6 +83,7 @@ void Player::Update()
 		{
 			isHit = false;
 			isInvincible = false;
+			noDrawFlame = false;
 			invincibleTime->Reset();
 		}
 	}
@@ -153,7 +154,6 @@ void Player::HitObject(Collision* other)
 		force = VScale(force, BOUND_POWER);
 
 		isHit = true;
-		isInvincible = false;
 	}
 
 	if (other->GetTag() == CollisionTag::EnemyBullet && !isHit)
@@ -258,7 +258,7 @@ bool Player::Sliding()
 	if (VSize(force) <= 0)
 	{
 		force = ZERO_VECTOR;
-		isHit = true;
+		isInvincible = true;
 		shield->SetHit(false);
 		return true;
 	}

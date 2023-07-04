@@ -12,6 +12,7 @@ NodeBase::NodeBase(std::string inName,
 	,rule(inRule)
 	,action(inAction)
 {
+	child.clear();
 }
 
 NodeBase::~NodeBase()

@@ -197,6 +197,12 @@
     <ClCompile Include="BossMagnification.cpp">
       <Filter>ソース ファイル\Enemy</Filter>
     </ClCompile>
+    <ClCompile Include="ActBulletNormal.cpp">
+      <Filter>ソース ファイル\EnemyAi</Filter>
+    </ClCompile>
+    <ClCompile Include="ActBulletShotGun.cpp">
+      <Filter>ソース ファイル\EnemyAi</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DeltaTime.h">
@@ -378,6 +384,12 @@
     </ClInclude>
     <ClInclude Include="BossAttackTypeData.h">
       <Filter>ソース ファイル\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="ActBulletNormal.h">
+      <Filter>ソース ファイル\EnemyAi</Filter>
+    </ClInclude>
+    <ClInclude Include="ActBulletShotGun.h">
+      <Filter>ソース ファイル\EnemyAi</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

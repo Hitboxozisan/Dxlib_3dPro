@@ -23,7 +23,7 @@ NodeBase* BehaviorManager::Update(NodeBase* inAction)
 
 	if (state == ActBase::State::Complete)
 	{
-		return nullptr;
+		return NULL;
 	}
 	else if(state == ActBase::State::Failed)
 	{
@@ -35,7 +35,7 @@ NodeBase* BehaviorManager::Update(NodeBase* inAction)
 		// ‘±‚¯‚È‚¢ê‡‚ÍI—¹‚·‚é
 		else
 		{
-			return nullptr;
+			return NULL;
 		}
 	}
 

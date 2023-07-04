@@ -20,6 +20,7 @@ public:
 
 	bool AttackAssault();
 	bool AttackShotBullet();
+	bool AttackShotBulletShotGun();
 
 	const float GetTrunkPoint() { return trunkpoint; }
 	const bool IsTrunkHarfOver();
@@ -46,6 +47,7 @@ private:
 	VECTOR startAssaultPos;
 	
 	void AssaultToPlayer();
+	void ShotBullet();
 	void FaceToPlayer();
 	float GetDecreaseMagnification();
 	bool Vibrate();

@@ -3,6 +3,7 @@
 #include "ActBase.h"
 #include "Singleton.h"
 #include "Random.h"
+#include "DxLib.h"
 
 BehaviorTree::BehaviorTree()
 	:random(Singleton<Random>::GetInstance())
@@ -50,12 +51,11 @@ NodeBase* BehaviorTree::SelectNode(NodeBase* inNode, std::vector<NodeBase*> inCh
 	// 子のノードから選択する
 	for (auto itr = inChild.begin(); itr != inChild.end(); itr++)
 	{
-	
 		switch (inNode->GetRule())
 		{
 		case SelectRule::None:
 			node = *inChild.begin();
-	
+			break;
 		case SelectRule::Priority:
 			if (priority <= (*itr)->GetPriority())
 			{
@@ -66,17 +66,17 @@ NodeBase* BehaviorTree::SelectNode(NodeBase* inNode, std::vector<NodeBase*> inCh
 			if (IsUsedNode(*itr))
 			{
 				node = (*itr);
+				break;
 			}
-	
 		case SelectRule::Random:
 			if ((*itr)->IsExecutabel())
 			{
 				node = (*itr);
+				break;
 			}
 	
 		}
 	
-		if (node != nullptr) break;
 	}
 	
 	return node;
@@ -118,35 +118,40 @@ NodeBase* BehaviorTree::InferenceNode()
 {
 	// 使用済みノードのリセット
 	usedNode.clear();
-	NodeBase* node = nullptr;
+	NodeBase* node = *aiTree.begin();
 
 	int hierarchy = 1;
 
 	// 何かしらの行動を決定するまで思考する
 	
-	for (auto itr = aiTree.begin(); itr != aiTree.end(); itr++)
+	//for (auto itr = aiTree.begin(); itr != aiTree.end(); itr++)
+	//{
+	//	// 使用済みノードはスキップ
+	//	if (IsUsedNode(*itr))
+	//	{
+	//		continue;
+	//	}
+	//
+	//	// 子がいる場合は次のノードの選択
+	//	if (!(*itr)->GetChildEmpty() &&
+	//		(*itr)->GetHierarchy() == hierarchy)
+	//	{
+	//		hierarchy++;
+	//		node = SelectNode(*itr, (*itr)->GetChild());
+	//	}
+	//	// いない場合はそのノードを選択
+	//	else
+	//	{
+	//		node = (*itr);
+	//	}
+	//	
+	//}
+
+	// 末端ノードになるまで繰り返す
+	while (!node->GetChildEmpty())
 	{
-		// 使用済みノードはスキップ
-		if (IsUsedNode(*itr))
-		{
-			continue;
-		}
-	
-		// 子がいる場合は次のノードの選択
-		if (!(*itr)->GetChildEmpty() &&
-			(*itr)->GetHierarchy() == hierarchy)
-		{
-			hierarchy++;
-			node = SelectNode(*itr, (*itr)->GetChild());
-		}
-		// いない場合はそのノードを選択
-		else
-		{
-			node = (*itr);
-		}
-		
+		node = SelectNode(node, node->GetChild());
 	}
-	
 
 	return node;
 }
