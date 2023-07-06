@@ -19,8 +19,8 @@ public:
 	void HitObject(Collision* other) override;
 
 	bool AttackAssault();
-	bool AttackShotBullet();
-	bool AttackShotBulletShotGun();
+	bool AttackShotBullet(bool isNormal);
+	//bool AttackShotBulletShotGun();
 
 	const float GetTrunkPoint() { return trunkpoint; }
 	const bool IsTrunkHarfOver();
@@ -47,7 +47,7 @@ private:
 	VECTOR startAssaultPos;
 	
 	void AssaultToPlayer();
-	void ShotBullet();
+	void ShotBullet(bool isNormal);
 	void FaceToPlayer();
 	float GetDecreaseMagnification();
 	bool Vibrate();

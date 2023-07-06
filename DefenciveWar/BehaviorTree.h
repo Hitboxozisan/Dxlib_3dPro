@@ -3,6 +3,7 @@
 #include <map>
 #include <vector>
 #include <string>
+#include <stack>
 
 /// <summary>
 /// ビヘイビアツリー本体
@@ -29,17 +30,23 @@ public:
 				   int inPriority,
 				   BehaviorTree::SelectRule inRule, 
 				   class ActBase* inAction);
-	class NodeBase* SelectNode(class NodeBase* inNode, std::vector<NodeBase*> inChild);
+	class NodeBase* SelectNode(class NodeBase* inNode);
 	bool SearchNode(std::string inName);
 	bool IsUsedNode(NodeBase* inNode);
+	NodeBase* SequenceEnRoute();
 	NodeBase* InferenceNode();
 	void ResetUsedNode();
+
+	NodeBase* SelectPriority();
+	NodeBase* SelectSequence(NodeBase* inParent);
+	NodeBase* SelectRandom();
 private:
 
 	class Random& random;
 
-	NodeBase* curretNode;
 	std::vector<NodeBase*> aiTree;			// ビヘイビアツリー
+	std::vector<NodeBase*> activeNode;		// 実行可能ノード
 	std::vector<NodeBase*> usedNode;		// 使用済みノード
+	std::stack<NodeBase*> sequenceNode;		// シークエンスノード
 };
 

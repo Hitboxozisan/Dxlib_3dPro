@@ -18,6 +18,7 @@ public:
 	void Draw();
 
 	void CreateBullet(VECTOR pos, VECTOR dir, float shotSpeed, ModelType mt);
+	void CreateBulletShotGun(VECTOR actorPos, VECTOR actorDir, float shotSpeed, ModelType mt);
 	class Bullet* GetUnUseBullet();
 
 private:

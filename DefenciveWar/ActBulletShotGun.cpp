@@ -12,7 +12,7 @@ ActBulletShotGun::~ActBulletShotGun()
 
 ActBase::State ActBulletShotGun::Run()
 {
-	if (enemy->AttackShotBulletShotGun())
+	if (enemy->AttackShotBullet(false))
 	{
 		return ActBase::State::Complete;
 	}

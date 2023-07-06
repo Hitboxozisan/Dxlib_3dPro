@@ -23,7 +23,18 @@ NodeBase* BehaviorManager::Update(NodeBase* inAction)
 
 	if (state == ActBase::State::Complete)
 	{
-		return NULL;
+		// シークエンスの途中なのか
+		inAction = aiTree->SequenceEnRoute();
+		
+		// 途中ならそこから再開する
+		if (inAction != NULL)
+		{
+			inAction = aiTree->SelectNode(inAction);
+		}
+		else
+		{
+			return NULL;
+		}
 	}
 	else if(state == ActBase::State::Failed)
 	{
@@ -38,7 +49,7 @@ NodeBase* BehaviorManager::Update(NodeBase* inAction)
 			return NULL;
 		}
 	}
-
+	
 	return inAction;
 }
 

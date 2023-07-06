@@ -1,6 +1,7 @@
 #pragma once
 
 #include <string>
+#include <stack>
 #include "BehaviorTree.h"
 #include "ActBase.h"
 
@@ -21,6 +22,7 @@ public:
 	ActBase::State Update();
 	bool IsExecutabel();
 	void EntryChild(NodeBase* inNode) { child.push_back(inNode); }
+	void EntrySequence(NodeBase* inNode) { sequenceNode.push(inNode); }
 
 	const std::string GetName() { return name; }
 	//const std::string GetParent() { return parent; }
@@ -30,8 +32,9 @@ public:
 	ActBase* GetAction() { return action; }
 	const bool GetChildEmpty() { return child.empty(); }
 	std::vector<NodeBase*> GetChild() { return child; }
+	std::stack<NodeBase*> GetSequence() { return sequenceNode; }
 
-	class ActBase* action;					// 行動実行
+	class ActBase* action;					// 実行アクション
 protected:
 	std::string name;						// 名前
 	//NodeBase* parent;						// 親のノード
@@ -41,6 +44,7 @@ protected:
 	int priority;							// 優先度
 
 	std::vector<NodeBase*> child;			// ノードの子を収納
+	std::stack<NodeBase*> sequenceNode;		// シークエンスノード
 
 private:
 

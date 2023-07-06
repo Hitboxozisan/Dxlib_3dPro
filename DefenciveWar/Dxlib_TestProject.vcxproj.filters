@@ -66,6 +66,12 @@
     <Filter Include="ソース ファイル\Json">
       <UniqueIdentifier>{67fca249-1705-41a1-acd9-a0e53103ff73}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\EnemyAi\Action">
+      <UniqueIdentifier>{427a4201-a487-4ed9-8a2f-1de80cf7fc1f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\EnemyAi\Judgment">
+      <UniqueIdentifier>{6b1b167c-3de0-4117-b2d1-21e4bf287bf7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -188,20 +194,23 @@
     <ClCompile Include="NodeBase.cpp">
       <Filter>ソース ファイル\EnemyAi\Behavior</Filter>
     </ClCompile>
-    <ClCompile Include="ActAssault.cpp">
-      <Filter>ソース ファイル\EnemyAi</Filter>
-    </ClCompile>
-    <ClCompile Include="ActBase.cpp">
-      <Filter>ソース ファイル\EnemyAi</Filter>
-    </ClCompile>
     <ClCompile Include="BossMagnification.cpp">
       <Filter>ソース ファイル\Enemy</Filter>
     </ClCompile>
+    <ClCompile Include="ActAssault.cpp">
+      <Filter>ソース ファイル\EnemyAi\Action</Filter>
+    </ClCompile>
+    <ClCompile Include="ActBase.cpp">
+      <Filter>ソース ファイル\EnemyAi\Action</Filter>
+    </ClCompile>
     <ClCompile Include="ActBulletNormal.cpp">
-      <Filter>ソース ファイル\EnemyAi</Filter>
+      <Filter>ソース ファイル\EnemyAi\Action</Filter>
     </ClCompile>
     <ClCompile Include="ActBulletShotGun.cpp">
-      <Filter>ソース ファイル\EnemyAi</Filter>
+      <Filter>ソース ファイル\EnemyAi\Action</Filter>
+    </ClCompile>
+    <ClCompile Include="JudgmentBase.cpp">
+      <Filter>ソース ファイル\EnemyAi\Judgment</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -370,12 +379,6 @@
     <ClInclude Include="NodeBase.h">
       <Filter>ソース ファイル\EnemyAi\Behavior</Filter>
     </ClInclude>
-    <ClInclude Include="ActAssault.h">
-      <Filter>ソース ファイル\EnemyAi</Filter>
-    </ClInclude>
-    <ClInclude Include="ActBase.h">
-      <Filter>ソース ファイル\EnemyAi</Filter>
-    </ClInclude>
     <ClInclude Include="BossMagnification.h">
       <Filter>ソース ファイル\Enemy</Filter>
     </ClInclude>
@@ -385,11 +388,20 @@
     <ClInclude Include="BossAttackTypeData.h">
       <Filter>ソース ファイル\Enemy</Filter>
     </ClInclude>
+    <ClInclude Include="ActAssault.h">
+      <Filter>ソース ファイル\EnemyAi\Action</Filter>
+    </ClInclude>
+    <ClInclude Include="ActBase.h">
+      <Filter>ソース ファイル\EnemyAi\Action</Filter>
+    </ClInclude>
     <ClInclude Include="ActBulletNormal.h">
-      <Filter>ソース ファイル\EnemyAi</Filter>
+      <Filter>ソース ファイル\EnemyAi\Action</Filter>
     </ClInclude>
     <ClInclude Include="ActBulletShotGun.h">
-      <Filter>ソース ファイル\EnemyAi</Filter>
+      <Filter>ソース ファイル\EnemyAi\Action</Filter>
+    </ClInclude>
+    <ClInclude Include="JudgmentBase.h">
+      <Filter>ソース ファイル\EnemyAi\Judgment</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

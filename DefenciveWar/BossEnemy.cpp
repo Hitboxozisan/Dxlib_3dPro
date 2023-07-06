@@ -139,7 +139,7 @@ bool BossEnemy::AttackAssault()
 	int maxAssault = json.GetInt(JsonDataType::BossEnemy, "AssaultCount");
 
 	// 一定回数攻撃する
-	if (assaultCount < maxAssault)
+	if (assaultCount <= maxAssault)
 	{
 		if (Vibrate())
 		{
@@ -149,9 +149,11 @@ bool BossEnemy::AttackAssault()
 		{
 			FaceToPlayer();
 		}
+
 		return false;
 	}
 	
+	// 次回行動するためにカウントをリセットする
 	assaultCount = 0;
 	return true;
 }
@@ -160,7 +162,7 @@ bool BossEnemy::AttackAssault()
 /// 対象に向かって弾を発射する
 /// </summary>
 /// <returns></returns>
-bool BossEnemy::AttackShotBullet()
+bool BossEnemy::AttackShotBullet(bool isNormal)
 {
 	int maxShot = json.GetInt(JsonDataType::BossEnemy, "ShotCount");
 
@@ -171,21 +173,38 @@ bool BossEnemy::AttackShotBullet()
 	FaceToPlayer();
 
 	// 規定回数を弾を発射する
-	if (shotCount < maxShot &&
-		timer[TimerType::ShotInterval]->IsTimeout())
+	if (shotCount <= maxShot)
 	{
-		ShotBullet();
+		ShotBullet(isNormal);
 		return false;
 	}
 
+	// 次回行動するためカウントをリセットする
+	shotCount = 0;
 	return true;
 }
 
-bool BossEnemy::AttackShotBulletShotGun()
-{
-	printfDx("ShotGun");
-	return true;
-}
+//bool BossEnemy::AttackShotBulletShotGun()
+//{
+//	int maxShot = json.GetInt(JsonDataType::BossEnemy, "ShotCount");
+//
+//	// タイマーの更新
+//	timer[TimerType::ShotInterval]->Update(deltaTime.GetDeltaTime());
+//
+//	// プレイヤーの方向を向く
+//	FaceToPlayer();
+//
+//	// 規定回数を弾を発射する
+//	if (shotCount <= maxShot)
+//	{
+//		ShotBullet(false);
+//		return false;
+//	}
+//
+//	// 次回行動するためカウントをリセットする
+//	shotCount = 0;
+//	return true;
+//}
 
 /// <summary>
 /// 体幹量が半分を超えたか
@@ -225,21 +244,35 @@ void BossEnemy::AssaultToPlayer()
 	}
 }
 
-void BossEnemy::ShotBullet()
+void BossEnemy::ShotBullet(bool isNormal)
 {
-	float speed = json.GetFloat(JsonDataType::BossEnemy, "BulletSpeed");
 
-	// 前方に設置
-	VECTOR createPos = VAdd(param.pos, VScale(param.dir, 50.0f));
+	if (timer[TimerType::ShotInterval]->IsTimeout())
+	{
+		VECTOR createPos = ZERO_VECTOR;
 
-	// タイマーをリセット
-	timer[TimerType::ShotInterval]->Reset();
+		float speed = json.GetFloat(JsonDataType::BossEnemy, "BulletSpeed");
 
-	// 弾を生成・発射
-	bulletMgr.CreateBullet(createPos, param.dir, speed, ModelType::EnemyBullet);
-
-	// 回数を増加させる
-	++shotCount;
+		// 通常発射の場合
+		if (isNormal)
+		{
+			// 前方に設置
+			createPos = VAdd(param.pos, VScale(param.dir, 50.0f));
+			// タイマーをリセット
+			timer[TimerType::ShotInterval]->Reset();
+			// 弾を生成・発射
+			bulletMgr.CreateBullet(createPos, param.dir, speed, ModelType::EnemyBullet);
+			// 回数を増加させる
+			++shotCount;
+		}
+		// ショットガンの場合
+		else
+		{
+			timer[TimerType::ShotInterval]->Reset();
+			bulletMgr.CreateBulletShotGun(param.pos, param.dir, speed, ModelType::EnemyBullet);
+			++shotCount;
+		}
+	}
 
 }
 
@@ -357,9 +390,9 @@ void BossEnemy::SetupBehavior()
 	//aiTree->AddNode("Attack", "BulletNormal", 0, BehaviorTree::SelectRule::None, NULL, ActionShotBulletNormal::GetInstance());
 
 	aiMgr->EntryNode("Root", "", 1, 1, BehaviorTree::SelectRule::Priority, NULL);
-	aiMgr->EntryNode("Attack", "Root", 2, 1, BehaviorTree::SelectRule::Priority, NULL);
+	aiMgr->EntryNode("Attack", "Root", 2, 1, BehaviorTree::SelectRule::Sequence, NULL);
 	//aiMgr->EntryNode("Assault", "Attack", 3, 1, BehaviorTree::SelectRule::Random, new ActAssault(this));
-	aiMgr->EntryNode("Bullet", "Attack", 3, 1, BehaviorTree::SelectRule::Priority, NULL);
-	aiMgr->EntryNode("BulletNormal", "Bullet", 4, 1, BehaviorTree::SelectRule::Random, new ActBulletNormal(this));
-	//aiMgr->EntryNode("BulletShotGun", "Bullet", 4, 1, BehaviorTree::SelectRule::Random, new ActBulletShotGun(this));
+	aiMgr->EntryNode("Bullet", "Attack", 3, 2, BehaviorTree::SelectRule::Random, NULL);
+	//aiMgr->EntryNode("BulletNormal", "Bullet", 4, 1, BehaviorTree::SelectRule::None, new ActBulletNormal(this));
+	aiMgr->EntryNode("BulletShotGun", "Bullet", 4, 1, BehaviorTree::SelectRule::None, new ActBulletShotGun(this));
 }

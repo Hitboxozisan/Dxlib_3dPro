@@ -40,6 +40,13 @@ void EnemyBulletManager::Draw()
 	}
 }
 
+/// <summary>
+/// íeÇÃê∂ê¨Åií èÌÅj
+/// </summary>
+/// <param name="pos"></param>
+/// <param name="dir"></param>
+/// <param name="shotSpeed"></param>
+/// <param name="mt"></param>
 void EnemyBulletManager::CreateBullet(VECTOR pos, VECTOR dir, float shotSpeed, ModelType mt)
 {
 	for (auto bullet : bullets)
@@ -61,6 +68,33 @@ void EnemyBulletManager::CreateBullet(VECTOR pos, VECTOR dir, float shotSpeed, M
 			break;
 		}
 	}
+}
+
+/// <summary>
+/// íeÇÃê∂ê¨ÅiéUíeÅj
+/// </summary>
+/// <param name="centerPos"></param>
+/// <param name="centerDir"></param>
+/// <param name="shotSpeed"></param>
+/// <param name="mt"></param>
+void EnemyBulletManager::CreateBulletShotGun(VECTOR actorPos, VECTOR actorDir, float shotSpeed, ModelType mt)
+{
+	MATRIX matrix;
+
+	VECTOR centerPos = VAdd(actorPos, VScale(actorDir, 50.0f));
+
+	matrix = MGetRotY(DX_PI_F / 15.0f);
+	VECTOR rightDir = VTransform(actorDir, matrix);
+	VECTOR rightPos = VAdd(actorPos, VScale(rightDir, 50.0f));
+
+	matrix = MGetRotY(DX_PI_F / -15.0f);
+	VECTOR leftDir = VTransform(actorDir, matrix);
+	VECTOR leftPos = VAdd(actorPos, VScale(leftDir, 50.0f));
+
+	// 3î≠î≠éÀÇ∑ÇÈ
+	CreateBullet(centerPos, actorDir, shotSpeed, mt);
+	CreateBullet(rightPos, rightDir, shotSpeed, mt);
+	CreateBullet(leftPos, leftDir, shotSpeed, mt);
 }
 
 /// <summary>

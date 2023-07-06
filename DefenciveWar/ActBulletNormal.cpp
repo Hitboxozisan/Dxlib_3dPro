@@ -12,7 +12,7 @@ ActBulletNormal::~ActBulletNormal()
 
 ActBase::State ActBulletNormal::Run()
 {
-    if (enemy->AttackShotBullet())
+    if (enemy->AttackShotBullet(true))
     {
         return ActBase::State::Complete;
     }
