@@ -15,6 +15,7 @@
 #include "ActAssault.h"
 #include "ActBulletNormal.h"
 #include "ActBulletShotGun.h"
+#include "ActStomp.h"
 
 #include "KeyManager.h"
 
@@ -61,6 +62,7 @@ void BossEnemy::Initialize()
 	param.nextPos = param.pos;
 
 	//actNode = nullptr;
+	isGround = true;
 }
 
 void BossEnemy::Update()
@@ -139,7 +141,7 @@ bool BossEnemy::AttackAssault()
 	int maxAssault = json.GetInt(JsonDataType::BossEnemy, "AssaultCount");
 
 	// 一定回数攻撃する
-	if (assaultCount <= maxAssault)
+	if (assaultCount < maxAssault)
 	{
 		if (Vibrate())
 		{
@@ -184,27 +186,66 @@ bool BossEnemy::AttackShotBullet(bool isNormal)
 	return true;
 }
 
-//bool BossEnemy::AttackShotBulletShotGun()
-//{
-//	int maxShot = json.GetInt(JsonDataType::BossEnemy, "ShotCount");
-//
-//	// タイマーの更新
-//	timer[TimerType::ShotInterval]->Update(deltaTime.GetDeltaTime());
-//
-//	// プレイヤーの方向を向く
-//	FaceToPlayer();
-//
-//	// 規定回数を弾を発射する
-//	if (shotCount <= maxShot)
-//	{
-//		ShotBullet(false);
-//		return false;
-//	}
-//
-//	// 次回行動するためカウントをリセットする
-//	shotCount = 0;
-//	return true;
-//}
+/// <summary>
+/// 踏みつけ攻撃
+/// </summary>
+/// <returns></returns>
+bool BossEnemy::AttackStomp()
+{
+	int maxStomp = json.GetInt(JsonDataType::BossEnemy, "StompCount");
+
+	// 指定回数踏みつけ攻撃を行う
+	if (stompCount <= maxStomp)
+	{
+		MoveOnTarget(player->GetPos());
+
+		// プレイヤー上空に移動する
+		if (isOnTarget)
+		{
+			if (Vibrate())
+			{
+				// 移動したら踏みつけ攻撃を行う
+				Stomp();
+			}
+			else
+			{
+				stompVec = VGet(0, 300, 0);
+			}
+		}
+
+		// 地面と接触したら
+		if (param.nextPos.y <= 0)
+		{
+			param.nextPos.y = 0;
+			isGround = true;
+		}
+
+		// 地面と接触している場合
+		if (isGround)
+		{
+			// 一定時間制止する
+			timer[TimerType::Landing]->Update(deltaTime.GetDeltaTime());
+
+			// クールタイムを過ぎたら
+			if (timer[TimerType::Landing]->IsTimeout())
+			{
+				// 各タイマーをリセット
+				timer[TimerType::VibrateAttack]->Reset();
+				timer[TimerType::Landing]->Reset();
+				isOnTarget = false;
+				isGround = false;
+				++stompCount;
+				// 一定回数攻撃するまで繰り返す
+			}
+
+		}
+
+		return false;
+	}
+
+	stompCount = 0;
+	return true;
+}
 
 /// <summary>
 /// 体幹量が半分を超えたか
@@ -243,6 +284,7 @@ void BossEnemy::AssaultToPlayer()
 		timer[TimerType::VibrateAttack]->Reset();
 	}
 }
+
 
 void BossEnemy::ShotBullet(bool isNormal)
 {
@@ -288,6 +330,18 @@ void BossEnemy::FaceToPlayer()
 }
 
 /// <summary>
+/// 踏みつける
+/// </summary>
+void BossEnemy::Stomp()
+{
+	float fallVec = json.GetFloat(JsonDataType::BossEnemy, "StompSpeed");
+	stompVec.y -= fallVec;
+
+	param.nextPos = VAdd(param.nextPos, VScale(stompVec, deltaTime.GetDeltaTime()));
+
+}
+
+/// <summary>
 /// 減少量を返す
 /// </summary>
 /// <returns></returns>
@@ -295,6 +349,63 @@ float BossEnemy::GetDecreaseMagnification()
 {
 	std::string state = node->GetName();
 	return magnification->GetMagnification(state);
+}
+
+/// <summary>
+/// 対象の真上に移動する
+/// </summary>
+/// <param name="target"></param>
+/// <returns></returns>
+void BossEnemy::MoveOnTarget(VECTOR target)
+{
+	// 対象の真上に移動した場合は踏みつけ攻撃に入るため処理しない
+	if (isOnTarget)
+	{
+		return;
+	}
+
+	float delta = deltaTime.GetDeltaTime();
+	// 各値をjsonファイルから取得
+	float highPos = json.GetFloat(JsonDataType::BossEnemy, "StompHighPos");
+	float speed = json.GetFloat(JsonDataType::BossEnemy, "MoveOnTargetSpeed");
+	// 指定地点設定
+	VECTOR finishPos = target;
+	finishPos.y = finishPos.y + highPos;
+
+	// 対象との距離
+	float distance = VSize(VSub(finishPos, param.pos));
+	// 制限時間更新
+	timer[TimerType::Tracking]->Update(delta);
+
+	isGround = false;
+
+	// 対象の上空に移動する
+	VECTOR moveVec = VSub(finishPos, param.pos);
+	// 指定高度まで上昇する
+	if (param.nextPos.y >= highPos)
+	{
+		moveVec.y = 0;
+	}
+	else
+	{
+		moveVec.y = highPos;
+	}
+	// 正規化
+	moveVec = VNorm(moveVec);
+	// 指定の大きさに変更
+	moveVec = VScale(moveVec, speed);
+	
+	// 移動
+	param.nextPos = VAdd(param.nextPos, VScale(moveVec, delta));
+
+	// 対象の真上に移動するもしくは一定時間経過すると落下を開始する
+	if (distance <= 10 ||
+		timer[TimerType::Tracking]->IsTimeout())
+	{
+		timer[TimerType::Tracking]->Reset();
+		isOnTarget = true;
+	}
+
 }
 
 /// <summary>
@@ -391,8 +502,9 @@ void BossEnemy::SetupBehavior()
 
 	aiMgr->EntryNode("Root", "", 1, 1, BehaviorTree::SelectRule::Priority, NULL);
 	aiMgr->EntryNode("Attack", "Root", 2, 1, BehaviorTree::SelectRule::Sequence, NULL);
-	//aiMgr->EntryNode("Assault", "Attack", 3, 1, BehaviorTree::SelectRule::Random, new ActAssault(this));
-	aiMgr->EntryNode("Bullet", "Attack", 3, 2, BehaviorTree::SelectRule::Random, NULL);
+	aiMgr->EntryNode("Assault", "Attack", 3, 1, BehaviorTree::SelectRule::None, new ActAssault(this));
+	//aiMgr->EntryNode("Bullet", "Attack", 3, 2, BehaviorTree::SelectRule::Random, NULL);
+	//aiMgr->EntryNode("Stomp", "Attack", 3, 3, BehaviorTree::SelectRule::None, new ActStomp(this));
 	//aiMgr->EntryNode("BulletNormal", "Bullet", 4, 1, BehaviorTree::SelectRule::None, new ActBulletNormal(this));
-	aiMgr->EntryNode("BulletShotGun", "Bullet", 4, 1, BehaviorTree::SelectRule::None, new ActBulletShotGun(this));
+	//aiMgr->EntryNode("BulletShotGun", "Bullet", 4, 1, BehaviorTree::SelectRule::None, new ActBulletShotGun(this));
 }

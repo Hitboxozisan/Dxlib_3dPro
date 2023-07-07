@@ -10,5 +10,7 @@ namespace BossTimer
 	{
 		{TimerType::VibrateAttack, VIBRATE_TIME},
 		{TimerType::ShotInterval, SHOT_INTERVAL},
+		{TimerType::Landing, LANDING_TIME},
+		{TimerType::Tracking, TRACKING_TIME},
 	};
 }

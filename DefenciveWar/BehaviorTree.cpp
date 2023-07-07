@@ -42,11 +42,11 @@ void BehaviorTree::EntryNode(std::string inName, std::string inParent, int inHie
 			(*itr)->EntryChild(node);
 
 			// 選択方法がシークエンスの場合は
-			if ((*itr)->GetRule() == SelectRule::Sequence)
-			{
-				// シークエンスノードに登録
-				sequenceNode.push(node);
-			}
+			//if ((*itr)->GetRule() == SelectRule::Sequence)
+			//{
+			//	// シークエンスノードに登録
+			//	sequenceNode.push(node); 
+			//}
 		}
 	}
 	
@@ -81,8 +81,10 @@ NodeBase* BehaviorTree::SelectNode(NodeBase* inNode)
 		break;
 	case SelectRule::Sequence:
 		node = SelectSequence(inNode);
+		break;
 	case SelectRule::Random:
 		node = SelectRandom();
+		break;
 	}
 
 	// ノードが決定した場合
@@ -232,8 +234,10 @@ NodeBase* BehaviorTree::SelectSequence(NodeBase* inParent)
 	{
 		sequenceNode.push(*itr);
 	}
+	NodeBase* result = sequenceNode.top();
+	sequenceNode.pop();
 
-	return sequenceNode.top();
+	return result;
 }
 
 /// <summary>
@@ -244,7 +248,7 @@ NodeBase* BehaviorTree::SelectSequence(NodeBase* inParent)
 /// <returns></returns>
 NodeBase* BehaviorTree::SelectRandom()
 {
-	int rand = random.GetRandomInt(0, 100) % activeNode.size();
+	int rand = random.GetRandomInt(0, activeNode.size());
 
 	return activeNode[rand];
 }

@@ -122,14 +122,14 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\gaiya\OneDrive\デスクトップ\Dxlib_Effekseer</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\gaiya\Desktop\DxLib_VC\Dxlib_Effekseer</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <LanguageStandard>Default</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\Users\gaiya\OneDrive\デスクトップ\Dxlib_Effekseer</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\Users\gaiya\Desktop\DxLib_VC\Dxlib_Effekseer</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -156,6 +156,9 @@
     <ClCompile Include="ActBase.cpp" />
     <ClCompile Include="ActBulletNormal.cpp" />
     <ClCompile Include="ActBulletShotGun.cpp" />
+    <ClCompile Include="ActStomp.cpp" />
+    <ClCompile Include="BackgroundCube.cpp" />
+    <ClCompile Include="BackgroundCubeManager.cpp" />
     <ClCompile Include="BehaviorManager.cpp" />
     <ClCompile Include="BehaviorTree.cpp" />
     <ClCompile Include="BossEnemy.cpp" />
@@ -205,6 +208,9 @@
     <ClInclude Include="ActBase.h" />
     <ClInclude Include="ActBulletNormal.h" />
     <ClInclude Include="ActBulletShotGun.h" />
+    <ClInclude Include="ActStomp.h" />
+    <ClInclude Include="BackgroundCube.h" />
+    <ClInclude Include="BackgroundCubeManager.h" />
     <ClInclude Include="BehaviorManager.h" />
     <ClInclude Include="BehaviorTree.h" />
     <ClInclude Include="BossAttackData.h" />

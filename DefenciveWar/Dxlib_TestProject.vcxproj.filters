@@ -72,6 +72,9 @@
     <Filter Include="ソース ファイル\EnemyAi\Judgment">
       <UniqueIdentifier>{6b1b167c-3de0-4117-b2d1-21e4bf287bf7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\Ground">
+      <UniqueIdentifier>{71adbfe9-223f-494d-848d-6b8afebd08ae}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -127,9 +130,6 @@
     </ClCompile>
     <ClCompile Include="Mover.cpp">
       <Filter>ソース ファイル\Base</Filter>
-    </ClCompile>
-    <ClCompile Include="Ground.cpp">
-      <Filter>ソース ファイル</Filter>
     </ClCompile>
     <ClCompile Include="Shield.cpp">
       <Filter>ソース ファイル\Shield</Filter>
@@ -211,6 +211,18 @@
     </ClCompile>
     <ClCompile Include="JudgmentBase.cpp">
       <Filter>ソース ファイル\EnemyAi\Judgment</Filter>
+    </ClCompile>
+    <ClCompile Include="ActStomp.cpp">
+      <Filter>ソース ファイル\EnemyAi\Action</Filter>
+    </ClCompile>
+    <ClCompile Include="Ground.cpp">
+      <Filter>ソース ファイル\Ground</Filter>
+    </ClCompile>
+    <ClCompile Include="BackgroundCube.cpp">
+      <Filter>ソース ファイル\Ground</Filter>
+    </ClCompile>
+    <ClCompile Include="BackgroundCubeManager.cpp">
+      <Filter>ソース ファイル\Ground</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -302,9 +314,6 @@
       <Filter>ソース ファイル\FilePath</Filter>
     </ClInclude>
     <ClInclude Include="ModelManager.h">
-      <Filter>ソース ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="Ground.h">
       <Filter>ソース ファイル</Filter>
     </ClInclude>
     <ClInclude Include="EfkEffect.h">
@@ -402,6 +411,18 @@
     </ClInclude>
     <ClInclude Include="JudgmentBase.h">
       <Filter>ソース ファイル\EnemyAi\Judgment</Filter>
+    </ClInclude>
+    <ClInclude Include="ActStomp.h">
+      <Filter>ソース ファイル\EnemyAi\Action</Filter>
+    </ClInclude>
+    <ClInclude Include="Ground.h">
+      <Filter>ソース ファイル\Ground</Filter>
+    </ClInclude>
+    <ClInclude Include="BackgroundCube.h">
+      <Filter>ソース ファイル\Ground</Filter>
+    </ClInclude>
+    <ClInclude Include="BackgroundCubeManager.h">
+      <Filter>ソース ファイル\Ground</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
