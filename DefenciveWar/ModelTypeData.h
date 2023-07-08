@@ -10,6 +10,7 @@ enum class ModelType
 	Ground,
 	Bullet,
 	EnemyBullet,
+	BgCube,
 
 	ModelAmount,
 };

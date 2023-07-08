@@ -43,10 +43,10 @@ void Mover::ModifyingPosition()
 void Mover::MoveFinish()
 {
 	// ’n–Ê‚ð‚·‚è”²‚¯‚È‚¢‚æ‚¤‚É‚·‚é
-	if (param.nextPos.y <= 0)
-	{
-		param.nextPos.y = 0;
-	}
+	//if (param.nextPos.y <= 0)
+	//{
+	//	param.nextPos.y = 0;
+	//}
 
 	param.prevPos = param.pos;
 	param.pos = param.nextPos;

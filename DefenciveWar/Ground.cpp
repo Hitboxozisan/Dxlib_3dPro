@@ -3,9 +3,11 @@
 #include "ModelManager.h"
 #include "Singleton.h"
 #include "ModelTypeData.h"
+#include "BackgroundCubeManager.h"
 
 Ground::Ground()
 	:modelMgr(Singleton<ModelManager>::GetInstance())
+	, bgCubeMgr(new BackgroundCubeManager(ModelType::BgCube))
 {
 }
 
@@ -24,10 +26,17 @@ void Ground::Initialize()
 	MV1SetPosition(modelHandle, pos);
 }
 
+void Ground::Update()
+{
+	bgCubeMgr->Update();
+}
+
 void Ground::Draw()
 {
 	// 背景画像描画（エフェクトを描画するため）
 	DrawGraph(0, 0, ImageHandle, TRUE);
+
+	bgCubeMgr->Draw();
 
 	// ステージライン（線、位置）
 	// →、上

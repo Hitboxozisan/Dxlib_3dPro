@@ -73,10 +73,12 @@ void SceneGame::Update()
 
 	// “–‚½‚è”»’èˆ—
 	collideMgr.Update();
+	ground->Update();
 	uiMgr.Update();
 	effectMgr.Update(player->GetPos());
 	bulletMgr.Update();
 	enemyBulletMgr.Update();
+	
 }
 
 void SceneGame::Draw()

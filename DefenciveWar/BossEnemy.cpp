@@ -73,6 +73,12 @@ void BossEnemy::Update()
 		exist = false;
 	}
 	
+	// ’n–Ê‚ð‚·‚è”²‚¯‚È‚¢‚æ‚¤‚É‚·‚é
+	if (param.nextPos.y <= 0)
+	{
+		param.nextPos.y = 0;
+	}
+
 
 	// ˆÊ’uC³
 	ModifyingPosition();

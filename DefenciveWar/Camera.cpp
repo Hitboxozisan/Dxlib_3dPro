@@ -2,6 +2,8 @@
 
 Camera::Camera()
 {
+	// •`‰æ‹——£‚ğİ’è
+	SetCameraNearFar(1, 1000);
 }
 
 Camera::~Camera()

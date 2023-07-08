@@ -47,6 +47,8 @@ void ModelManager::LoadAllModel()
 		{
 			printfDx("Error_Model[%d]\n", i);
 		}
+		// モデルのサイズを別途指定しておく
+		MV1SetScale(modelHandle[i], VGet(1, 1, 1));
 	}
 }
 

@@ -14,5 +14,6 @@ namespace ModelData
 		{ModelType::Ground, "Data/Model/Ground/Ground.mv1"},
 		{ModelType::Bullet, "Data/Model/Bullet/PlayerBullet.mv1"},
 		{ModelType::EnemyBullet, "Data/Model/Bullet/PlayerBullet.mv1"},
+		{ModelType::BgCube, "Data/Model/Ground/BackgroundCube.mv1"},
 	};
 }

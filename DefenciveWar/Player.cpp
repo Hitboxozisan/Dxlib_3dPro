@@ -69,6 +69,21 @@ void Player::Update()
 		exist = false;
 	}
 
+	// ’n–Ê‚ð‚·‚è”²‚¯‚È‚¢‚æ‚¤‚É‚·‚é
+	if (param.nextPos.y <= 0)
+	{
+		param.nextPos.y = 0;
+	}
+
+	if (key.CheckPressed(KEY_INPUT_0))
+	{
+		param.nextPos.y += 1;
+	}
+	if (key.CheckPressed(KEY_INPUT_1))
+	{
+		param.nextPos.y -= 1;
+	}
+
 	// ÚG‚µ‚½ê‡
 	if (isHit)
 	{
