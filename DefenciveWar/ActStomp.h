@@ -13,6 +13,6 @@ public:
 	bool IsContinue();
 
 private:
-
+	bool HitTarget();
 };
 

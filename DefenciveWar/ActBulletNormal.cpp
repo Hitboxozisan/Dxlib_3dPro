@@ -33,3 +33,11 @@ bool ActBulletNormal::IsContinue()
 {
     return true;
 }
+
+
+bool ActBulletNormal::HitTarget()
+{
+
+
+    return false;
+}

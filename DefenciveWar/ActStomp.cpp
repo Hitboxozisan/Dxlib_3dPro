@@ -34,3 +34,8 @@ bool ActStomp::IsContinue()
 {
     return true;
 }
+
+bool ActStomp::HitTarget()
+{
+    return false;
+}

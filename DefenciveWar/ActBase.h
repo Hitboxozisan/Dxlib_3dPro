@@ -17,6 +17,7 @@ public:
 	virtual bool IsExecutabel() = 0;	// Às‰Â”\‚©
 	virtual bool IsContinue() = 0;		// Às‚ğ‘±‚¯‚é‚©
 protected:
+	virtual bool HitTarget() = 0;		// ‘ÎÛ‚ÆÚG‚µ‚½ê‡
 	BossEnemy* enemy;
 
 private:

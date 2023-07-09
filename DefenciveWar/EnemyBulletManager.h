@@ -19,10 +19,12 @@ public:
 
 	void CreateBullet(VECTOR pos, VECTOR dir, float shotSpeed, ModelType mt);
 	void CreateBulletShotGun(VECTOR actorPos, VECTOR actorDir, float shotSpeed, ModelType mt);
+	bool IsHitPlayer();
+	
 	class Bullet* GetUnUseBullet();
 
 private:
-	const int BULLET_POOL_SIZE = 100;		// –‘O‚Éì‚Á‚Ä‚¨‚­’e‚Ì”
+	const int BULLET_POOL_SIZE = 10;		// –‘O‚Éì‚Á‚Ä‚¨‚­’e‚Ì”
 
 	std::vector<Bullet*> bullets;
 };

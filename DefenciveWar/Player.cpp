@@ -75,15 +75,6 @@ void Player::Update()
 		param.nextPos.y = 0;
 	}
 
-	if (key.CheckPressed(KEY_INPUT_0))
-	{
-		param.nextPos.y += 1;
-	}
-	if (key.CheckPressed(KEY_INPUT_1))
-	{
-		param.nextPos.y -= 1;
-	}
-
 	// 接触した場合
 	if (isHit)
 	{
@@ -102,22 +93,24 @@ void Player::Update()
 			invincibleTime->Reset();
 		}
 	}
-
-	// 弾発射処理
-	Shot();
-
-	// シールド処理
-	CreateShield();
-	shield->Update(param.pos);
+	
+	
 
 	// ダメージを受けた場合は移動を制限する
 	if (VSize(force) == 0)
 	{
 		// 移動処理
 		Move();
+		// 弾発射処理
+		Shot();
+		// シールド処理
+		CreateShield();
+		// シールド更新処理
+		shield->Update(param.pos);
 	}
 	else
 	{
+
 		Sliding();
 	}
 	
@@ -150,6 +143,7 @@ void Player::Draw()
 void Player::HitObject(Collision* other)
 {
 	VECTOR sub;
+	
 
 	if (other->GetTag() == CollisionTag::Enemy && !isHit)
 	{
@@ -159,13 +153,11 @@ void Player::HitObject(Collision* other)
 
 		// 体力の減少
 		hp -= DECREMENT_HP;
-
-		// 跳ね返る力を設定
-		 // 跳ね返る向きを設定
+		// 跳ね返る向きを設定
 		sub = VSub(param.pos, other->GetPos());
-		 // 正規化
+		// 正規化
 		force = VNorm(sub);
-		 // 力の大きさを設定
+		// 力の大きさを設定
 		force = VScale(force, BOUND_POWER);
 
 		isHit = true;
@@ -173,7 +165,23 @@ void Player::HitObject(Collision* other)
 
 	if (other->GetTag() == CollisionTag::EnemyBullet && !isHit)
 	{
+		// 体力の減少
+		hp -= DECREMENT_HP;
+		// 跳ね返る向きを設定
+		sub = VSub(param.pos, other->GetPos());
+		// 正規化
+		force = VNorm(sub);
+		// 力の大きさを設定
+		force = VScale(force, BOUND_POWER);
 
+		isHit = true;
+	}
+
+	// シールドが接触した場合
+	if (shield->IsHit())
+	{
+		// 力の大きさを設定
+		// force = VScale(force, 0.5f);
 	}
 }
 
@@ -262,12 +270,13 @@ void Player::CreateShield()
 bool Player::Sliding()
 {
 	float delta = deltaTime.GetDeltaTime();
+	// 進行方向とは逆向きの力を設定
 	VECTOR friction = force;
 	friction = VNorm(friction);
 	friction = VScale(friction, REBOUND_RESISTANCE);
 
 	force = VAdd(force, VScale(friction, delta));
-	param.nextPos = VAdd(param.nextPos, force);
+	param.nextPos = VAdd(param.nextPos, VScale(force, delta));
 	
 	// 反発力が 0 を下回ったら終了する
 	if (VSize(force) <= 0)

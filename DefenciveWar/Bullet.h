@@ -9,7 +9,7 @@
 class Bullet : public Mover
 {
 public:
-	Bullet(CollisionTag tag);
+	Bullet(CollisionTag tag, CollisionTag bulletUser);
 	~Bullet();
 
 	void Initialize(ModelType mt);
@@ -18,6 +18,7 @@ public:
 
 	void Create(VECTOR pos, VECTOR dir, float shotSpeed);
 	void HitObject(Collision* other) override;
+	const bool IsHit() const { return isHit; }
 
 private:
 	const float COLLIDE_RADIUS = 1.0f;			// 当たり判定球半径
@@ -26,6 +27,8 @@ private:
 	class EffectManager& effectMgr;
 
 	float speed;
+	bool isHit;
+	CollisionTag user;			// 弾の所有者
 
 	void Move();
 	void OutOfStage();			// ステージ外処理

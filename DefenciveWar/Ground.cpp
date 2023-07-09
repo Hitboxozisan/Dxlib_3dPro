@@ -28,7 +28,7 @@ void Ground::Initialize()
 
 void Ground::Update()
 {
-	bgCubeMgr->Update();
+	//bgCubeMgr->Update();
 }
 
 void Ground::Draw()
@@ -36,7 +36,7 @@ void Ground::Draw()
 	// 背景画像描画（エフェクトを描画するため）
 	DrawGraph(0, 0, ImageHandle, TRUE);
 
-	bgCubeMgr->Draw();
+	//bgCubeMgr->Draw();
 
 	// ステージライン（線、位置）
 	// →、上

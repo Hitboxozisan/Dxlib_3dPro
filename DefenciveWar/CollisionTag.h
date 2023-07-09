@@ -7,6 +7,5 @@ enum class CollisionTag
 	PlayerShield,
 	Enemy,
 	EnemyBullet,
-	Shield,
 	BgCube,
 };

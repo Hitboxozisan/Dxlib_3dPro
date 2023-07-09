@@ -4,10 +4,11 @@
 #include "EffectManager.h"
 #include "DeltaTime.h"
 
-Bullet::Bullet(CollisionTag tag)
+Bullet::Bullet(CollisionTag tag, CollisionTag bulletUser)
 	:modelMgr(Singleton<ModelManager>::GetInstance())
 	,effectMgr(Singleton<EffectManager>::GetInstance())
 	,Mover(tag)
+	,user(bulletUser)
 {
 	param.collision->data.radius = 10;
 }
@@ -22,6 +23,7 @@ void Bullet::Initialize(ModelType mt)
 	param.dir = ZERO_VECTOR;
 	param.collision->exist = false;
 	exist = false;
+	isHit = false;
 
 	// モデルの読み込み
 	modelHandle = MV1DuplicateModel(modelMgr.GetModelHandle(mt));
@@ -62,6 +64,7 @@ void Bullet::Create(VECTOR pos, VECTOR dir, float shotSpeed)
 	speed = shotSpeed;
 	param.collision->exist = true;
 	exist = true;
+	isHit = false;
 }
 
 void Bullet::HitObject(Collision* other)
@@ -71,12 +74,32 @@ void Bullet::HitObject(Collision* other)
 	//	return;
 	//}
 
-	if (other->GetTag() == CollisionTag::Enemy)
+	// エネミーの場合
+	if (other->GetTag() == CollisionTag::Enemy &&
+		other->GetTag() != user)
 	{
 		// エフェクトの再生
 
 		param.collision->exist = false;
 		exist = false;
+		isHit = true;
+	}
+
+	// プレイヤーの場合
+	if (other->GetTag() == CollisionTag::Player &&
+		other->GetTag() != user)
+	{
+		param.collision->exist = false;
+		exist = false;
+		isHit = true;
+	}
+
+	// シールドの場合
+	if (other->GetTag() == CollisionTag::PlayerShield)
+	{
+		param.collision->exist = false;
+		exist = false;
+		isHit = true;
 	}
 }
 

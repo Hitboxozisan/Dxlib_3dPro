@@ -16,7 +16,8 @@ void BulletManager::Initialize()
 	// サイズ分弾を確保
 	for (int i = 0; i < BULLET_POOL_SIZE; i++)
 	{
-		Bullet* bullet = new Bullet(CollisionTag::PlayerBullet);
+		Bullet* bullet = new Bullet(CollisionTag::PlayerBullet, CollisionTag::Player);
+		bullet->Initialize(ModelType::Bullet);
 		bullets.push_back(bullet);
 	}
 }
@@ -52,7 +53,7 @@ void BulletManager::CreateBullet(VECTOR pos, VECTOR dir, float shotSpeed, ModelT
 		// 使用可能な弾がない場合は新たに生成
 		if (bullet == nullptr)
 		{
-			bullets.push_back(new Bullet(CollisionTag::PlayerBullet));
+			bullets.push_back(new Bullet(CollisionTag::PlayerBullet, CollisionTag::Player));
 			bullets.back()->Initialize(mt);
 			bullets.back()->Create(pos, dir, shotSpeed);
 			break;

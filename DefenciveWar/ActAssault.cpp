@@ -17,13 +17,21 @@ ActAssault::~ActAssault()
 /// <returns></returns>
 ActAssault::State ActAssault::Run()
 {
-	if (enemy->AttackAssault())
-	{
-		return ActBase::State::Complete;
-	}
+	// ÚG‚µ‚½ê‡‚ÍÚGˆ—‚ðs‚Á‚½ŒãŒ‹‰Ê‚ð•Ô‚·
 	if (enemy->IsHit())
 	{
-		return ActBase::State::Failed;
+		if (enemy->Sliding())
+		{
+			return ActBase::State::Failed;
+		}
+	}
+	// ÚG‚µ‚Ä‚¢‚È‚¢ŠÔ‚ÍUŒ‚s“®‚ðŒJ‚è•Ô‚·
+	else
+	{
+		if (enemy->AttackAssault())
+		{
+			return ActBase::State::Complete;
+		}
 	}
 
 	return ActBase::State::Run;
@@ -45,4 +53,9 @@ bool ActAssault::IsExecutabel()
 bool ActAssault::IsContinue()
 {
 	return true;
+}
+
+bool ActAssault::HitTarget()
+{
+	return false;
 }

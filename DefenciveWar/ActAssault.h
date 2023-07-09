@@ -12,5 +12,6 @@ public:
 	bool IsExecutabel();
 	bool IsContinue();
 private:
+	bool HitTarget();
 };
 

@@ -7,6 +7,7 @@ Collision::Collision(class ObjectBase* obj, const CollisionTag tag)
 	,collideTag(tag)
 	,exist(true)
 {
+	data.pos = COLLIDE_SAFE_POS;
 }
 
 Collision::~Collision()

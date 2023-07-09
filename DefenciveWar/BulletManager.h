@@ -21,7 +21,7 @@ public:
 	class Bullet* GetUnUseBullet();
 
 private:
-	const int BULLET_POOL_SIZE = 10;		// –‘O‚Éì‚Á‚Ä‚¨‚­’e‚Ì”
+	const int BULLET_POOL_SIZE = 20;		// –‘O‚Éì‚Á‚Ä‚¨‚­’e‚Ì”
 
 	std::vector<Bullet*> bullets;
 };

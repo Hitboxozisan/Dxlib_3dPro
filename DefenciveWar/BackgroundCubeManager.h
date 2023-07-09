@@ -19,7 +19,7 @@ public:
 	void CreateCube();
 
 private:
-	const int CUBE_POOL_SIZE = 15;				// 画面に描画するキューブの総数
+	const int CUBE_POOL_SIZE = 30;				// 画面に描画するキューブの総数
 
 	class Random& random;
 

@@ -15,8 +15,8 @@ const int SCREEN_RIGHTMOST = 2850;					// 画面右端座標
 
 const float FIELD_POSITION_NORTH =  290.0f;		    // ステージ北端
 const float FIELD_POSITION_SOUTH = -290.0f;			// ステージ南端
-const float FIELD_POSITION_EAST  =  290.0f;		    // ステージ西端
-const float FIELD_POSITION_WEST  = -290.0f;		    // ステージ東端
+const float FIELD_POSITION_EAST  =  290.0f;		    // ステージ東端
+const float FIELD_POSITION_WEST  = -290.0f;		    // ステージ西端
 
 // 画面中心座標
 const int SCREEN_CENTER = ((SCREEN_RIGHTMOST - SCREEN_LEFTMOST) / 2) + SCREEN_LEFTMOST;

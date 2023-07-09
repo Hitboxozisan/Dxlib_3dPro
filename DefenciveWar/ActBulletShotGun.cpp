@@ -33,3 +33,8 @@ bool ActBulletShotGun::IsContinue()
 {
 	return true;
 }
+
+bool ActBulletShotGun::HitTarget()
+{
+	return false;
+}

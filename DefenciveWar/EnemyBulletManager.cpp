@@ -16,7 +16,8 @@ void EnemyBulletManager::Initialize()
 	// サイズ分弾を確保
 	for (int i = 0; i < BULLET_POOL_SIZE; i++)
 	{
-		Bullet* bullet = new Bullet(CollisionTag::EnemyBullet);
+		Bullet* bullet = new Bullet(CollisionTag::EnemyBullet, CollisionTag::Enemy);
+		bullet->Initialize(ModelType::EnemyBullet);
 		bullets.push_back(bullet);
 	}
 }
@@ -56,7 +57,7 @@ void EnemyBulletManager::CreateBullet(VECTOR pos, VECTOR dir, float shotSpeed, M
 		// 使用可能な弾がない場合は新たに生成
 		if (bullet == nullptr)
 		{
-			bullets.push_back(new Bullet(CollisionTag::EnemyBullet));
+			bullets.push_back(new Bullet(CollisionTag::EnemyBullet, CollisionTag::Enemy));
 			bullets.back()->Initialize(mt);
 			bullets.back()->Create(pos, dir, shotSpeed);
 			break;
@@ -95,6 +96,19 @@ void EnemyBulletManager::CreateBulletShotGun(VECTOR actorPos, VECTOR actorDir, f
 	CreateBullet(centerPos, actorDir, shotSpeed, mt);
 	CreateBullet(rightPos, rightDir, shotSpeed, mt);
 	CreateBullet(leftPos, leftDir, shotSpeed, mt);
+}
+
+bool EnemyBulletManager::IsHitPlayer()
+{
+	for (auto bullet : bullets)
+	{
+		if (bullet->IsHit())
+		{
+			return true;
+		}
+	}
+
+	return false;
 }
 
 /// <summary>

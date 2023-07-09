@@ -79,7 +79,6 @@ void BossEnemy::Update()
 		param.nextPos.y = 0;
 	}
 
-
 	// 位置修正
 	ModifyingPosition();
 
@@ -114,20 +113,10 @@ void BossEnemy::HitObject(Collision* other)
 	}
 
 	// シールド
-	if (other->GetTag() == CollisionTag::Shield)
+	if (other->GetTag() == CollisionTag::PlayerShield && !isHit)
 	{
-		float decrease;
-
 		// ゲージの上昇
-		if (player->GetShield()->IsJustDefense())
-		{
-			// ジャストガードの場合は増加量を2倍にする
-			trunkpoint += GetDecreaseMagnification() * 2;
-		}
-		else
-		{
-			trunkpoint += GetDecreaseMagnification();
-		}
+		IncrementTrunkpoint();
 
 		// 跳ね返る力を設定
 		sub = VSub(param.pos, other->GetPos());
@@ -135,6 +124,13 @@ void BossEnemy::HitObject(Collision* other)
 		force = VScale(force, BOUND_POWER);
 
 		isHit = true;
+	}
+
+	// 弾の接触処理
+	if (bulletMgr.IsHitPlayer())
+	{
+		// ゲージの上昇
+		IncrementTrunkpoint();
 	}
 }
 
@@ -348,6 +344,26 @@ void BossEnemy::Stomp()
 }
 
 /// <summary>
+/// 
+/// </summary>
+void BossEnemy::IncrementTrunkpoint()
+{
+	
+
+	// ゲージの上昇
+	if (player->GetShield()->IsJustDefense())
+	{
+		// ジャストガードの場合は増加量を2倍にする
+		trunkpoint += GetDecreaseMagnification() * 2;
+	}
+	else
+	{
+		trunkpoint += GetDecreaseMagnification();
+	}
+
+}
+
+/// <summary>
 /// 減少量を返す
 /// </summary>
 /// <returns></returns>
@@ -453,18 +469,19 @@ bool BossEnemy::Vibrate()
 bool BossEnemy::Sliding()
 {
 	float delta = deltaTime.GetDeltaTime();
+	// 進行方向とは逆向きの力を設定
 	VECTOR friction = force;
 	friction = VNorm(friction);
 	friction = VScale(friction, REBOUND_RESISTANCE);
 
 	force = VAdd(force, VScale(friction, delta));
-	param.nextPos = VAdd(param.nextPos, force);
+	param.nextPos = VAdd(param.nextPos, VScale(force, delta));
 
 	// 反発力が 0 を下回ったら終了する
 	if (VSize(force) <= 0)
 	{
 		force = ZERO_VECTOR;
-		isHit = true;
+		isHit = false;
 		return true;
 	}
 

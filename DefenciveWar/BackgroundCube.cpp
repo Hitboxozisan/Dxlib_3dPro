@@ -27,22 +27,37 @@ void BackgroundCube::Initialize()
 	param.dir = ZERO_VECTOR;
 	param.collision->exist = false;
 	exist = false;
+
+	size = 1.5f;
+	addSize = 0.5f;
+	add = addSize;
 }
 
-void BackgroundCube::Create(VECTOR pos, VECTOR dir, float moveSpeed)
+void BackgroundCube::Create(VECTOR pos, VECTOR dir, float moveSpeed, float scale)
 {
 	param.nextPos = pos;
 	param.pos = pos;
 	speed = moveSpeed;
+	size = scale;
 	exist = true;
 }
 
 void BackgroundCube::Update()
 {
+	float delta = deltaTime.GetDeltaTime();
+	// サイズが規定値を超えたら
+	if (size + add * delta >= 2.0f) add = -addSize;
+	if (size + add * delta <= 1.0f) add = addSize;
+
+	// モデルのサイズを変更する
+	size += add * delta;
+	MV1SetScale(modelHandle, VGet(size, size, size));
+
+
 	// 移動処理
 	Move();
 	// 画面外処理
-	//OutOfWindow();
+	OutOfWindow();
 	// 位置の設定
 	MoveFinish();
 
@@ -52,6 +67,8 @@ void BackgroundCube::Draw()
 {
 	// モデルの描画
 	MV1DrawModel(modelHandle);
+
+	DrawFormatString(500, 500, WHITE, "%f", addSize);
 }
 
 void BackgroundCube::Move()
@@ -65,5 +82,9 @@ void BackgroundCube::Move()
 void BackgroundCube::OutOfWindow()
 {
 	// 画面外に出た場合存在を消去する
-	exist = false;
+	if (param.nextPos.x <= FIELD_POSITION_WEST)
+	{
+		exist = false;
+	}
+
 }

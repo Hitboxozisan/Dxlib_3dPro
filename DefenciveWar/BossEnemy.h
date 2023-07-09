@@ -21,6 +21,7 @@ public:
 	bool AttackAssault();
 	bool AttackShotBullet(bool isNormal);
 	bool AttackStomp();
+	bool Sliding();							// 滑る
 
 	const float GetTrunkPoint() { return trunkpoint; }
 	const bool IsTrunkHarfOver();
@@ -30,8 +31,8 @@ private:
 	const float  VIBRATE_MAX = 150.0f;				// 振動振れ幅最大値
 	const float  VIBRATE_MIN = -150.0f;				// 振動振れ幅最大値
 	const float ASSAULT_DISTANCE = 300.0f;
-	const float BOUND_POWER = 1.0f;					// 跳ね返す力
-	const float REBOUND_RESISTANCE = -1.0f;
+	const float BOUND_POWER = 200.0f;					// 跳ね返す力
+	const float REBOUND_RESISTANCE = -200.0f;
 
 	class Random& random;
 	class ModelManager& modelMgr;
@@ -50,14 +51,15 @@ private:
 	VECTOR startAssaultPos;
 	VECTOR stompVec;
 	
-	void AssaultToPlayer();
-	void ShotBullet(bool isNormal);
-	void FaceToPlayer();
-	void Stomp();
-	float GetDecreaseMagnification();
-	void MoveOnTarget(VECTOR target);
-	bool Vibrate();
-	bool Sliding();
+	void AssaultToPlayer();								// プレイヤーに向かって突進する
+	void ShotBullet(bool isNormal);						// 弾を発射する
+	void FaceToPlayer();								// プレイヤーの方向を向く
+	void Stomp();										// 踏みつけ攻撃
+	void IncrementTrunkpoint();							// trunkpointの増加
+	float GetDecreaseMagnification();					// trunkpoint増加倍率を取得
+	void MoveOnTarget(VECTOR target);					// 対象の真上に移動する
+	bool Vibrate();										// 振動する
+	
 
 	State state;
 	std::map<TimerType, class Timer*> timer;
