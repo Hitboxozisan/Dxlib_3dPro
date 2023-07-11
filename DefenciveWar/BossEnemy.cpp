@@ -122,7 +122,12 @@ void BossEnemy::HitObject(Collision* other)
 		sub = VSub(param.pos, other->GetPos());
 		force = VNorm(sub);
 		force = VScale(force, BOUND_POWER);
-
+		// ‹ó’†‚É‚¢‚é‚©‚Ç‚¤‚©‚Å—Í‚ðÝ’è
+		if (param.pos.y > 0)
+		{
+			force;
+		}
+		
 		isHit = true;
 	}
 
@@ -525,9 +530,9 @@ void BossEnemy::SetupBehavior()
 
 	aiMgr->EntryNode("Root", "", 1, 1, BehaviorTree::SelectRule::Priority, NULL);
 	aiMgr->EntryNode("Attack", "Root", 2, 1, BehaviorTree::SelectRule::Sequence, NULL);
-	aiMgr->EntryNode("Assault", "Attack", 3, 1, BehaviorTree::SelectRule::None, new ActAssault(this));
+	//aiMgr->EntryNode("Assault", "Attack", 3, 1, BehaviorTree::SelectRule::None, new ActAssault(this));
 	//aiMgr->EntryNode("Bullet", "Attack", 3, 2, BehaviorTree::SelectRule::Random, NULL);
-	//aiMgr->EntryNode("Stomp", "Attack", 3, 3, BehaviorTree::SelectRule::None, new ActStomp(this));
+	aiMgr->EntryNode("Stomp", "Attack", 3, 3, BehaviorTree::SelectRule::None, new ActStomp(this));
 	//aiMgr->EntryNode("BulletNormal", "Bullet", 4, 1, BehaviorTree::SelectRule::None, new ActBulletNormal(this));
 	//aiMgr->EntryNode("BulletShotGun", "Bullet", 4, 1, BehaviorTree::SelectRule::None, new ActBulletShotGun(this));
 }
