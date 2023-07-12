@@ -6,7 +6,7 @@
     "Speed":100,
     "AssaultSpeed":400,
     "BulletSpeed":400,
-    "StompSpeed":10,
+    "StompVecY":800,
     "AssaultCount":1,
     "ShotCount":3,
     "StompCount":1,

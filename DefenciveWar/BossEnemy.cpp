@@ -113,7 +113,7 @@ void BossEnemy::HitObject(Collision* other)
 	}
 
 	// シールド
-	if (other->GetTag() == CollisionTag::PlayerShield && !isHit)
+	if (other->GetTag() == CollisionTag::PlayerShield && !isHit && isAttacking)
 	{
 		// ゲージの上昇
 		IncrementTrunkpoint();
@@ -121,11 +121,20 @@ void BossEnemy::HitObject(Collision* other)
 		// 跳ね返る力を設定
 		sub = VSub(param.pos, other->GetPos());
 		force = VNorm(sub);
-		force = VScale(force, BOUND_POWER);
-		// 空中にいるかどうかで力を設定
+		force.y = 0;
+		// 空中にいる場合
 		if (param.pos.y > 0)
 		{
-			force;
+			force.y = 1;
+			//force.x *= BOUND_POWER_AIR;
+			//force.y *= BOUND_POWER_AIR;
+			//force.z *= BOUND_POWER_AIR;
+			force = VScale(force, BOUND_POWER_AIR);
+		}
+		// 地上にいる場合
+		else
+		{
+			force = VScale(force, BOUND_POWER);
 		}
 		
 		isHit = true;
@@ -152,18 +161,22 @@ bool BossEnemy::AttackAssault()
 	{
 		if (Vibrate())
 		{
+			// プレイヤーのシールドに反応できるようにする
+			isAttacking = true;
 			AssaultToPlayer();
 		}
 		else
 		{
+			// 行動準備中はシールドでの不正を阻止
+			isAttacking = false;
 			FaceToPlayer();
 		}
-
 		return false;
 	}
 	
 	// 次回行動するためにカウントをリセットする
 	assaultCount = 0;
+	isAttacking = false;
 	return true;
 }
 
@@ -211,6 +224,7 @@ bool BossEnemy::AttackStomp()
 		{
 			if (Vibrate())
 			{
+				isAttacking = true;
 				// 移動したら踏みつけ攻撃を行う
 				Stomp();
 			}
@@ -224,6 +238,7 @@ bool BossEnemy::AttackStomp()
 		if (param.nextPos.y <= 0)
 		{
 			param.nextPos.y = 0;
+			isAttacking = false;
 			isGround = true;
 		}
 
@@ -251,6 +266,7 @@ bool BossEnemy::AttackStomp()
 	}
 
 	stompCount = 0;
+	isAttacking = true;
 	return true;
 }
 
@@ -341,10 +357,11 @@ void BossEnemy::FaceToPlayer()
 /// </summary>
 void BossEnemy::Stomp()
 {
-	float fallVec = json.GetFloat(JsonDataType::BossEnemy, "StompSpeed");
-	stompVec.y -= fallVec;
+	float delta = deltaTime.GetDeltaTime();
+	float fallVec = json.GetFloat(JsonDataType::BossEnemy, "StompVecY");
+	stompVec.y -= fallVec * delta;
 
-	param.nextPos = VAdd(param.nextPos, VScale(stompVec, deltaTime.GetDeltaTime()));
+	param.nextPos = VAdd(param.nextPos, VScale(stompVec, delta));
 
 }
 
@@ -482,9 +499,46 @@ bool BossEnemy::Sliding()
 	force = VAdd(force, VScale(friction, delta));
 	param.nextPos = VAdd(param.nextPos, VScale(force, delta));
 
+	//空中にいる場合は下向きの力を追加する
+	if (param.pos.y > 0)
+	{
+		param.nextPos.y -= GRAVITY * delta;
+	}
+
 	// 反発力が 0 を下回ったら終了する
 	if (VSize(force) <= 0)
 	{
+		force = ZERO_VECTOR;
+		isHit = false;
+		return true;
+	}
+
+	return false;
+}
+
+/// <summary>
+/// 跳ね返り
+/// </summary>
+/// <returns></returns>
+bool BossEnemy::Bounding()
+{
+	float delta = deltaTime.GetDeltaTime();
+	// 進行方向とは逆向きの力を設定
+	VECTOR friction = force;
+	friction = VNorm(friction);
+	friction = VScale(friction, REBOUND_RESISTANCE);
+
+	force = VAdd(force, VScale(friction, delta));
+	param.nextPos = VAdd(param.nextPos, VScale(force, delta));
+
+	//空中にいる場合は下向きの力を追加する
+	if (param.pos.y > 0)
+	{
+		param.nextPos.y -= GRAVITY * delta;
+	}
+	else
+	{
+		param.pos.y = 0;
 		force = ZERO_VECTOR;
 		isHit = false;
 		return true;

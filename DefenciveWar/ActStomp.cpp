@@ -12,14 +12,22 @@ ActStomp::~ActStomp()
 
 ActBase::State ActStomp::Run()
 {
-    if (enemy->AttackStomp())
-    {
-        return ActBase::State::Complete;
-    }
-
+ 
+    // ÚG‚µ‚½ê‡‚ÍÚGˆ—‚ðs‚Á‚½ŒãŒ‹‰Ê‚ð•Ô‚·
     if (enemy->IsHit())
     {
-        return ActBase::State::Failed;
+        if (enemy->Bounding())
+        {
+            return ActBase::State::Failed;
+        }
+    }
+    // ÚG‚µ‚Ä‚¢‚È‚¢ŠÔ‚ÍUŒ‚s“®‚ðŒJ‚è•Ô‚·
+    else
+    {
+        if (enemy->AttackStomp())
+        {
+            return ActBase::State::Complete;
+        }
     }
 
     return ActBase::State::Run;

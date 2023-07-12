@@ -29,6 +29,7 @@ public:
 	class BossEnemy* GetBossEnemy() { return boss; }
 
 private:
+	const float FINISH_GAME_WAIT_TIME = 1.0f;	// €–S‚Ì’â~ŠÔ
 
 	State state;
 
@@ -40,9 +41,11 @@ private:
 	class Font& font;
 	class UiManager& uiMgr;
 	class HitChacker& collideMgr;
+	class DeltaTime& deltaTime;
 		  Player* player;
 	class Ground* ground;
 		  BossEnemy* boss;
+	class Timer* waitTimer;						// €–S‚ÌƒQ[ƒ€‚ğ’â~‚³‚¹‚éƒ^ƒCƒ}[
 
 	void PauseScene();
 };

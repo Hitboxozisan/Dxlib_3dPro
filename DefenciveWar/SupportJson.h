@@ -18,6 +18,7 @@ public:
 	void Load();
 	void Entry(JsonDataType type, const char* datakey, float index);
 
+	void SetFloat(JsonDataType type, const char* dataKey, const char* indexString = nullptr, int index = -1, float insertValue = 0);
 	int GetInt(JsonDataType type, const char* dataKey, const char* indexString = nullptr, int index = -1);
 	float GetFloat(JsonDataType type, const char* dataKey, const char* indexString = nullptr, int index = -1);
 	VECTOR GetVector(JsonDataType type, const char* dataKey, const char* indexString = nullptr, int index = -1);

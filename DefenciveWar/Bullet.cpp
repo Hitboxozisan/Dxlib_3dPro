@@ -119,7 +119,7 @@ void Bullet::OutOfStage()
 {
 	if (param.pos.x >= FIELD_POSITION_NORTH ||
 		param.pos.x <= FIELD_POSITION_SOUTH ||
-		param.pos.z >= FIELD_POSITION_EAST ||
+		param.pos.z >= FIELD_POSITION_EAST  ||
 		param.pos.z <= FIELD_POSITION_WEST)
 	{
 		// エフェクトの再生

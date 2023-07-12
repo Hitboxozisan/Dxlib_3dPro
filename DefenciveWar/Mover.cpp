@@ -19,24 +19,24 @@ void Mover::Initialize()
 
 void Mover::ModifyingPosition()
 {
-	float x = param.pos.x;
-	float z = param.pos.z;
+	float x = param.nextPos.x;
+	float z = param.nextPos.z;
 
 	if (x <= FIELD_POSITION_WEST)
 	{
-		param.pos = VGet(FIELD_POSITION_WEST, GetPos().y, GetPos().z);
+		param.nextPos = VGet(FIELD_POSITION_WEST, GetPos().y, GetPos().z);
 	}
 	if (x >= FIELD_POSITION_EAST)
 	{
-		param.pos = VGet(FIELD_POSITION_EAST, GetPos().y, GetPos().z);
+		param.nextPos = VGet(FIELD_POSITION_EAST, GetPos().y, GetPos().z);
 	}
 	if (z <= FIELD_POSITION_SOUTH)
 	{
-		param.pos = VGet(GetPos().x, GetPos().y, FIELD_POSITION_SOUTH);
+		param.nextPos = VGet(GetPos().x, GetPos().y, FIELD_POSITION_SOUTH);
 	}
 	if (z >= FIELD_POSITION_NORTH)
 	{
-		param.pos = VGet(GetPos().x, GetPos().y, FIELD_POSITION_NORTH);
+		param.nextPos = VGet(GetPos().x, GetPos().y, FIELD_POSITION_NORTH);
 	}
 }
 

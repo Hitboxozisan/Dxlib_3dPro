@@ -74,7 +74,7 @@ void Shield::Update(VECTOR shieldPos)
 		stanTimer->Update(deltaTime.GetDeltaTime());
 		if (stanTimer->IsTimeout())
 		{
-			stanTimer->IsTimeout();
+			stanTimer->Reset();
 			isBreak = false;
 		}
 	}

@@ -22,6 +22,7 @@ public:
 	bool AttackShotBullet(bool isNormal);
 	bool AttackStomp();
 	bool Sliding();							// 滑る
+	bool Bounding();				// 跳ね返り
 
 	const float GetTrunkPoint() { return trunkpoint; }
 	const bool IsTrunkHarfOver();
@@ -31,7 +32,9 @@ private:
 	const float  VIBRATE_MAX = 150.0f;				// 振動振れ幅最大値
 	const float  VIBRATE_MIN = -150.0f;				// 振動振れ幅最大値
 	const float ASSAULT_DISTANCE = 300.0f;
-	const float BOUND_POWER = 200.0f;					// 跳ね返す力
+	const float BOUND_POWER = 200.0f;				// 跳ね返す力
+	const float BOUND_POWER_AIR = 500.0f;			// 空中にいる場合の跳ね返す力
+	const float GRAVITY = 400.0f;
 	const float REBOUND_RESISTANCE = -200.0f;
 
 	class Random& random;
@@ -48,6 +51,7 @@ private:
 	int trunkpoint;				// 体幹量（ボスのhp）
 	bool isGround;				// 地面と接触しているか
 	bool isOnTarget;			// 対象の真上に移動したか
+	bool isAttacking;			// 攻撃中か
 	VECTOR startAssaultPos;
 	VECTOR stompVec;
 	

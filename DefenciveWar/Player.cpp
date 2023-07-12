@@ -55,6 +55,8 @@ void Player::Initialize()
 	param.dir = json.GetVector(JsonDataType::Player, "Direction");
 	hp = json.GetInt(JsonDataType::Player, "Hitpoint");
 	exist = true;
+
+	json.SetFloat(JsonDataType::Result, "PlayerHitpoint", nullptr, -1, 100);
 }
 
 /// <summary>
@@ -75,6 +77,11 @@ void Player::Update()
 		param.nextPos.y = 0;
 	}
 
+	if (key.CheckPressed(KEY_INPUT_0))
+	{
+		shield->SetTrunk(100);
+	}
+
 	// 接触した場合
 	if (isHit)
 	{
@@ -93,8 +100,6 @@ void Player::Update()
 			invincibleTime->Reset();
 		}
 	}
-	
-	
 
 	// ダメージを受けた場合は移動を制限する
 	if (VSize(force) == 0)
@@ -182,6 +187,18 @@ void Player::HitObject(Collision* other)
 	{
 		// 力の大きさを設定
 		// force = VScale(force, 0.5f);
+
+		// シールドが破壊された場合
+		if (shield->IsBreak())
+		{
+			// 跳ね返る向きを設定
+			sub = VSub(param.pos, other->GetPos());
+			// 正規化
+			force = VNorm(sub);
+			// 力の大きさを設定
+			force = VScale(force, BOUND_POWER);
+		}
+
 	}
 }
 

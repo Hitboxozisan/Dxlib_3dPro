@@ -21,8 +21,7 @@ public:
 	void HitObject(Collision* other) override;
 
 	void SetTrunk(float a) {
-		if (a == 1)trunkpoint++;
-		if (a == -1)trunkpoint--;
+		trunkpoint = a;
 	}
 	void SetHit(const bool hit) { isHit = hit; }
 	const float GetTrunkpoint() const { return trunkpoint; }

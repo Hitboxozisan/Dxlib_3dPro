@@ -5,7 +5,7 @@ enum class JsonDataType
 	Player,
 	BossEnemy,
 	BossMagnification,
-	//Result,
+	Result,
 
 	JsonDataAmount,
 };

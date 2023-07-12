@@ -9,6 +9,7 @@ SupportJson::SupportJson()
 		{JsonDataType::Player, "Data/Param/PlayerData.json"},
 		{JsonDataType::BossEnemy, "Data/Param/BossEnemyData.json"},
 		{JsonDataType::BossMagnification, "Data/Param/BossMagnificationData.json"},
+		{JsonDataType::Result, "Data/Param/Result.json"},
 	};
 
 	// ファイルのロード
@@ -51,6 +52,15 @@ void SupportJson::Load()
 
 void SupportJson::Entry(JsonDataType type, const char* datakey, float index)
 {
+}
+
+void SupportJson::SetFloat(JsonDataType type, const char* dataKey, const char* indexString, int index, float insertValue)
+{
+	float ret = insertValue;
+	if (index == -1)
+	{
+		doc[type][dataKey].SetFloat(ret);
+	}
 }
 
 int SupportJson::GetInt(JsonDataType type, const char* dataKey, const char* indexString, int index)
